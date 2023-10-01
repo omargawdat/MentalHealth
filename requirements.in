@@ -1,0 +1,7 @@
+django
+dotenv
+django-jazzmin
+djangorestframework
+Pillow
+gunicorn
+whitenoise
