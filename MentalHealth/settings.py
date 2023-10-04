@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "apps.depression_test",
     "apps.authentication",
     "apps.core",
+    "journal",
 ]
 
 MIDDLEWARE = [
