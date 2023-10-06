@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     "apps.depression_test",
     "apps.authentication",
     "apps.core",
-    "journal",
+    "apps.journal",
 ]
 
 MIDDLEWARE = [
@@ -122,7 +122,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    # ... other settings ...
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 AUTHENTICATION_BACKENDS = [
     'apps.authentication.backend.CustomUserAuthenticationBackend',
