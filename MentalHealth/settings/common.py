@@ -2,13 +2,9 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = "django-insecure-b7*vx#_y*@s6n^t+g@1jvs%eixta52q+q=ge1l8$oh@u19*qv&"
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -57,13 +53,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "MentalHealth.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -91,15 +80,15 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Use Django's built-in FileSystemStorage
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-
 # Static Files Settings
 STATICFILES_DIRS = [
     BASE_DIR / 'staticfiles',
 ]
 STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
+
+# Use Django's built-in FileSystemStorage
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
