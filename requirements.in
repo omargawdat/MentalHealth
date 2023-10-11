@@ -6,3 +6,4 @@ Pillow
 gunicorn
 whitenoise
 gevent
+djangorestframework-simplejwt
