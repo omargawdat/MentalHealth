@@ -1,0 +1,177 @@
+[
+    {
+        "model": "depression_test.testquestion",
+        "pk": 1,
+        "fields": {
+            "question": "Feeling sad or down in the dumps"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 2,
+        "fields": {
+            "question": "Feeling unhappy or blue"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 3,
+        "fields": {
+            "question": "Crying spells or tearfulness"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 4,
+        "fields": {
+            "question": "Feeling discouraged"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 5,
+        "fields": {
+            "question": "Feeling hopeless"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 6,
+        "fields": {
+            "question": "Low self-esteem"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 7,
+        "fields": {
+            "question": "Feeling worthless or inadequate"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 8,
+        "fields": {
+            "question": "Guilt or shame"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 9,
+        "fields": {
+            "question": "Criticizing yourself or blaming yourself"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 10,
+        "fields": {
+            "question": "Difficulty making decisions"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 11,
+        "fields": {
+            "question": "Loss of interest in family, friends or colleagues"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 12,
+        "fields": {
+            "question": "Loneliness"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 13,
+        "fields": {
+            "question": "Spending less time with family or friends"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 14,
+        "fields": {
+            "question": "Loss of motivation"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 15,
+        "fields": {
+            "question": "Loss of interest in work or other activities"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 16,
+        "fields": {
+            "question": "Avoiding work or other activities"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 17,
+        "fields": {
+            "question": "Loss of pleasure or satisfaction in life"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 18,
+        "fields": {
+            "question": "Feeling tired"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 19,
+        "fields": {
+            "question": "Difficulty sleeping or sleeping too much"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 20,
+        "fields": {
+            "question": "Decreased or increased appetite"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 21,
+        "fields": {
+            "question": "Loss of interest in sex"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 22,
+        "fields": {
+            "question": "Worrying about your health"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 23,
+        "fields": {
+            "question": "Do you have any suicidal thoughts?"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 24,
+        "fields": {
+            "question": "Would you like to end your life?"
+        }
+    },
+    {
+        "model": "depression_test.testquestion",
+        "pk": 25,
+        "fields": {
+            "question": "Do you have a plan for harming yourself?"
+        }
+    }
+]
