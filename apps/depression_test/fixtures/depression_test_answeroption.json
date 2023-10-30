@@ -1,0 +1,42 @@
+[
+    {
+        "model": "depression_test.answeroption",
+        "pk": 1,
+        "fields": {
+            "value": 0,
+            "label": "Not At All"
+        }
+    },
+    {
+        "model": "depression_test.answeroption",
+        "pk": 2,
+        "fields": {
+            "value": 1,
+            "label": "Somewhat"
+        }
+    },
+    {
+        "model": "depression_test.answeroption",
+        "pk": 3,
+        "fields": {
+            "value": 2,
+            "label": "Moderately"
+        }
+    },
+    {
+        "model": "depression_test.answeroption",
+        "pk": 4,
+        "fields": {
+            "value": 3,
+            "label": "A Lot"
+        }
+    },
+    {
+        "model": "depression_test.answeroption",
+        "pk": 5,
+        "fields": {
+            "value": 4,
+            "label": "Extremely"
+        }
+    }
+]
