@@ -1,12 +1,16 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.db import transaction
+from rest_framework import generics
 from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from .models import CustomUser
+from .serializers import CustomUserSerializer
 from .serializers import RegisterSerializer
 
 User = get_user_model()
@@ -42,3 +46,12 @@ class LoginView(APIView):
                              {'access': refresh.access_token, 'refresh': refresh}.items()}, status=status.HTTP_200_OK)
         else:
             return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class CustomUserDetail(generics.RetrieveUpdateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
