@@ -3,7 +3,6 @@
     "model": "authentication.customuser",
     "pk": 1,
     "fields": {
-      "email": "admin@example.com",
       "username": "admin"
     }
   },
@@ -11,7 +10,6 @@
     "model": "authentication.customuser",
     "pk": 2,
     "fields": {
-      "email": "user@example.com",
       "username": "user"
     }
   }

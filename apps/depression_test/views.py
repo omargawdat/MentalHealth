@@ -7,8 +7,8 @@
 # class TestAPIView(APIView):
 #     def get(self, request, *args, **kwargs):
 #         return Response({"message": "Hello from ds!"})
-    
-    
+
+
 # class TestQuestionAPIView(APIView):
 #     def get(self, request):
 #         questions = TestQuestion.objects.all()
@@ -20,12 +20,14 @@
 #                 'answer_options': list(options)
 #             })
 #         return Response(data)
-    
-    
-from rest_framework.views import APIView
-from rest_framework.response import Response
+
+
 from rest_framework import status
-from .models import TestQuestion, AnswerOption
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import AnswerOption, TestQuestion
+
 
 class TestQuestionAPIView(APIView):
     def get(self, request):
@@ -67,7 +69,7 @@ class TestQuestionAPIView(APIView):
 
         return Response({'total_score': total_score, 'level_of_depression': level_of_depression})
 
+
 class TestAPIView(APIView):
     def get(self, request, *args, **kwargs):
         return Response({"message": "Hello from ds!"})
-    
