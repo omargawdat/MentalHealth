@@ -11,5 +11,6 @@ class Command(BaseCommand):
             CustomUser.objects.create_superuser(
                 username=admin_name,
                 password=admin_password,
+
             )
             self.stdout.write(self.style.SUCCESS('Successfully created new super user'))

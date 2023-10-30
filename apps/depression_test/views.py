@@ -1,75 +1,49 @@
-# from django.http import JsonResponse
-# from rest_framework.response import Response
-# from rest_framework.views import APIView
-# from .models import TestQuestion
-
-# # Using APIView class
-# class TestAPIView(APIView):
-#     def get(self, request, *args, **kwargs):
-#         return Response({"message": "Hello from ds!"})
-
-
-# class TestQuestionAPIView(APIView):
-#     def get(self, request):
-#         questions = TestQuestion.objects.all()
-#         data = []
-#         for question in questions:
-#             options = question.answer_options.all().values('value', 'label')
-#             data.append({
-#                 'question': question.question,
-#                 'answer_options': list(options)
-#             })
-#         return Response(data)
-
-
-from rest_framework import status
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import AnswerOption, TestQuestion
+from .constants import DepressionLevel
+from .models import AnswerOption, DepressionAssessment, TestQuestion
+from .serializers import AnswerOptionSerializer, SumNumbersSerializer, TestQuestionSerializer
 
 
-class TestQuestionAPIView(APIView):
-    def get(self, request):
-        questions = TestQuestion.objects.all()
-        data = []
-        for question in questions:
-            options = question.answer_options.all().values('value', 'label')
-            data.append({
-                'question': question.question,
-                'answer_options': list(options)
-            })
-        return Response(data)
+class CalculateTestView(APIView):
 
     def post(self, request):
-        answers = request.data.get('answers', [])
-        total_score = 0
+        serializer = SumNumbersSerializer(data=request.data)
 
-        for answer in answers:
-            answer_value = answer.get('value')
-            try:
-                # Find the answer option with the matching value
-                option = AnswerOption.objects.get(value=answer_value)
-                total_score += option.value
-            except AnswerOption.DoesNotExist:
-                return Response({'error': 'Invalid answer value'}, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
 
-        # Determine the level of depression based on the total_score
-        level_of_depression = 'no depression'
+        scores = serializer.validated_data['answers']
+        total_score = sum(scores)
+        level_of_depression = DepressionLevel.NO_DEPRESSION
         if 6 <= total_score <= 10:
-            level_of_depression = 'normal but unhappy'
+            level_of_depression = DepressionLevel.NORMAL_BUT_UNHAPPY
         elif 11 <= total_score <= 25:
-            level_of_depression = 'mild depression'
+            level_of_depression = DepressionLevel.MILD_DEPRESSION
         elif 26 <= total_score <= 50:
-            level_of_depression = 'moderate depression'
+            level_of_depression = DepressionLevel.MODERATE_DEPRESSION
         elif 51 <= total_score <= 75:
-            level_of_depression = 'severe depression'
+            level_of_depression = DepressionLevel.SEVERE_DEPRESSION
         elif 76 <= total_score <= 100:
-            level_of_depression = 'extreme depression'
+            level_of_depression = DepressionLevel.EXTREME_DEPRESSION
 
-        return Response({'total_score': total_score, 'level_of_depression': level_of_depression})
+        DepressionAssessment.objects.create(
+            user=request.user,
+            total_score=total_score,
+            level_of_depression=level_of_depression.value
+        )
+        
+        return Response({'total_score': total_score, 'level_of_depression': level_of_depression.value})
 
 
-class TestAPIView(APIView):
-    def get(self, request, *args, **kwargs):
-        return Response({"message": "Hello from ds!"})
+class TestQuestionListView(ListAPIView):
+    queryset = TestQuestion.objects.all()
+    serializer_class = TestQuestionSerializer
+    permission_classes = []
+
+
+class AnswerOptionListView(ListAPIView):
+    queryset = AnswerOption.objects.all()
+    serializer_class = AnswerOptionSerializer
+    permission_classes = []

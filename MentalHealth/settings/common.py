@@ -135,7 +135,13 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
     "order_with_respect_to": [],
     "icons": {
+        "authentication.CustomUser": "fas fa-user",
+        "depression_test.AnswerOption": "fas fa-check-circle",
+        "depression_test.TestQuestion": "fas fa-question-circle",
+        "depression_test.DepressionAssessment": "fas fa-file-medical",
+        "auth.Group": "fas fa-users",
     },
+
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",
     "use_google_fonts_cdn": True,

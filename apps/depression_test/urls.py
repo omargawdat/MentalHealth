@@ -1,11 +1,9 @@
 from django.urls import path
 
-from . import views
-from .views import *
+from .views import AnswerOptionListView, CalculateTestView, TestQuestionListView
 
 urlpatterns = [
-    path('testu/', views.TestAPIView.as_view(), name='test-api-class-view'),
-    path('questions/', TestQuestionAPIView.as_view(), name='test_questions_api'),
-    
-    
+    path('depression/test_result/', CalculateTestView.as_view(), name='sum_numbers'),
+    path('depression/questions/', TestQuestionListView.as_view(), name='test_questions_list'),
+    path('depression/answers/', AnswerOptionListView.as_view(), name='answer_options_list'),
 ]
