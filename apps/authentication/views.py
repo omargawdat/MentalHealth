@@ -22,8 +22,8 @@ class RegisterView(APIView):
             user = serializer.save()
             refresh = RefreshToken.for_user(user)
             token_data = {
-                'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                'refresh': str(refresh),
             }
             return Response({**token_data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -39,6 +39,6 @@ class LoginView(APIView):
         if user:
             refresh = RefreshToken.for_user(user)
             return Response({token_type: str(token) for token_type, token in
-                             {'refresh': refresh, 'access': refresh.access_token}.items()}, status=status.HTTP_200_OK)
+                             {'access': refresh.access_token, 'refresh': refresh}.items()}, status=status.HTTP_200_OK)
         else:
             return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
