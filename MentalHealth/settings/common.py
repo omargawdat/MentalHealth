@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure-b7*vx#_y*@s6n^t+g@1jvs%eixta52q+q=ge1l8$oh@u19*qv&
 INSTALLED_APPS = [
     'jazzmin',
     'rest_framework',
-
+    'social_django',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -116,6 +116,7 @@ REST_FRAMEWORK = {
     ),
 }
 AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
     'apps.authentication.backend.CustomUserAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -177,3 +178,7 @@ JAZZMIN_UI_TWEAKS = {
     "navbar_fixed": True,
 
 }
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '753299979220-3ab28pbs07e17hklbr6db4besc2q2493.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'

@@ -1,10 +1,11 @@
-from datetime import date
-from rest_framework import viewsets
-from rest_framework import status
 import calendar
+from datetime import date
+
+from rest_framework import status
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import *
+
 from .serializers import *
 
 
@@ -17,11 +18,12 @@ class PrimaryEmotionList(APIView):
 
 class JournalViewSet(viewsets.ModelViewSet):
     serializer_class = JournalSerializer
+
     def get_queryset(self):
         return Journal.objects.filter(user=self.request.user)
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
 
 
 class EmotionList(APIView):
@@ -33,8 +35,8 @@ class EmotionList(APIView):
             serializer = EmotionSerializer(primary_emotions, many=True)
             return Response(serializer.data)
         return Response(filter_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    
+
+
 class MoodPrimaryEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = MoodPrimaryEntrySerializer(data=request.data)
@@ -43,6 +45,7 @@ class MoodPrimaryEntryAPIView(APIView):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
+
 class MoodThirdEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = MoodThirdEntrySerializer(data=request.data)
@@ -50,9 +53,11 @@ class MoodThirdEntryAPIView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
-    
+
+
 class CurrentMonthMoodsAPIView(APIView):
     serializer_class = MoodPrimaryEntrySerializer
+
     def get(self, request, *args, **kwargs):
         current_user = self.request.user
         today = date.today()

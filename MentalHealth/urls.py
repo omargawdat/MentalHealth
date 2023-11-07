@@ -5,6 +5,8 @@ from django.urls import include
 from django.urls import path
 
 urlpatterns = [
+    path('social-auth/', include('social_django.urls', namespace='social')),
+
     path("admin/", admin.site.urls),
     path("api/", include("apps.authentication.urls")),
     path("api/", include("apps.depression_test.urls")),
