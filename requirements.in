@@ -1,5 +1,5 @@
 django
-dotenv
+python-dotenv
 django-jazzmin
 djangorestframework
 Pillow
@@ -7,3 +7,4 @@ gunicorn
 whitenoise
 gevent
 djangorestframework-simplejwt
+social-auth-app-django
