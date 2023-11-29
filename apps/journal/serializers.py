@@ -1,5 +1,7 @@
 from rest_framework import serializers
+
 from .models import *
+from .models import Emotion
 
 
 class JournalSerializer(serializers.ModelSerializer):
@@ -8,28 +10,23 @@ class JournalSerializer(serializers.ModelSerializer):
         fields = ["content", "date", "title"]
         read_only_fields = ["date"]
 
-class EmotionSerializer(serializers.ModelSerializer):
+
+class EmotionSubSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emotion
-        fields = ['name']
+        fields = ['id', 'name', 'description', 'image']
 
 
-        
-class FilterSerializer(serializers.Serializer):
-    type = serializers.CharField(max_length=50)
-    
-    
-class MoodPrimaryEntrySerializer(serializers.ModelSerializer):
+class EmotionSerializer(serializers.ModelSerializer):
+    sub_emotions = EmotionSubSerializer(many=True, read_only=True)
+
     class Meta:
-        model = MoodPrimaryEntry
-        fields = ["mood", "date"]
-        read_only_fields = ["date"]
-        
-        
-class MoodThirdEntrySerializer(serializers.ModelSerializer):
+        model = Emotion
+        fields = ['id', 'name', 'description', 'image', 'sub_emotions']
+
+
+class EmotionHistorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = MoodThirdEntry
-        fields = ["mood", "date"]
-        read_only_fields = ["date"]
-
-
+        model = EmotionHistory
+        fields = ['id', 'emotion', 'date']
+        read_only_fields = ['id']
