@@ -13,11 +13,6 @@ class CustomUserSerializerGoogle(serializers.ModelSerializer):
         model = CustomUser
         fields = ['username', 'first_name', 'last_name', 'birth_date', 'gender', ]
 
-    def validate_username(self, value):
-        if CustomUser.objects.filter(username=value).exists():
-            raise serializers.ValidationError("A user with this email already exists.")
-        return value
-
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:

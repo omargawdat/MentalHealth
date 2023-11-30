@@ -2,7 +2,6 @@ from django.contrib.auth import authenticate, get_user_model
 from django.db import transaction
 from rest_framework import generics
 from rest_framework import status
-from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -27,23 +26,31 @@ class CheckUsernameView(APIView):
         return Response({'exists': exists})
 
 
-class RegisterUserView(CreateAPIView):
-    serializer_class = CustomUserSerializerGoogle
+class AuthUserGoogle(APIView):
     permission_classes = []
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
+        username = request.data.get('username')
+        user = CustomUser.objects.filter(username=username).first()
 
+        if not user:
+            # If user does not exist, create a new user
+            serializer = CustomUserSerializerGoogle(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            user = serializer.save()
+            response_status = status.HTTP_201_CREATED
+        else:
+            # User already exists
+            response_status = status.HTTP_200_OK
+
+        # Generate tokens for the user (new or existing)
         refresh = RefreshToken.for_user(user)
         return Response({
-            'refresh': str(refresh),
             'access': str(refresh.access_token),
-        }, status=status.HTTP_201_CREATED)
+            'refresh': str(refresh),
+        }, response_status)
 
 
-#
 # class GoogleLogin(APIView):
 #     permission_classes = []
 #
