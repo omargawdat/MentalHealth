@@ -1,46 +1,74 @@
-import random
-import string
-
 from django.contrib.auth import authenticate, get_user_model
 from django.db import transaction
 from rest_framework import generics
 from rest_framework import status
+from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import CustomUser
-from .serializers import CustomUserSerializer, RegisterSerializer
+from .serializers import CustomUserSerializer, CustomUserSerializerGoogle
+from .serializers import RegisterSerializer
 
 User = get_user_model()
 
 
-class GoogleLogin(APIView):
+class CheckUsernameView(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        username = request.query_params.get('username', None)
+        if username is None:
+            return Response({'error': 'Username parameter not provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+        exists = CustomUser.objects.filter(username=username).exists()
+        return Response({'exists': exists})
+
+
+class RegisterUserView(CreateAPIView):
+    serializer_class = CustomUserSerializerGoogle
     permission_classes = []
 
     def post(self, request, *args, **kwargs):
-        token = request.data.get('token')  # Assuming the 'token' is what you're receiving
-        redirect_uri = request.data.get('redirect_uri')
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
 
-        if not token or not redirect_uri:
-            return Response({"errors": "Token and redirect_uri must be provided."},
-                            status=status.HTTP_400_BAD_REQUEST)
-
-        username = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
-        password = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
-
-        # Create a random user. In a real scenario, you'd probably have more logic here.
-        user = CustomUser.objects.create_user(username=username, password=password)
-
-        # Now, generate JWT token for the new user
         refresh = RefreshToken.for_user(user)
-        response_data = {
+        return Response({
             'refresh': str(refresh),
             'access': str(refresh.access_token),
-        }
+        }, status=status.HTTP_201_CREATED)
 
-        return Response(response_data, status=status.HTTP_200_OK)
+
+#
+# class GoogleLogin(APIView):
+#     permission_classes = []
+#
+#     def post(self, request, *args, **kwargs):
+#         token = request.data.get('token')  # Assuming the 'token' is what you're receiving
+#         redirect_uri = request.data.get('redirect_uri')
+#
+#         if not token or not redirect_uri:
+#             return Response({"errors": "Token and redirect_uri must be provided."},
+#                             status=status.HTTP_400_BAD_REQUEST)
+#
+#         username = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
+#         password = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+#
+#         # Create a random user. In a real scenario, you'd probably have more logic here.
+#         user = CustomUser.objects.create_user(username=username, password=password)
+#
+#         # Now, generate JWT token for the new user
+#         refresh = RefreshToken.for_user(user)
+#         response_data = {
+#             'refresh': str(refresh),
+#             'access': str(refresh.access_token),
+#         }
+#
+#         return Response(response_data, status=status.HTTP_200_OK)
 
 
 # class GoogleLogin(APIView):
