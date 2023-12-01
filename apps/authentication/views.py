@@ -1,157 +1,60 @@
-from django.contrib.auth import authenticate, get_user_model
+import requests
+from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
 from django.db import transaction
 from rest_framework import generics
 from rest_framework import status
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import CustomUser
-from .serializers import CustomUserSerializer, CustomUserSerializerGoogle
+from .serializers import CustomUserSerializer
 from .serializers import RegisterSerializer
 
 User = get_user_model()
 
 
-class CheckUsernameView(APIView):
-    permission_classes = []
-
-    def get(self, request):
-        username = request.query_params.get('username', None)
-        if username is None:
-            return Response({'error': 'Username parameter not provided'}, status=status.HTTP_400_BAD_REQUEST)
-
-        exists = CustomUser.objects.filter(username=username).exists()
-        return Response({'exists': exists})
-
-
-class AuthUserGoogle(APIView):
-    permission_classes = []
+class GoogleLogin(APIView):
+    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
-        username = request.data.get('username')
-        user = CustomUser.objects.filter(username=username).first()
+        access_token = request.data.get('token')
+        if not access_token:
+            return Response({'error': 'Access token is required'}, status=status.HTTP_400_BAD_REQUEST)
 
-        if not user:
-            # If user does not exist, create a new user
-            serializer = CustomUserSerializerGoogle(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            user = serializer.save()
-            response_status = status.HTTP_201_CREATED
-        else:
-            # User already exists
-            response_status = status.HTTP_200_OK
+        try:
+            google_response = requests.get('https://www.googleapis.com/oauth2/v3/userinfo',
+                                           params={'access_token': access_token})
+            google_data = google_response.json()
 
-        # Generate tokens for the user (new or existing)
-        refresh = RefreshToken.for_user(user)
-        return Response({
-            'access': str(refresh.access_token),
-            'refresh': str(refresh),
-        }, response_status)
+            if 'error' in google_data:
+                return Response({'error': 'Invalid access token'}, status=status.HTTP_400_BAD_REQUEST)
 
+            username = google_data['email']  # Using the Google email as username
+            user, created = User.objects.get_or_create(username=username)
 
-# class GoogleLogin(APIView):
-#     permission_classes = []
-#
-#     def post(self, request, *args, **kwargs):
-#         token = request.data.get('token')  # Assuming the 'token' is what you're receiving
-#         redirect_uri = request.data.get('redirect_uri')
-#
-#         if not token or not redirect_uri:
-#             return Response({"errors": "Token and redirect_uri must be provided."},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#
-#         username = ''.join(random.choices(string.ascii_lowercase + string.digits, k=10))
-#         password = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
-#
-#         # Create a random user. In a real scenario, you'd probably have more logic here.
-#         user = CustomUser.objects.create_user(username=username, password=password)
-#
-#         # Now, generate JWT token for the new user
-#         refresh = RefreshToken.for_user(user)
-#         response_data = {
-#             'refresh': str(refresh),
-#             'access': str(refresh.access_token),
-#         }
-#
-#         return Response(response_data, status=status.HTTP_200_OK)
+            if created:
+                user.first_name = google_data.get('given_name', '')
+                user.last_name = google_data.get('family_name', '')
+                user.save()
 
+            # Generate JWT tokens
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
 
-# class GoogleLogin(APIView):
-#     def post(self, request, *args, **kwargs):
-#         code = request.data.get('code')
-#         redirect_uri = request.data.get('redirect_uri')
-#
-#         if not code or not redirect_uri:
-#             return Response({"errors": "Authorization code and redirect_uri must be provided."},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#
-#         strategy = load_strategy(request)
-#         backend = load_backend(strategy=strategy, name='google-oauth2', redirect_uri=redirect_uri)
-#
-#         try:
-#             user = backend.auth_complete(code=code)
-#         except AuthAlreadyAssociated:
-#             return Response({"errors": "This Google account is already associated with another user."},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         except AuthException as e:
-#             return Response({"errors": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-#
-#         if user and user.is_active:
-#             refresh = RefreshToken.for_user(user)
-#             response_data = {
-#                 'refresh': str(refresh),
-#                 'access': str(refresh.access_token),
-#                 'user': {
-#                     'id': user.id,
-#                     'username': user.username,
-#                     'email': user.email,
-#                 }
-#             }
-#             return Response(response_data, status=status.HTTP_200_OK)
-#         else:
-#             return Response({"errors": "Authentication failed."}, status=status.HTTP_400_BAD_REQUEST)
+            response_status = status.HTTP_201_CREATED if created else status.HTTP_200_OK
 
+            return Response({
+                'refresh': str(refresh),
+                'access': access_token,
+            }, status=response_status)
 
-# class GoogleLogin(views.APIView):
-#     def post(self, request, *args, **kwargs):
-#         # Here you expect the token to be passed in the body of the request
-#         token = request.data.get('token')
-#
-#         if not token:
-#             return Response({"errors": "No token provided."}, status=status.HTTP_400_BAD_REQUEST)
-#
-#         # Load the strategy and backend for social-auth
-#         strategy = load_strategy(request)
-#         backend = load_backend(strategy=strategy, name='google-oauth2', redirect_uri=None)
-#
-#         # Try to authenticate the user using the token provided
-#         try:
-#             # In this case, you would be using a method that expects to receive
-#             # an 'access_token' directly rather than a redirection from Google with a code.
-#             # The backend method needs to be modified to handle the token.
-#             user = backend.do_auth(token, strategy=strategy)
-#         except AuthAlreadyAssociated:
-#             return Response({"errors": "That social media account is already in use."},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         except AuthException as e:
-#             return Response({"errors": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-#
-#         # If the user is found and active, create a response with the token and user info
-#         if user and user.is_active:
-#             token = AccessToken.for_user(user)
-#             response_data = {
-#                 'token': str(token),
-#                 'user': {
-#                     'id': user.id,
-#                     'username': user.username,
-#                     'email': user.email,
-#                 }
-#             }
-#             return Response(response_data, status=status.HTTP_200_OK)
-#         else:
-#             return Response({"errors": "Authentication Failed"}, status=status.HTTP_400_BAD_REQUEST)
+        except requests.exceptions.RequestException as e:
+            return Response({'error': 'Failed to retrieve user information'},
+                            status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
 
 class RegisterView(APIView):
