@@ -11,6 +11,11 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ('email', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
+    def create(self, validated_data):
+        email = validated_data['email']
+        password = validated_data['password']
+        return CustomUser.objects.create_user(email=email, password=password)
+
 
 class EmailVerificationSerializer(serializers.Serializer):
     otp = serializers.CharField(max_length=100)
@@ -36,7 +41,7 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = authenticate(email=data['email'], password=data['password'])
-        print(data['email'], data['password'])
+
         if user:
             return user
         raise serializers.ValidationError("Invalid credentials")
