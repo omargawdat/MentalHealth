@@ -5,11 +5,11 @@ from apps.authentication.models import CustomUser
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        admin_name = "admin"
+        admin_email = "admin@example.com"
         admin_password = "123"
-        if not CustomUser.objects.filter(username=admin_name).exists():
+        if not CustomUser.objects.filter(email=admin_email).exists():
             CustomUser.objects.create_superuser(
-                username=admin_name,
+                email=admin_email,
                 password=admin_password,
             )
             self.stdout.write(self.style.SUCCESS('Successfully created new super user'))

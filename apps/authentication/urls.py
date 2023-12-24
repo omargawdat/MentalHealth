@@ -1,12 +1,10 @@
 from django.urls import path
-from rest_framework_simplejwt.views import TokenRefreshView
 
-from .views import CustomUserDetail, GoogleLogin, LoginView, RegisterView
+from .views import EmailVerificationView, LoginView, UserRegistrationView, UserRetrieveUpdateAPIView
 
 urlpatterns = [
-    path('auth/register/', RegisterView.as_view(), name='register'),
-    path('auth/login/', LoginView.as_view(), name='login'),
-    path('auth/refresh-token/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('profile/', CustomUserDetail.as_view(), name='user-detail'),
-    path('auth/google/', GoogleLogin.as_view(), name='google_login'),
+    path('auth/login/', LoginView.as_view(), name='login_user'),
+    path('auth/register/', UserRegistrationView.as_view(), name='register_user'),
+    path('auth/verify-email/', EmailVerificationView.as_view(), name='verify_email'),
+    path('auth/user/', UserRetrieveUpdateAPIView.as_view(), name='user-detail'),
 ]

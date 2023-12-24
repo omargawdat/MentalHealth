@@ -1,95 +1,81 @@
-import requests
-from django.contrib.auth import authenticate
-from django.contrib.auth import get_user_model
+from django.core.cache import cache
 from django.db import transaction
-from rest_framework import generics
 from rest_framework import status
-from rest_framework.permissions import AllowAny
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import CustomUser
-from .serializers import CustomUserSerializer
-from .serializers import RegisterSerializer
-
-User = get_user_model()
+from .serializers import EmailVerificationSerializer, LoginSerializer, RegisterSerializer
+from .utilities.send_otp_email import send_otp_via_email
 
 
-class GoogleLogin(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        access_token = request.data.get('token')
-        if not access_token:
-            return Response({'error': 'Access token is required'}, status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            google_response = requests.get('https://www.googleapis.com/oauth2/v3/userinfo',
-                                           params={'access_token': access_token})
-            google_data = google_response.json()
-
-            if 'error' in google_data:
-                return Response({'error': 'Invalid access token'}, status=status.HTTP_400_BAD_REQUEST)
-
-            username = google_data['email']  # Using the Google email as username
-            user, created = User.objects.get_or_create(username=username)
-
-            if created:
-                user.first_name = google_data.get('given_name', '')
-                user.last_name = google_data.get('family_name', '')
-                user.save()
-
-            # Generate JWT tokens
-            refresh = RefreshToken.for_user(user)
-            access_token = str(refresh.access_token)
-
-            response_status = status.HTTP_201_CREATED if created else status.HTTP_200_OK
-
-            return Response({
-                'refresh': str(refresh),
-                'access': access_token,
-            }, status=response_status)
-
-        except requests.exceptions.RequestException as e:
-            return Response({'error': 'Failed to retrieve user information'},
-                            status=status.HTTP_503_SERVICE_UNAVAILABLE)
-
-
-class RegisterView(APIView):
-    permission_classes = [AllowAny]
+class UserRegistrationView(APIView):
+    permission_classes = []
 
     @transaction.atomic
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
+        if serializer.is_valid():
             user = serializer.save()
+            otp_sent = send_otp_via_email(user.email)
+            cache_key = f"otp_{user.id}"
+            cache.set(cache_key, str(otp_sent), timeout=300)
+
+            # Generate JWT Tokens
             refresh = RefreshToken.for_user(user)
-            token_data = {
-                'access': str(refresh.access_token),
-                'refresh': str(refresh),
-            }
-            return Response({**token_data}, status=status.HTTP_201_CREATED)
+            return Response(
+                {'message': 'User registered. Please check your email for the OTP.',
+                 'access': str(refresh.access_token), 'refresh': str(refresh), },
+                status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class EmailVerificationView(APIView):
+
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return Response({'error': 'Authentication required'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = EmailVerificationSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            user = request.user
+            user.is_verified = True
+            user.save()
+            cache_key = f"otp_{user.id}"
+            cache.delete(cache_key)
+
+            refresh = RefreshToken.for_user(user)
+            return Response(
+                {'message': 'Email successfully verified', 'access': str(refresh.access_token),
+                 'refresh': str(refresh), }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LoginView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = []
 
     def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.validated_data
+
             refresh = RefreshToken.for_user(user)
-            return Response({token_type: str(token) for token_type, token in
-                             {'access': refresh.access_token, 'refresh': refresh}.items()}, status=status.HTTP_200_OK)
-        else:
-            return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+            tokens = {
+                'access': str(refresh.access_token),
+                'refresh': str(refresh),
+            }
+
+            return Response({'tokens': tokens}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CustomUserDetail(generics.RetrieveUpdateAPIView):
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from .models import CustomUser
+from .serializers import CustomUserSerializer
+
+
+class UserRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
     permission_classes = [IsAuthenticated]

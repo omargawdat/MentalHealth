@@ -116,8 +116,6 @@ REST_FRAMEWORK = {
     ),
 }
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.google.GoogleOAuth2',
-    'apps.authentication.backend.CustomUserAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 # Jazzmin Settings for the admin panel design
@@ -179,6 +177,22 @@ JAZZMIN_UI_TWEAKS = {
 
 }
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '753299979220-3ab28pbs07e17hklbr6db4besc2q2493.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
+# Geospatial Settings
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
+
+# Local memory caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'omargawdaat@gmail.com'
+EMAIL_HOST_PASSWORD = 'qche xbce nnai infh'
+EMAIL_USE_TLS = True
