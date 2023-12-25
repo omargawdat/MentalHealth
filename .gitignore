@@ -1,3 +1,4 @@
+ .DS_Store
 venv
 
 # Ignore compiled Python files
