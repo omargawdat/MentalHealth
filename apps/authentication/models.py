@@ -32,6 +32,7 @@ class CustomUser(AbstractBaseUser):
     is_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    is_able_to_reset_password = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -46,5 +47,5 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=1, choices=Gender.choices())
-    birthdate = models.DateField()
+    birthdate = models.DateField(null=True, blank=True)
     image = models.ImageField(upload_to='profile_images/', blank=True, null=True)

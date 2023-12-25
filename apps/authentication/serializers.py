@@ -48,23 +48,53 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    email = serializers.SerializerMethodField()
+
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'gender', 'birthdate', 'image']
+        fields = ['email', 'first_name', 'last_name', 'gender', 'birthdate', 'image', ]
+
+    def get_email(self, obj):
+        return obj.user.email
 
 
-class CustomUserSerializer(serializers.ModelSerializer):
-    profile = ProfileSerializer()
+class PasswordChangeSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
 
-    class Meta:
-        model = CustomUser
-        fields = ['email', 'is_verified', 'profile']
+    def validate_old_password(self, value):
+        user = self.context['request'].user
+        if not user.check_password(value):
+            raise serializers.ValidationError("Old password is not correct")
+        return value
 
-    def update(self, instance, validated_data):
-        profile_data = validated_data.pop('profile', None)
-        self.fields['profile'].update(instance.profile, profile_data)
+    def save(self, **kwargs):
+        user = self.context['request'].user
+        user.set_password(self.validated_data['new_password'])
+        user.save()
+        return user
 
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        instance.save()
-        return instance
+
+class VerifyRestPasswordSerializer(serializers.Serializer):
+    otp = serializers.CharField()
+
+    def validate(self, attrs):
+        user = self.context['user']
+        otp = attrs.get('otp')
+        cache_key = f"reset_otp_{user.id}"
+        cached_otp = cache.get(cache_key)
+
+        if not cached_otp or cached_otp != otp:
+            raise serializers.ValidationError('Invalid OTP.')
+
+        return attrs
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    new_password = serializers.CharField()
+
+    def validate(self, attrs):
+        user = self.context['request'].user
+        if not user.is_able_to_reset_password:
+            raise serializers.ValidationError('Password reset not allowed.')
+        return attrs
