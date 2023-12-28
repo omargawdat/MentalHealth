@@ -41,21 +41,6 @@ class UserRegistrationView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ResendVerificationOtpView(APIView):
-    permission_classes = []
-
-    def post(self, request):
-        email = request.data.get('email')
-        user = User.objects.filter(email=email).first()
-        if user:
-            otp_sent = send_otp_via_email(user.email, "resending OTP for account creation")
-            cache_key = f"otp_{user.id}"
-            cache.set(cache_key, str(otp_sent), timeout=300)
-            return Response({'message': 'OTP resent to your email.'}, status=status.HTTP_200_OK)
-        else:
-            return Response({'error': 'User with this email does not exist.'}, status=status.HTTP_404_NOT_FOUND)
-
-
 class EmailVerificationView(APIView):
 
     def post(self, request):
@@ -73,6 +58,19 @@ class EmailVerificationView(APIView):
             return Response(
                 {'message': 'Email successfully verified'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ResendVerificationOtpView(APIView):
+
+    def post(self, request):
+        user = request.user
+        if user:
+            otp_sent = send_otp_via_email(user.email, "resending OTP for account creation")
+            cache_key = f"otp_{user.id}"
+            cache.set(cache_key, str(otp_sent), timeout=300)
+            return Response({'message': 'OTP resent to your email.'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'User with this email does not exist.'}, status=status.HTTP_404_NOT_FOUND)
 
 
 class LoginView(APIView):
