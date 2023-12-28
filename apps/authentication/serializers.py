@@ -49,13 +49,17 @@ class LoginSerializer(serializers.Serializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     email = serializers.SerializerMethodField()
+    is_verified = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
-        fields = ['email', 'first_name', 'last_name', 'gender', 'birthdate', 'image', ]
+        fields = ['email', 'first_name', 'last_name', 'gender', 'birthdate', 'image', 'is_verified']
 
     def get_email(self, obj):
         return obj.user.email
+
+    def get_is_verified(self, obj):
+        return obj.user.is_verified
 
 
 class PasswordChangeSerializer(serializers.Serializer):
