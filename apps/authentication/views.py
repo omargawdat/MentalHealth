@@ -28,6 +28,7 @@ class UserRegistrationView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+
             otp_sent = send_otp_via_email(user.email, "creating an account")
             cache_key = f"otp_{user.id}"
             cache.set(cache_key, str(otp_sent), timeout=300)

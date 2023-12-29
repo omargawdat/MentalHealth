@@ -6,15 +6,22 @@ from .models import CustomUser, Profile
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(max_length=50)
+    last_name = serializers.CharField(max_length=50)
+
     class Meta:
         model = CustomUser
-        fields = ('email', 'password')
+        fields = ('email', 'password', 'first_name', 'last_name')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         email = validated_data['email']
         password = validated_data['password']
-        return CustomUser.objects.create_user(email=email, password=password)
+        user = CustomUser.objects.create_user(email=email, password=password)
+        Profile.objects.create(user=user,
+                               first_name=validated_data['first_name'],
+                               last_name=validated_data['last_name'])
+        return user
 
 
 class EmailVerificationSerializer(serializers.Serializer):
