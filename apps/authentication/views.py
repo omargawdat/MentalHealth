@@ -1,5 +1,3 @@
-import shutil
-
 import requests
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
@@ -102,15 +100,6 @@ class CustomUserRetrieveUpdateView(RetrieveUpdateAPIView):
 class GoogleLogin(APIView):
     permission_classes = []
 
-    def download_profile_picture(self, url, user_id):
-        response = requests.get(url, stream=True)
-        file_path = f'media/profile_pictures/{user_id}.jpg'
-        if response.status_code == 200:
-            with open(file_path, 'wb') as out_file:
-                shutil.copyfileobj(response.raw, out_file)
-            return file_path
-        return None
-
     def post(self, request, *args, **kwargs):
         access_token = request.data.get('token')
         if not access_token:
@@ -132,11 +121,6 @@ class GoogleLogin(APIView):
                 profile = Profile.objects.create(user=user)
                 profile.first_name = google_data.get('given_name', '')
                 profile.last_name = google_data.get('family_name', '')
-                picture_url = google_data.get('picture', '')
-                if picture_url:
-                    profile_picture_path = self.download_profile_picture(picture_url, user.id)
-                    if profile_picture_path:
-                        profile.profile_picture = profile_picture_path
                 profile.save()
 
             refresh = RefreshToken.for_user(user)
