@@ -129,7 +129,7 @@ class GoogleLogin(APIView):
             user.save()
 
             if created:
-                profile = Profile.objects.get(user=user)
+                profile = Profile.objects.create(user=user)
                 profile.first_name = google_data.get('given_name', '')
                 profile.last_name = google_data.get('family_name', '')
                 picture_url = google_data.get('picture', '')
