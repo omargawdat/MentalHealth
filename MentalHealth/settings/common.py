@@ -7,8 +7,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = "django-insecure-b7*vx#_y*@s6n^t+g@1jvs%eixta52q+q=ge1l8$oh@u19*qv&"
 
 INSTALLED_APPS = [
-    'jazzmin',
-    'rest_framework',
+    "unfold",  # before django.contrib.admin
+    "unfold.contrib.filters",  # optional, if special filters are needed
+    "unfold.contrib.forms",  # optional, if special form elements are needed
+    "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    "unfold.contrib.simple_history",  # optional, if django-simple-history package is used    'rest_framework',
     'social_django',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -118,64 +122,6 @@ REST_FRAMEWORK = {
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-# Jazzmin Settings for the admin panel design
-JAZZMIN_SETTINGS = {
-    "site_title": "Mental Health",
-    "site_header": "Mental Admin",
-    "site_brand": "Admin",
-    "welcome_sign": "Welcome to best mental health app",
-    "copyright": "Cairo University",
-
-    "search_model": [],
-
-    "show_sidebar": True,
-    "navigation_expanded": True,
-    "hide_apps": ["sites"],
-    "hide_models": [],
-    "order_with_respect_to": [],
-    "icons": {
-    },
-    "default_icon_parents": "fas fa-chevron-circle-right",
-    "default_icon_children": "fas fa-circle",
-    "use_google_fonts_cdn": True,
-    "show_ui_builder": True,
-
-    "changeform_format": "horizontal_tabs",
-    "changeform_format_overrides": {"users.CustomUser": "collapsible", "auth.group": "vertical_tabs"},
-}
-
-JAZZMIN_UI_TWEAKS = {
-    "theme": "flatly",
-
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": False,
-    "brand_small_text": False,
-    "brand_colour": "navbar-dark",
-    "accent": "accent-primary",
-    "layout_boxed": False,
-    "footer_fixed": False,
-
-    "button_classes": {
-        "primary": "btn-primary",
-        "secondary": "btn-secondary",
-        "info": "btn-info",
-        "warning": "btn-warning",
-        "danger": "btn-danger",
-        "success": "btn-success"
-    },
-    "actions_sticky_top": True,
-    "sidebar_nav_small_text": False,
-    "sidebar_disable_expand": False,
-    "sidebar_nav_compact_style": False,
-    "sidebar_nav_legacy_style": False,
-    "sidebar_nav_flat_style": True,
-    "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-info",
-    "navbar": "navbar-gray-dark navbar-dark",
-    "navbar_fixed": True,
-
-}
 
 # Geospatial Settings
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
@@ -196,3 +142,10 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'omargawdaat@gmail.com'
 EMAIL_HOST_PASSWORD = 'qche xbce nnai infh'
 EMAIL_USE_TLS = True
+
+UNFOLD = {
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+    },
+}

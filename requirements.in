@@ -8,3 +8,4 @@ whitenoise
 gevent
 djangorestframework-simplejwt
 social-auth-app-django
+django-unfold
