@@ -1,0 +1,16 @@
+[
+  {
+    "model": "core.tag",
+    "pk": 1,
+    "fields": {
+      "name": "Relaxation"
+    }
+  },
+  {
+    "model": "core.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Focus"
+    }
+  }
+]

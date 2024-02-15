@@ -1,0 +1,74 @@
+[
+  {
+    "model": "core.lifeoverview",
+    "pk": 1,
+    "fields": {
+      "image": "life_overviews/friends.png",
+      "text": "Friends"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 2,
+    "fields": {
+      "image": "life_overviews/love.png",
+      "text": "Love"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 3,
+    "fields": {
+      "image": "life_overviews/body.png",
+      "text": "Body"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 4,
+    "fields": {
+      "image": "life_overviews/mind.png",
+      "text": "Mind"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 5,
+    "fields": {
+      "image": "life_overviews/spirit.png",
+      "text": "Spirit"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 6,
+    "fields": {
+      "image": "life_overviews/mission.png",
+      "text": "Mission"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 7,
+    "fields": {
+      "image": "life_overviews/money.png",
+      "text": "Money"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 8,
+    "fields": {
+      "image": "life_overviews/growth.png",
+      "text": "Growth"
+    }
+  },
+  {
+    "model": "core.lifeoverview",
+    "pk": 9,
+    "fields": {
+      "image": "life_overviews/family.png",
+      "text": "Family"
+    }
+  }
+]

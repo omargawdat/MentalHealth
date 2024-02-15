@@ -1,0 +1,20 @@
+[
+  {
+    "model": "core.meditation",
+    "pk": 1,
+    "fields": {
+      "name": "Mindfulness Breathing",
+      "image": "meditations/mindfulness_breathing.jpg",
+      "url": "https://example.com/mindfulness-breathing"
+    }
+  },
+  {
+    "model": "core.meditation",
+    "pk": 2,
+    "fields": {
+      "name": "Guided Visualization",
+      "image": "meditations/guided_visualization.jpg",
+      "url": "https://example.com/guided-visualization"
+    }
+  }
+]

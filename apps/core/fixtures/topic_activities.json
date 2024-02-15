@@ -1,0 +1,26 @@
+[
+  {
+    "model": "core.topicactivity",
+    "pk": 1,
+    "fields": {
+      "topic": 1,
+      "order": 1,
+      "tags": [
+        1
+      ],
+      "activity_text": "Deep breathing exercises for relaxation."
+    }
+  },
+  {
+    "model": "core.topicactivity",
+    "pk": 2,
+    "fields": {
+      "topic": 2,
+      "order": 1,
+      "tags": [
+        2
+      ],
+      "activity_text": "Introduction to mindfulness meditation."
+    }
+  }
+]

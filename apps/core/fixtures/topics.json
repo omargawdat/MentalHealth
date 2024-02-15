@@ -1,0 +1,18 @@
+[
+  {
+    "model": "core.topic",
+    "pk": 1,
+    "fields": {
+      "name": "Health and Wellness",
+      "image": "topics/health_and_wellness.jpg"
+    }
+  },
+  {
+    "model": "core.topic",
+    "pk": 2,
+    "fields": {
+      "name": "Mindfulness and Meditation",
+      "image": "topics/mindfulness_and_meditation.jpg"
+    }
+  }
+]

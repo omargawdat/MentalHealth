@@ -1,0 +1,18 @@
+[
+  {
+    "model": "core.reason",
+    "pk": 1,
+    "fields": {
+      "name": "Stressful Work Environment",
+      "image": "reasons/stressful_work.jpg"
+    }
+  },
+  {
+    "model": "core.reason",
+    "pk": 2,
+    "fields": {
+      "name": "Financial Concerns",
+      "image": "reasons/financial_concerns.jpg"
+    }
+  }
+]

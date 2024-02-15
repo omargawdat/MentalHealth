@@ -1,0 +1,92 @@
+[
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 1,
+    "fields": {
+      "name": "All-or-Nothing Thinking",
+      "explanation": "You see things in black-and-white categories. If your performance falls short of perfect, you see yourself as a total failure.",
+      "tip": "Practice seeing the gray areas and spectrum in outcomes, not just the extremes."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 2,
+    "fields": {
+      "name": "Overgeneralization",
+      "explanation": "You see a single negative event as a never-ending pattern of defeat.",
+      "tip": "Challenge this thought by finding evidence against the pattern."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 3,
+    "fields": {
+      "name": "Mental Filter",
+      "explanation": "You pick out a single negative detail and dwell on it exclusively, so that your vision of reality becomes darkened.",
+      "tip": "Actively acknowledge and consider the positive aspects of a situation as well."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 4,
+    "fields": {
+      "name": "Disqualifying the Positive",
+      "explanation": "You reject positive experiences by insisting they 'don't count' for some reason or another.",
+      "tip": "Consciously accept positive experiences and achievements, acknowledging their value."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 5,
+    "fields": {
+      "name": "Jumping to Conclusions",
+      "explanation": "You make a negative interpretation even though there are no definite facts that convincingly support your conclusion.",
+      "tip": "Challenge your conclusions by looking for evidence that contradicts them."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 6,
+    "fields": {
+      "name": "Magnification or Minimization",
+      "explanation": "You exaggerate the importance of things (such as your goof-up or someone else's achievement), or you inappropriately shrink things until they appear tiny.",
+      "tip": "Practice viewing situations with balanced importance, not distorting them."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 7,
+    "fields": {
+      "name": "Emotional Reasoning",
+      "explanation": "You assume that your negative emotions necessarily reflect the way things really are: 'I feel it, therefore it must be true.'",
+      "tip": "Distinguish between feelings and facts. Challenge the assumption that emotions reflect reality."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 8,
+    "fields": {
+      "name": "Should Statements",
+      "explanation": "You try to motivate yourself with shoulds and shouldn'ts, as if you had to be whipped and punished before you could be expected to do anything.",
+      "tip": "Replace 'should' statements with 'would like to' to reduce self-imposed pressure."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 9,
+    "fields": {
+      "name": "Labeling and Mislabeling",
+      "explanation": "This is an extreme form of overgeneralization. Instead of describing your error, you attach a negative label to yourself.",
+      "tip": "Identify and challenge the labels. Define yourself by your actions, not by mistakes or oversimplifications."
+    }
+  },
+  {
+    "model": "core.negativethoughtstype",
+    "pk": 10,
+    "fields": {
+      "name": "Personalization",
+      "explanation": "You see yourself as the cause of some negative external event for which, in fact, you were not primarily responsible.",
+      "tip": "Recognize that not everything that happens around you is your fault or within your control."
+    }
+  }
+]

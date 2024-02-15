@@ -1,0 +1,50 @@
+[
+  {
+    "model": "core.content",
+    "pk": 1,
+    "fields": {
+      "name": "Understanding Anxiety",
+      "image": "content_images/anxiety.jpg"
+    }
+  },
+  {
+    "model": "core.content",
+    "pk": 2,
+    "fields": {
+      "name": "Coping with Stress",
+      "image": "content_images/stress.jpg"
+    }
+  },
+  {
+    "model": "core.content",
+    "pk": 3,
+    "fields": {
+      "name": "Overcoming Depression",
+      "image": "content_images/depression.jpg"
+    }
+  },
+  {
+    "model": "core.content",
+    "pk": 4,
+    "fields": {
+      "name": "Managing Bipolar Disorder",
+      "image": "content_images/bipolar.jpg"
+    }
+  },
+  {
+    "model": "core.content",
+    "pk": 5,
+    "fields": {
+      "name": "Building Self-Esteem",
+      "image": "content_images/self_esteem.jpg"
+    }
+  },
+  {
+    "model": "core.content",
+    "pk": 6,
+    "fields": {
+      "name": "Promoting Mental Wellness",
+      "image": "content_images/mental_wellness.jpg"
+    }
+  }
+]

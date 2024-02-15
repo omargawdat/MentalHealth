@@ -1,0 +1,50 @@
+[
+  {
+    "model": "core.activity",
+    "pk": 1,
+    "fields": {
+      "name": "Going for a Walk",
+      "image": "activities/walk.jpg"
+    }
+  },
+  {
+    "model": "core.activity",
+    "pk": 2,
+    "fields": {
+      "name": "Meditation Session",
+      "image": "activities/meditation.jpg"
+    }
+  },
+  {
+    "model": "core.activity",
+    "pk": 3,
+    "fields": {
+      "name": "Yoga Practice",
+      "image": "activities/yoga.jpg"
+    }
+  },
+  {
+    "model": "core.activity",
+    "pk": 4,
+    "fields": {
+      "name": "Reading a Book",
+      "image": "activities/reading.jpg"
+    }
+  },
+  {
+    "model": "core.activity",
+    "pk": 5,
+    "fields": {
+      "name": "Cooking a New Recipe",
+      "image": "activities/cooking.jpg"
+    }
+  },
+  {
+    "model": "core.activity",
+    "pk": 6,
+    "fields": {
+      "name": "Gardening",
+      "image": "activities/gardening.jpg"
+    }
+  }
+]

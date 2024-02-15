@@ -143,9 +143,92 @@ EMAIL_HOST_USER = 'omargawdaat@gmail.com'
 EMAIL_HOST_PASSWORD = 'qche xbce nnai infh'
 EMAIL_USE_TLS = True
 
+from django.urls import reverse_lazy
+
 UNFOLD = {
+    "SITE_TITLE": "SoulSync",
+    "SITE_HEADER": "SoulSync",
+    "SITE_SYMBOL": "self_improvement",
+    "SHOW_HISTORY": True,
+    "COLORS": {
+        "primary": {
+            "50": "235 245 255",
+            "100": "207 232 252",
+            "200": "174 216 248",
+            "300": "140 199 244",
+            "400": "100 181 240",
+            "500": "60 162 236",
+            "600": "30 144 232",
+            "700": "20 126 204",
+            "800": "15 108 176",
+            "900": "10 90 148",
+            "950": "5 72 120",
+        },
+    },
     "SIDEBAR": {
         "show_search": True,
-        "show_all_applications": True,
+        "show_all_applications": False,
+        "navigation": [
+            {
+                "title": "Customization Options",
+                "items": [
+                    {
+                        "title": "Emotions",
+                        "icon": "emoji_emotions",
+                        "link": reverse_lazy("admin:core_emotion_changelist"),
+                    },
+
+                    {
+                        "title": "Activities",
+                        "icon": "local_activity",
+                        "link": reverse_lazy("admin:core_activity_changelist"),
+                    },
+                    {
+                        "title": "Depression Test",
+                        "icon": "quiz",
+                        "link": reverse_lazy("admin:core_depressiontestquestion_changelist"),
+                    },
+                    {
+                        "title": "Reasons",
+                        "icon": "help_outline",
+                        "link": reverse_lazy("admin:core_reason_changelist"),
+                    },
+
+                    {
+                        "title": "Contents",
+                        "icon": "library_books",
+                        "link": reverse_lazy("admin:core_content_changelist"),
+                    },
+
+                    {
+                        "title": "Life Overview",
+                        "icon": "insights",
+                        "link": reverse_lazy("admin:core_lifeoverview_changelist"),
+                    },
+                    {
+                        "title": "Meditations",
+                        "icon": "self_improvement",
+                        "link": reverse_lazy("admin:core_meditation_changelist"),
+                    },
+                    {
+                        "title": "Negative Thoughts ",
+                        "icon": "mood_bad",
+                        "link": reverse_lazy("admin:core_negativethoughtstype_changelist"),
+                    },
+                    {
+                        "title": "Plan Topics",
+                        "icon": "topic",
+                        "link": reverse_lazy("admin:core_topic_changelist"),
+                    },
+
+                    {
+                        "title": "Users",
+                        "icon": "people",
+                        "link": reverse_lazy("admin:authentication_customuser_changelist"),
+                    },
+
+                ],
+            },
+        ],
     },
 }

@@ -1,0 +1,111 @@
+[
+  {
+    "model": "core.emotion",
+    "pk": 1,
+    "fields": {
+      "name": "Serenity",
+      "image": "path/to/serenity_image.jpg"
+    }
+  },
+  {
+    "model": "core.emotion",
+    "pk": 2,
+    "fields": {
+      "name": "Joy",
+      "image": "path/to/joy_image.jpg"
+    }
+  },
+  {
+    "model": "core.emotion",
+    "pk": 3,
+    "fields": {
+      "name": "Ecstasy",
+      "image": "path/to/ecstasy_image.jpg"
+    }
+  },
+  {
+    "model": "core.emotion",
+    "pk": 4,
+    "fields": {
+      "name": "Happiness",
+      "image": "path/to/ecstasy_image.jpg"
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 1,
+    "fields": {
+      "emotion": 1,
+      "name": "Interest",
+      "image": "path/to/interest_image.jpg",
+      "tip": "Engage with what you find intriguing to foster serenity.",
+      "explanation": "Interest is a feeling of curiosity or engagement that often leads to serenity."
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 2,
+    "fields": {
+      "emotion": 1,
+      "name": "Excitement",
+      "image": "path/to/interest_image.jpg",
+      "tip": "Excitement can lead to serenity when it is channeled into something meaningful.",
+      "explanation": "Excitement is a feeling of curiosity or engagement that often leads to serenity."
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 3,
+    "fields": {
+      "emotion": 2,
+      "name": "Optimism",
+      "image": "path/to/optimism_image.jpg",
+      "tip": "Focus on the positive outcomes to maintain joy.",
+      "explanation": "Optimism is the anticipation of positive outcomes that contributes to feelings of joy."
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 4,
+    "fields": {
+      "emotion": 3,
+      "name": "Love",
+      "image": "path/to/love_image.jpg",
+      "tip": "Expressing love freely can elevate one's experience of ecstasy.",
+      "explanation": "Love is an intense feeling of deep affection that can be a part of ecstatic experiences."
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 5,
+    "fields": {
+      "emotion": 4,
+      "name": "Joy",
+      "image": "path/to/joy_image.jpg",
+      "tip": "Celebrate small victories to cultivate joy in everyday life.",
+      "explanation": "Joy comes from appreciating the present moment and the positives in life."
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 6,
+    "fields": {
+      "emotion": 4,
+      "name": "Gratitude",
+      "image": "path/to/gratitude_image.jpg",
+      "tip": "Keep a gratitude journal to remind yourself of the good in your life.",
+      "explanation": "Gratitude shifts your focus from what is lacking to the abundance that is already present."
+    }
+  },
+  {
+    "model": "core.subemotion",
+    "pk": 7,
+    "fields": {
+      "emotion": 4,
+      "name": "Serenity",
+      "image": "path/to/serenity_image.jpg",
+      "tip": "Practice mindfulness and meditation to achieve serenity.",
+      "explanation": "Serenity involves a peaceful state of mind, undisturbed by external noise or stress."
+    }
+  }
+]
