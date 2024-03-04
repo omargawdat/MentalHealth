@@ -1,4 +1,6 @@
+
 [
+
   {
     "model": "journal.emotion",
     "pk": 1,
@@ -6,7 +8,8 @@
       "name": "Love",
       "description": "A strong feeling of affection and concern toward another person.",
       "image": "love.png",
-      "parent": null
+      "type": "primary"
+      
     }
   },
   {
@@ -16,7 +19,8 @@
       "name": "Disgust",
       "description": "A feeling of revulsion or profound disapproval aroused by something unpleasant or offensive.",
       "image": "disgust.png",
-      "parent": null
+      "type": "primary"
+      
     }
   },
   {
@@ -26,7 +30,8 @@
       "name": "Surprise",
       "description": "A feeling of mild astonishment or shock caused by something unexpected.",
       "image": "surprise.png",
-      "parent": null
+      "type": "primary"
+      
     }
   },
   {
@@ -36,7 +41,7 @@
       "name": "Happiness",
       "description": "A state of well-being and contentment; joy.",
       "image": "happiness.png",
-      "parent": null
+      "type": "primary"
     }
   },
   {
@@ -46,7 +51,7 @@
       "name": "Fear",
       "description": "An unpleasant emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat.",
       "image": "fear.png",
-      "parent": null
+      "type": "primary"
     }
   },
   {
@@ -56,7 +61,7 @@
       "name": "Anger",
       "description": "A strong feeling of annoyance, displeasure, or hostility.",
       "image": "anger.png",
-      "parent": null
+      "type": "primary"
     }
   },
   {
@@ -66,7 +71,7 @@
       "name": "Sadness",
       "description": "A feeling of sorrow and melancholy.",
       "image": "sadness.png",
-      "parent": null
+      "type": "primary"
     }
   },
   {
@@ -76,57 +81,57 @@
       "name": "Affectionate",
       "description": "Feeling warm and caring towards someone.",
       "image": "affectionate.png",
-      "parent": 1
+      "type": "Love"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 9,
     "fields": {
-      "name": "Fond",
-      "description": "Having a deep liking or love for something or someone.",
-      "image": "fond.png",
-      "parent": 1
+      "name": "Trusted",
+      "description": "Confidence and reliance in someone or something.",
+      "image": "trusted.png",
+      "type": "Love"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 10,
     "fields": {
-      "name": "Attracted",
-      "description": "Feeling drawn to someone or something.",
-      "image": "attracted.png",
-      "parent": 1
+      "name": "Passionate",
+      "description": "Intense emotion or enthusiasm.",
+      "image": "passionate.png",
+      "type": "Love"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 11,
     "fields": {
-      "name": "Caring",
-      "description": "Showing concern and kindness towards others.",
-      "image": "caring.png",
-      "parent": 1
+      "name": "Gentle",
+      "description": "Kindness and lack of aggression.",
+      "image": "gentle.png",
+      "type": "Love"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 12,
     "fields": {
-      "name": "Sentimental",
-      "description": "Feeling emotional and nostalgic about something.",
-      "image": "sentimental.png",
-      "parent": 1
+      "name": "Accepted",
+      "description": "Embraced without judgment.",
+      "image": "accepted.png",
+      "type": "Love"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 13,
     "fields": {
-      "name": "Passionate",
-      "description": "Having intense feelings and emotions.",
-      "image": "passionate.png",
-      "parent": 1
+      "name": "Valued",
+      "description": "Highly regarded and appreciated.",
+      "image": "valued.png",
+      "type": "Love"
     }
   },
   {
@@ -136,7 +141,7 @@
       "name": "Disapproving",
       "description": "Expressing disapproval or disagreement.",
       "image": "disapproving.png",
-      "parent": 2
+      "type": "Disgust"
     }
   },
   {
@@ -146,7 +151,7 @@
       "name": "Disappointed",
       "description": "Feeling let down or unsatisfied.",
       "image": "disappointed.png",
-      "parent": 2
+      "type": "Disgust"
     }
   },
   {
@@ -156,37 +161,37 @@
       "name": "Averse",
       "description": "Strongly disliking or having a strong aversion to something.",
       "image": "averse.png",
-      "parent": 2
+      "type": "Disgust"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 17,
     "fields": {
-      "name": "Revolted",
-      "description": "Feeling strong disgust or aversion.",
-      "image": "revolted.png",
-      "parent": 2
+      "name": "Bitter",
+      "description": "Feeling or showing anger, hurt, or resentment because of bad experiences or a sense of unjust treatment.",
+      "image": "bitter.png",
+      "type": "Disgust"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 18,
     "fields": {
-      "name": "Abhorrent",
-      "description": "Hating something intensely.",
-      "image": "abhorrent.png",
-      "parent": 2
+      "name": "Shameful",
+      "description": "Feeling or causing shame or disgrace.",
+      "image": "shameful.png",
+      "type": "Disgust"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 19,
     "fields": {
-      "name": "Startled",
-      "description": "Feeling surprised and shocked.",
-      "image": "startled.png",
-      "parent": 3
+      "name": "Resentful",
+      "description": "Feeling or expressing bitterness or indignation at having been treated unfairly.",
+      "image": "resentful.png",
+      "type": "Disgust"
     }
   },
   {
@@ -196,7 +201,7 @@
       "name": "Confused",
       "description": "Feeling uncertain and puzzled.",
       "image": "confused.png",
-      "parent": 3
+      "type": "Surprise"
     }
   },
   {
@@ -206,167 +211,167 @@
       "name": "Amazed",
       "description": "Feeling wonder and awe.",
       "image": "amazed.png",
-      "parent": 3
+      "type": "Surprise"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 22,
     "fields": {
-      "name": "Excited",
-      "description": "Feeling enthusiastic and eager.",
-      "image": "excited.png",
-      "parent": 3
+      "name": "Startled",
+      "description": "Feeling sudden shock, alarm, or surprise.",
+      "image": "startled.png",
+      "type": "Surprise"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 23,
     "fields": {
-      "name": "Optimistic",
-      "description": "Having a positive outlook on the future.",
-      "image": "optimistic.png",
-      "parent": 4
+      "name": "Overwhelmed",
+      "description": "Feeling completely overcome or overpowered by intense emotion or circumstances.",
+      "image": "overwhelmed.png",
+      "type": "Surprise"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 24,
     "fields": {
-      "name": "Eager",
-      "description": "Feeling keen and enthusiastic.",
-      "image": "eager.png",
-      "parent": 4
+      "name": "Shocked",
+      "description": "Feeling a sudden upsetting or surprising event.",
+      "image": "shocked.png",
+      "type": "Surprise"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 25,
     "fields": {
-      "name": "Joyful",
-      "description": "Experiencing happiness and delight.",
-      "image": "joyful.png",
-      "parent": 4
+      "name": "Perplexed",
+      "description": "Completely puzzled.",
+      "image": "perplexed.png",
+      "type": "Surprise"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 26,
     "fields": {
-      "name": "Elated",
-      "description": "Feeling extremely happy and ecstatic.",
-      "image": "elated.png",
-      "parent": 4
+      "name": "Confident",
+      "description": "Feeling self-assured or certain.",
+      "image": "confident.png",
+      "type": "Happiness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 27,
     "fields": {
-      "name": "Ecstatic",
-      "description": "Being overjoyed and euphoric.",
-      "image": "ecstatic.png",
-      "parent": 4
+      "name": "Grateful",
+      "description": "Feeling or showing appreciation for kindness or something received.",
+      "image": "grateful.png",
+      "type": "Happiness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 28,
     "fields": {
-      "name": "Scared",
-      "description": "Feeling fear and anxiety.",
-      "image": "scared.png",
-      "parent": 5
+      "name": "Peaceful",
+      "description": "Calm and free from disturbance.",
+      "image": "peaceful.png",
+      "type": "Happiness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 29,
     "fields": {
-      "name": "Anxious",
-      "description": "Experiencing nervousness and apprehension.",
-      "image": "anxious.png",
-      "parent": 5
+      "name": "Excited",
+      "description": "Feeling eager or enthusiastic.",
+      "image": "excited.png",
+      "type": "Happiness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 30,
     "fields": {
-      "name": "Insecure",
-      "description": "Feeling uncertain and lacking confidence.",
-      "image": "insecure.png",
-      "parent": 5
+      "name": "Playful",
+      "description": "Full of fun and high spirits.",
+      "image": "playful.png",
+      "type": "Happiness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 31,
     "fields": {
-      "name": "Nervous",
-      "description": "Feeling anxious and apprehensive.",
-      "image": "nervous.png",
-      "parent": 5
+      "name": "Proud",
+      "description": "Feeling deep pleasure or satisfaction as a result of one's achievements.",
+      "image": "proud.png",
+      "type": "Happiness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 32,
     "fields": {
-      "name": "Horrified",
-      "description": "Feeling extreme fear and shock.",
-      "image": "horrified.png",
-      "parent": 5
+      "name": "Embarrassed",
+      "description": "Self-consciousness or shame.",
+      "image": "embarrassed.png",
+      "type": "Fear"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 33,
     "fields": {
-      "name": "Let down",
-      "description": "Feeling disappointed and betrayed.",
-      "image": "let_down.png",
-      "parent": 6
+      "name": "Vulnerable",
+      "description": "Exposed to harm or emotional distress.",
+      "image": "vulnerable.png",
+      "type": "Fear"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 34,
     "fields": {
-      "name": "Humiliated",
-      "description": "Feeling embarrassed and degraded.",
-      "image": "humiliated.png",
-      "parent": 6
+      "name": "Rejected",
+      "description": "Refused acceptance, leading to exclusion.",
+      "image": "rejected.png",
+      "type": "Fear"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 35,
     "fields": {
-      "name": "Bitter",
-      "description": "Feeling resentment and anger.",
-      "image": "bitter.png",
-      "parent": 6
+      "name": "Insecure",
+      "description": "Lack of confidence or assurance.",
+      "image": "insecure.png",
+      "type": "Fear"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 36,
     "fields": {
-      "name": "Mad",
-      "description": "Feeling angry and enraged.",
-      "image": "mad.png",
-      "parent": 6
+      "name": "Worried",
+      "description": "Anxiety about future events.",
+      "image": "worried.png",
+      "type": "Fear"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 37,
     "fields": {
-      "name": "Aggressive",
-      "description": "Displaying hostile and confrontational behavior.",
-      "image": "aggressive.png",
-      "parent": 6
+      "name": "Excluded",
+      "description": "Feeling deliberately left out or isolated.",
+      "image": "excluded.png",
+      "type": "Fear"
     }
   },
   {
@@ -376,57 +381,57 @@
       "name": "Frustrated",
       "description": "Feeling irritated and annoyed.",
       "image": "frustrated.png",
-      "parent": 6
+      "type": "Anger"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 39,
     "fields": {
-      "name": "Distant",
-      "description": "Feeling emotionally detached and distant.",
-      "image": "distant.png",
-      "parent": 6
+      "name": "Threatened",
+      "description": "Feeling endangered or challenged.",
+      "image": "threatened.png",
+      "type": "Anger"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 40,
     "fields": {
-      "name": "Critical",
-      "description": "Being judgmental and disapproving.",
-      "image": "critical.png",
-      "parent": 6
+      "name": "Mad",
+      "description": " Intense frustration or resentment.",
+      "image": "mad.png",
+      "type": "Anger"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 41,
     "fields": {
-      "name": "Hurt",
-      "description": "Feeling emotionally or physically wounded.",
-      "image": "hurt.png",
-      "parent": 7
+      "name": "Offended",
+      "description": "Hurt or insulted by actions or words.",
+      "image": "offended.png",
+      "type": "Anger"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 42,
     "fields": {
-      "name": "Depressed",
-      "description": "Feeling sad and experiencing low mood.",
-      "image": "depressed.png",
-      "parent": 7
+      "name": "Annoyed",
+      "description": "Irritation or bother.",
+      "image": "annoyed.png",
+      "type": "Anger"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 43,
     "fields": {
-      "name": "Guilty",
-      "description": "Feeling responsible for a wrongdoing or mistake.",
-      "image": "guilty.png",
-      "parent": 7
+      "name": "Aggressive",
+      "description": "Hostile or combative behavior.",
+      "image": "aggressive.png",
+      "type": "Anger"
     }
   },
   {
@@ -436,17 +441,17 @@
       "name": "Despair",
       "description": "Experiencing hopelessness and extreme sadness.",
       "image": "despair.png",
-      "parent": 7
+      "type": "Sadness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 45,
     "fields": {
-      "name": "Grieving",
-      "description": "Mourning the loss of something or someone.",
-      "image": "grieving.png",
-      "parent": 7
+      "name": "hurt",
+      "description": "Emotional pain or distress.",
+      "image": "Hurt.png",
+      "type": "Sadness"
     }
   },
   {
@@ -456,17 +461,37 @@
       "name": "Lonely",
       "description": "Feeling isolated and lacking companionship.",
       "image": "lonely.png",
-      "parent": 7
+      "type": "Sadness"
     }
   },
   {
     "model": "journal.emotion",
     "pk": 47,
     "fields": {
-      "name": "Powerless",
-      "description": "Feeling unable to control or influence a situation.",
-      "image": "powerless.png",
-      "parent": 7
+      "name": "Guilty",
+      "description": "Remorse or responsibility for wrongdoing.",
+      "image": "guilty.png",
+      "type": "Sadness"
+    }
+  },
+  {
+    "model": "journal.emotion",
+    "pk": 48,
+    "fields": {
+      "name": "Uninterested",
+      "description": "Lacking interest or enthusiasm.",
+      "image": "uninterested.png",
+      "type": "Sadness"
+    }
+  },
+  {
+    "model": "journal.emotion",
+    "pk": 49,
+    "fields": {
+      "name": "Inadequate",
+      "description": "Feeling not good enough or sufficient in some way.",
+      "image": "inadequate.png",
+      "type": "Sadness"
     }
   }
 ]
