@@ -4,19 +4,18 @@ from .models import *
 from .models import Emotion
 
 
-
-
 class EmotionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emotion
         fields = ['name']
+
+
 class SubEmotionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emotion
         fields = ['name', 'description', 'image']
-        
-        
-        
+
+
 class FilterSerializer(serializers.Serializer):
     type = serializers.CharField(max_length=50)
 
@@ -33,4 +32,3 @@ class MoodSecondEntrySerializer(serializers.ModelSerializer):
         model = MoodSecondEntry
         fields = ["mood", "date"]
         read_only_fields = ["date"]
-

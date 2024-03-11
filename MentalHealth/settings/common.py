@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     "apps.authentication",
     "apps.core",
     "apps.journal",
+    "apps.meditation",
 ]
 
 MIDDLEWARE = [

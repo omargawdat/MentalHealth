@@ -9,14 +9,13 @@ from rest_framework.views import APIView
 from .models import *
 
 
-
 class PrimaryEmotionList(APIView):
     def get(self, request):
         primary_emotions = Emotion.objects.filter(type="primary")
         serializer = EmotionSerializer(primary_emotions, many=True)
         return Response(serializer.data)
-      
-    
+
+
 class EmotionList(APIView):
     def post(self, request):
         filter_serializer = FilterSerializer(data=request.data)
@@ -25,7 +24,7 @@ class EmotionList(APIView):
             primary_emotions = Emotion.objects.filter(type=filter_data['type'])
             serializer = SubEmotionSerializer(primary_emotions, many=True)
             return Response(serializer.data)
-        return Response(filter_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+        return Response(filter_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MoodPrimaryEntryAPIView(APIView):
@@ -45,7 +44,8 @@ class MoodPrimaryEntryAPIView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
+
 class MoodSecondEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
         # Check if mood entry already exists for the current user and date
@@ -64,8 +64,10 @@ class MoodSecondEntryAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class CurrentMonthMoodsAPIView(APIView):
     serializer_class = MoodPrimaryEntrySerializer
+
     def get(self, request, *args, **kwargs):
         current_user = self.request.user
         today = date.today()

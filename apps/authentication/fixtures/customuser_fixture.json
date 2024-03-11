@@ -3,14 +3,12 @@
     "model": "authentication.customuser",
     "pk": 1,
     "fields": {
-      "username": "admin"
-    }
-  },
-  {
-    "model": "authentication.customuser",
-    "pk": 2,
-    "fields": {
-      "username": "user"
+      "email": "coderbest24@gmail.com",
+      "password": "pbkdf2_sha256$720000$ZGiyAHI0Wg1Oe0H5MHla2y$ud2If5p3PKfXD0z5tnm2cfBPixEOMis58f1RnM4TOgA=",
+      "is_verified": true,
+      "is_staff": true,
+      "is_superuser": true,
+      "is_able_to_reset_password": true
     }
   }
 ]
