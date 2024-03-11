@@ -11,10 +11,16 @@ DATABASES = {
 ALLOWED_HOSTS = ['*']
 import os
 
-LOGGING_DIR = '/var/log/MentalHealth'  # Adjust 'your_app' to the name of your application
-if not os.path.exists(LOGGING_DIR):
-    os.makedirs(LOGGING_DIR, exist_ok=True)
+import os
 
+# Define the base directory for logs
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOGGING_DIR = os.path.join(BASE_DIR, 'logs')
+
+# Create the directory if it does not exist
+os.makedirs(LOGGING_DIR, exist_ok=True)
+
+# Logging configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -27,21 +33,14 @@ LOGGING = {
     'handlers': {
         'file': {
             'level': 'ERROR',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(LOGGING_DIR, 'django_error.log'),  # Log file path
-            'formatter': 'verbose',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 5,  # Keep 5 backup logs
-        },
-        'console': {
-            'level': 'ERROR',
-            'class': 'logging.StreamHandler',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(LOGGING_DIR, 'django_error.log'),
             'formatter': 'verbose',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file', 'console'],  # Here we add 'file' to the handlers list
+            'handlers': ['file'],
             'level': 'ERROR',
             'propagate': True,
         },
