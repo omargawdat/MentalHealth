@@ -7,13 +7,13 @@ from .models import Emotion
 class EmotionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emotion
-        fields = ['name']
+        fields = ['id', 'name', 'image']
 
 
 class SubEmotionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emotion
-        fields = ['name', 'description', 'image']
+        fields = ['id', 'name', 'description', 'image']
 
 
 class FilterSerializer(serializers.Serializer):
