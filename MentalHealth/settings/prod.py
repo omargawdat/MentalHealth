@@ -9,7 +9,6 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = ['*']
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -20,16 +19,15 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file': {
+        'console': {
             'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': '/var/log/mentalhealth/django_error.log',
+            'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['console'],
             'level': 'ERROR',
             'propagate': True,
         },
