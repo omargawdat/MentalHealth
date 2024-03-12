@@ -15,9 +15,6 @@ __pycache__/
 # Ignore static files
 /static/
 
-# Ignore media files
-/media/
-
 # Ignore log files
 *.log
 
