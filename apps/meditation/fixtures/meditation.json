@@ -3,27 +3,27 @@
     "model": "meditation.meditation",
     "pk": 1,
     "fields": {
-      "name": "Mindfulness Meditation",
-      "image": "meditations/mindfulness.jpg",
-      "url": "https://example.com/mindfulness"
+      "name": "Affirmation For Manifestation",
+      "image": "meditation1.png",
+      "url": "1buvmZ3wdzJ2I7mqd1ifNs"
     }
   },
   {
     "model": "meditation.meditation",
     "pk": 2,
     "fields": {
-      "name": "Transcendental Meditation",
-      "image": "meditations/transcendental.jpg",
-      "url": "https://example.com/transcendental"
+      "name": "Breathing into the Body",
+      "image": "meditation2.png",
+      "url": "6kk91yMWvSOGnlS9T1T5nU"
     }
   },
   {
     "model": "meditation.meditation",
     "pk": 3,
     "fields": {
-      "name": "Guided Visualization",
-      "image": "meditations/guided_visualization.jpg",
-      "url": "https://example.com/guided_visualization"
+      "name": "Mind Freedom Meditation",
+      "image": "meditation3.png",
+      "url": "3TN6sMspsyPFZclSbbCJuz"
     }
   },
   {
@@ -31,8 +31,17 @@
     "pk": 4,
     "fields": {
       "name": "Zen Meditation",
-      "image": "meditations/zen.jpg",
-      "url": "https://example.com/zen"
+      "image": "meditation4.png",
+      "url": "2JtwMICkM36sP0JIEH29em"
+    }
+  },
+  {
+    "model": "meditation.meditation",
+    "pk": 5,
+    "fields": {
+      "name": "Grounded Meditation",
+      "image": "meditation5.png",
+      "url": "7J6goi1udgaBa1nVAoeCoH"
     }
   }
 ]
