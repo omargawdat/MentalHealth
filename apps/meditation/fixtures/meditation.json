@@ -5,7 +5,8 @@
     "fields": {
       "name": "Affirmation For Manifestation",
       "image": "meditation1.png",
-      "url": "1buvmZ3wdzJ2I7mqd1ifNs"
+      "url": "1buvmZ3wdzJ2I7mqd1ifNs",
+      "duration": "528"
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "name": "Breathing into the Body",
       "image": "meditation2.png",
-      "url": "6kk91yMWvSOGnlS9T1T5nU"
+      "url": "6kk91yMWvSOGnlS9T1T5nU",
+      "duration": "264"
     }
   },
   {
@@ -23,7 +25,8 @@
     "fields": {
       "name": "Mind Freedom Meditation",
       "image": "meditation3.png",
-      "url": "3TN6sMspsyPFZclSbbCJuz"
+      "url": "3TN6sMspsyPFZclSbbCJuz",
+      "duration": "279"
     }
   },
   {
@@ -32,7 +35,8 @@
     "fields": {
       "name": "Zen Meditation",
       "image": "meditation4.png",
-      "url": "2JtwMICkM36sP0JIEH29em"
+      "url": "2JtwMICkM36sP0JIEH29em",
+      "duration": "303"
     }
   },
   {
@@ -41,7 +45,8 @@
     "fields": {
       "name": "Grounded Meditation",
       "image": "meditation5.png",
-      "url": "7J6goi1udgaBa1nVAoeCoH"
+      "url": "7J6goi1udgaBa1nVAoeCoH",
+      "duration": "364"
     }
   }
 ]
