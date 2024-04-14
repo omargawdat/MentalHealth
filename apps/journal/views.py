@@ -129,22 +129,47 @@ class PreferenceQuestionAnswerView(APIView):
     
 class ActivityEntryView(APIView):
     def post(self, request, *args, **kwargs):
+        # Get today's date
+        today = date.today()
+
+        # Get existing activity entries for today
+        existing_entries = ActivityEntry.objects.filter(date=today, user=request.user)
+
+        # Delete existing entries for today
+        existing_entries.delete()
+
+        # Create new activity entries
         serializer = ActivityEntrySerializer(data=request.data.get('activities', []), many=True)
         if serializer.is_valid():
-            serializer.save(user=request.user)
+            for entry in serializer.validated_data:
+                entry['date'] = today
+                entry['user'] = request.user
+            serializer.save()
             return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        
+        
 class ReasonEntryView(APIView):
     def post(self, request, *args, **kwargs):
+        # Get today's date
+        today = date.today()
+
+        # Get existing reason entries for today
+        existing_entries = ReasonEntry.objects.filter(date=today, user=request.user)
+
+        # Delete existing entries for today
+        existing_entries.delete()
+
+        # Create new reason entries
         serializer = ReasonEntrySerializer(data=request.data.get('reasons', []), many=True)
         if serializer.is_valid():
-            serializer.save(user=request.user)
+            for entry in serializer.validated_data:
+                entry['date'] = today
+                entry['user'] = request.user
+            serializer.save()
             return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    
 
         
