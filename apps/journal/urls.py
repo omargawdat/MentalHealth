@@ -15,6 +15,11 @@ urlpatterns = [
     path('journal-entry/', JournalEntryAPIView.as_view(), name='journal-entry-api'),
     path('preference-questions/', PreferenceQuestionListView.as_view(), name='preference-question-list'),
     path('preference-questions/answer/', PreferenceQuestionAnswerView.as_view(), name='preference-question-answer'),
+    path('activities/', ActivityListView.as_view(), name='activity-list'),
+    path('reasons/', ReasonListView.as_view(), name='reason-list'),
+    path('activity-entries/', ActivityEntryView.as_view(), name='activity_entries'),
+    path('reason-entries/', ReasonEntryView.as_view(), name='reason_entries'),
 ]
+
 
 

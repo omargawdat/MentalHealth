@@ -1,0 +1,84 @@
+[
+    {
+        "model": "journal.reason",
+        "pk": 1,
+        "fields": {
+            "reason_id": 1,
+            "reason_text": "family",
+            "reason_image": "family.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 2,
+        "fields": {
+            "reason_id": 2,
+            "reason_text": "financial",
+            "reason_image": "financial.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 3,
+        "fields": {
+            "reason_id": 3,
+            "reason_text": "friends",
+            "reason_image": "friends.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 4,
+        "fields": {
+            "reason_id": 4,
+            "reason_text": "gift",
+            "reason_image": "gift.png"
+        }
+    },
+
+    {
+        "model": "journal.reason",
+        "pk": 5,
+        "fields": {
+            "reason_id": 5,
+            "reason_text": "health",
+            "reason_image": "health.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 6,
+        "fields": {
+            "reason_id": 6,
+            "reason_text": "heart",
+            "reason_image": "heart.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 7,
+        "fields": {
+            "reason_id": 7,
+            "reason_text": "Memories",
+            "reason_image": "Memories.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 8,
+        "fields": {
+            "reason_id": 8,
+            "reason_text": "Responsibilities",
+            "reason_image": "Responsibilities.png"
+        }
+    },
+    {
+        "model": "journal.reason",
+        "pk": 9,
+        "fields": {
+            "reason_id": 9,
+            "reason_text": "Societal Pressures",
+            "reason_image": "Societal Pressures.png"
+        }
+    }
+]

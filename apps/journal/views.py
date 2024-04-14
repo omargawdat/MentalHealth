@@ -15,7 +15,14 @@ class PrimaryEmotionList(APIView):
         primary_emotions = Emotion.objects.filter(type="primary")
         serializer = EmotionSerializer(primary_emotions, many=True)
         return Response(serializer.data)
-      
+    
+class ActivityListView(generics.ListAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
+
+class ReasonListView(generics.ListAPIView):
+    queryset = Reason.objects.all()
+    serializer_class = ReasonSerializer     
     
 class EmotionList(APIView):
     def post(self, request):
@@ -119,6 +126,25 @@ class PreferenceQuestionAnswerView(APIView):
             UserTags.objects.create(user=user, tag=tag)
 
         return Response({'message': 'Answers saved successfully'})
+    
+class ActivityEntryView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = ActivityEntrySerializer(data=request.data.get('activities', []), many=True)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReasonEntryView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = ReasonEntrySerializer(data=request.data.get('reasons', []), many=True)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
 
         

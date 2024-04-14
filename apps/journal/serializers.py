@@ -41,7 +41,29 @@ class JournalEntrySerializer(serializers.ModelSerializer):
         fields = ["notes", "date"]
         read_only_fields = ["date"]
         
+class ActivityEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ActivityEntry
+        fields = ["activity", "date"]
+        read_only_fields = ["date"]
+
+class ReasonEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReasonEntry
+        fields = ["reason", "date"]
+        read_only_fields = ["date"]
         
+class ActivitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Activity
+        fields = '__all__'
+
+class ReasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reason
+        fields = '__all__'    
+        
+   
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag

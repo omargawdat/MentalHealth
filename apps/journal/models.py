@@ -48,7 +48,17 @@ class JournalEntry(models.Model):
     class Meta:
         unique_together = ('user', 'date')
 
-
+class ActivityEntry(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    activity = models.CharField(max_length=255)
+    date = models.DateField(auto_now_add=True)
+    
+class ReasonEntry(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    reason = models.CharField(max_length=255)
+    date = models.DateField(auto_now_add=True)
+    
+    
 class Activity(models.Model):
     activity_id = models.AutoField(primary_key=True)
     activity_text = models.CharField(max_length=255)

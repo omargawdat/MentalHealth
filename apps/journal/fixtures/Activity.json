@@ -1,0 +1,146 @@
+[
+    {
+        "model": "journal.activity",
+        "pk": 1,
+        "fields": {
+            "activity_id": 1,
+            "activity_text": "Movies",
+            "activity_image": "Movies.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 2,
+        "fields": {
+            "activity_id": 2,
+            "activity_text": "praying",
+            "activity_image": "praying.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 3,
+        "fields": {
+            "activity_id": 3,
+            "activity_text": "Reading",
+            "activity_image": "Reading.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 4,
+        "fields": {
+            "activity_id": 4,
+            "activity_text": "bicycle",
+            "activity_image": "bicycle.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 5,
+        "fields": {
+            "activity_id": 5,
+            "activity_text": "cooking",
+            "activity_image": "cooking.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 6,
+        "fields": {
+            "activity_id": 6,
+            "activity_text": "Gym",
+            "activity_image": "Gym.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 7,
+        "fields": {
+            "activity_id": 7,
+            "activity_text": "Help Other",
+            "activity_image": "Help Other.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 8,
+        "fields": {
+            "activity_id": 8,
+            "activity_text": "Meditate",
+            "activity_image": "Meditate.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 9,
+        "fields": {
+            "activity_id": 9,
+            "activity_text": "Music",
+            "activity_image": "Music.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 10,
+        "fields": {
+            "activity_id": 10,
+            "activity_text": "save-money",
+            "activity_image": "save-money.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 11,
+        "fields": {
+            "activity_id": 11,
+            "activity_text": "shopping",
+            "activity_image": "shopping.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 12,
+        "fields": {
+            "activity_id": 12,
+            "activity_text": "study",
+            "activity_image": "study.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 13,
+        "fields": {
+            "activity_id": 13,
+            "activity_text": "sweeping",
+            "activity_image": "sweeping.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 14,
+        "fields": {
+            "activity_id": 14,
+            "activity_text": "swim",
+            "activity_image": "swim.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 15,
+        "fields": {
+            "activity_id": 15,
+            "activity_text": "travel",
+            "activity_image": "travel.png"
+        }
+    },
+    {
+        "model": "journal.activity",
+        "pk": 16,
+        "fields": {
+            "activity_id": 16,
+            "activity_text": "Work",
+            "activity_image": "Work.png"
+        }
+    }
+]
