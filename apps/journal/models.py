@@ -38,3 +38,49 @@ class MoodSecondEntry(models.Model):
         unique_together = ('user', 'date')
         
         
+
+class JournalEntry(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    notes = models.TextField()
+    date = models.DateField(auto_now_add=True)
+    has_stress=models.BooleanField(null=True)
+    has_depression=models.BooleanField(null=True)
+    class Meta:
+        unique_together = ('user', 'date')
+
+
+class Activity(models.Model):
+    activity_id = models.AutoField(primary_key=True)
+    activity_text = models.CharField(max_length=255)
+    activity_image = models.ImageField(upload_to='activity_images/', null=True, blank=True)
+
+    def str(self):
+        return self.activity_text
+    
+class Reason(models.Model):
+    reason_id = models.AutoField(primary_key=True)
+    reason_text = models.CharField(max_length=255)
+    reason_image = models.ImageField(upload_to='reason_images/', null=True, blank=True)
+
+    def str(self):
+        return self.reason_text
+    
+    
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100)
+
+class Preference(models.Model):
+    question_text = models.CharField(max_length=255)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    option1 = models.CharField(max_length=3, default='yes')
+    option2 = models.CharField(max_length=3, default='no')
+    
+    
+    
+class UserTags(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+    
+    

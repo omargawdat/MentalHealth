@@ -33,4 +33,23 @@ class MoodSecondEntrySerializer(serializers.ModelSerializer):
         model = MoodSecondEntry
         fields = ["mood", "date"]
         read_only_fields = ["date"]
+        
 
+class JournalEntrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JournalEntry
+        fields = ["notes", "date"]
+        read_only_fields = ["date"]
+        
+        
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'
+
+class PreferenceSerializer(serializers.ModelSerializer):
+    tag = TagSerializer()
+
+    class Meta:
+        model = Preference
+        fields = ('id', 'question_text', 'tag', 'option1', 'option2')

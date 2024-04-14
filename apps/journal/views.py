@@ -46,6 +46,8 @@ class MoodPrimaryEntryAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
+        
+
 class MoodSecondEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
         # Check if mood entry already exists for the current user and date
@@ -77,3 +79,46 @@ class CurrentMonthMoodsAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response({"message": "None"}, status=status.HTTP_200_OK)
+        
+        
+
+class JournalEntryAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        # Check if mood entry already exists for the current user and date
+        existing_entry = JournalEntry.objects.filter(user=request.user, date=date.today()).first()
+        if existing_entry:
+            # Update the existing entry with the new mood
+            existing_entry.notes= request.data.get('notes')
+            existing_entry.save()
+            serializer = JournalEntrySerializer(existing_entry)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        # If no existing entry, create a new entry
+        serializer = JournalEntrySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class PreferenceQuestionListView(APIView):
+    def get(self, request):
+        questions = Preference.objects.all()
+        serializer = PreferenceSerializer(questions, many=True)
+        return Response(serializer.data)
+    
+class PreferenceQuestionAnswerView(APIView):
+    def post(self, request):
+        user = request.user
+        answers = request.data.get('answers', [])
+        yes_tags = [answer['tag'] for answer in answers if answer['answer'] == 'yes']
+        # Assuming 'default_tag' is the default tag you want to associate
+        yes_tags.append('Default')
+
+        for tag_name in yes_tags:
+            tag, _ = Tag.objects.get_or_create(name=tag_name)
+            UserTags.objects.create(user=user, tag=tag)
+
+        return Response({'message': 'Answers saved successfully'})
+    
+
+        

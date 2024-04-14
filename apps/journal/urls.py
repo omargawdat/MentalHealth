@@ -12,4 +12,9 @@ urlpatterns = [
     path('mood-primary-entry/', MoodPrimaryEntryAPIView.as_view(), name='mood-primary-entry-api'),
     path('mood-second-entry/', MoodSecondEntryAPIView.as_view(), name='mood-second-entry-api'),
     path('current-month-moods/', CurrentMonthMoodsAPIView.as_view(), name='current-month-moods-api'),
+    path('journal-entry/', JournalEntryAPIView.as_view(), name='journal-entry-api'),
+    path('preference-questions/', PreferenceQuestionListView.as_view(), name='preference-question-list'),
+    path('preference-questions/answer/', PreferenceQuestionAnswerView.as_view(), name='preference-question-answer'),
 ]
+
+

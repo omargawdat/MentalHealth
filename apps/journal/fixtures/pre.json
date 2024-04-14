@@ -1,0 +1,83 @@
+[
+    {
+        "model": "journal.tag",
+        "pk": 1,
+        "fields": {
+            "name": "Sport"
+        }
+    },
+    {
+        "model": "journal.tag",
+        "pk": 2,
+        "fields": {
+            "name": "Reading"
+        }
+    },
+    {
+        "model": "journal.tag",
+        "pk": 3,
+        "fields": {
+            "name": "Money"
+        }
+    },
+    {
+        "model": "journal.tag",
+        "pk": 4,
+        "fields": {
+            "name": "Home"
+        }
+    },
+    {
+        "model": "journal.tag",
+        "pk": 5,
+        "fields": {
+            "name": "Social"
+        }
+    },{
+        "model": "journal.tag",
+        "pk": 6,
+        "fields": {
+            "name": "Default"
+        }
+    },
+    {
+        "model": "journal.preference",
+        "pk": 1,
+        "fields": {
+            "question_text": "Do you like doing sports or physical activities?",
+            "tag": 1
+        }
+    },
+    {
+        "model": "journal.preference",
+        "pk": 2,
+        "fields": {
+            "question_text": "Do you like Reading or educational activities?",
+            "tag": 2
+        }
+    },
+    {
+        "model": "journal.preference",
+        "pk": 3,
+        "fields": {
+            "question_text": "Are you financially stable to spend money on mental health activities?",
+            "tag": 3
+        }
+    },
+    {
+        "model": "journal.preference",
+        "pk": 4,
+        "fields": {
+            "question_text": "Do you usually spend a lot of time at home?",
+            "tag": 4
+        }
+    },
+    {
+        "model": "journal.preference",
+        "pk": 5,
+        "fields": {
+            "question_text": "Do you like to socialize with other people?",
+            "tag": 5
+        }
+    }
+]
