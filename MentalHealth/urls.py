@@ -11,6 +11,7 @@ urlpatterns = [
     path("api/", include("apps.authentication.urls")),
     path("api/", include("apps.depression_test.urls")),
     path("api/", include("apps.journal.urls")),
+    path("api/", include("apps.meditation.urls")),
 ]
 
 if settings.DEBUG:

@@ -1,32 +1,15 @@
-# from django.http import JsonResponse
-# from rest_framework.response import Response
-# from rest_framework.views import APIView
-# from .models import TestQuestion
-
-# # Using APIView class
-# class TestAPIView(APIView):
-#     def get(self, request, *args, **kwargs):
-#         return Response({"message": "Hello from ds!"})
-
-
-# class TestQuestionAPIView(APIView):
-#     def get(self, request):
-#         questions = TestQuestion.objects.all()
-#         data = []
-#         for question in questions:
-#             options = question.answer_options.all().values('value', 'label')
-#             data.append({
-#                 'question': question.question,
-#                 'answer_options': list(options)
-#             })
-#         return Response(data)
-
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import AnswerOption, TestQuestion
+from .models import AnswerOption, TestQuestion, DepressionTestAttempt
+from django.utils.timezone import now
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .models import DepressionTestAttempt
+from .serializer import DepressionTestAttemptSerializer
 
 
 class TestQuestionAPIView(APIView):
@@ -67,9 +50,27 @@ class TestQuestionAPIView(APIView):
         elif 76 <= total_score <= 100:
             level_of_depression = 'extreme depression'
 
+        test_attempt = DepressionTestAttempt(
+            user=request.user,
+            total_score=total_score,
+            level_of_depression=level_of_depression,
+            timestamp=now()
+        )
+        test_attempt.save()
+
         return Response({'total_score': total_score, 'level_of_depression': level_of_depression})
 
 
 class TestAPIView(APIView):
     def get(self, request, *args, **kwargs):
         return Response({"message": "Hello from ds!"})
+
+
+class DepressionTestHistoryAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        test_attempts = DepressionTestAttempt.objects.filter(user=user).order_by('-timestamp')
+        serializer = DepressionTestAttemptSerializer(test_attempts, many=True)
+        return Response(serializer.data)
