@@ -1,0 +1,1035 @@
+[
+    {
+        "model": "journal.emotion",
+        "pk": 1,
+        "fields": {
+            "name": "Afraid",
+            "type": "primary"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 2,
+        "fields": {
+            "name": "Sad",
+            "type": "primary"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 3,
+        "fields": {
+            "name": "Embarrassed",
+            "type": "primary"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 4,
+        "fields": {
+            "name": "Angry",
+            "type": "primary"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 5,
+        "fields": {
+            "name": "Alone",
+            "type": "primary"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 6,
+        "fields": {
+            "name": "Dislike",
+            "type": "primary"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 7,
+        "fields": {
+            "name": "Depressed",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 8,
+        "fields": {
+            "name": "Hurt",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 9,
+        "fields": {
+            "name": "Bereft",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 10,
+        "fields": {
+            "name": "Melancholy",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 11,
+        "fields": {
+            "name": "Subdued",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 12,
+        "fields": {
+            "name": "Aggrieved",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 13,
+        "fields": {
+            "name": "Discouraged",
+            "type": "Sad"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 14,
+        "fields": {
+            "name": "Distant",
+            "type": "Alone"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 15,
+        "fields": {
+            "name": "Lonely",
+            "type": "Alone"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 16,
+        "fields": {
+            "name": "Excluded",
+            "type": "Alone"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 17,
+        "fields": {
+            "name": "Fragile",
+            "type": "Alone"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 18,
+        "fields": {
+            "name": "Abandoned",
+            "type": "Alone"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 19,
+        "fields": {
+            "name": "Desolate",
+            "type": "Alone"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 20,
+        "fields": {
+            "name": "Dismissive",
+            "type": "Dislike"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 21,
+        "fields": {
+            "name": "Disgusted",
+            "type": "Dislike"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 22,
+        "fields": {
+            "name": "Suspicious",
+            "type": "Dislike"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 23,
+        "fields": {
+            "name": "Appalled",
+            "type": "Dislike"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 24,
+        "fields": {
+            "name": "Repelled",
+            "type": "Dislike"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 25,
+        "fields": {
+            "name": "Skeptical",
+            "type": "Dislike"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 26,
+        "fields": {
+            "name": "Rushed",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 27,
+        "fields": {
+            "name": "Bored",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 28,
+        "fields": {
+            "name": "Harassed",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 29,
+        "fields": {
+            "name": "Aggressive",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 30,
+        "fields": {
+            "name": "Frustrated",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 31,
+        "fields": {
+            "name": "Bitter",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 32,
+        "fields": {
+            "name": "Dismayed",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 33,
+        "fields": {
+            "name": "Indignant",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 34,
+        "fields": {
+            "name": "Offended",
+            "type": "Angry"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 35,
+        "fields": {
+            "name": "Apprehensive",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 36,
+        "fields": {
+            "name": "Stressed",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 37,
+        "fields": {
+            "name": "Worried",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 38,
+        "fields": {
+            "name": "Inadequate",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 39,
+        "fields": {
+            "name": "Confused",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 40,
+        "fields": {
+            "name": "Threatened",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 41,
+        "fields": {
+            "name": "Helpless",
+            "type": "Afraid"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 42,
+        "fields": {
+            "name": "Disrespected",
+            "type": "Embarrassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 43,
+        "fields": {
+            "name": "Worthless",
+            "type": "Embarrassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 44,
+        "fields": {
+            "name": "Guilty",
+            "type": "Embarrassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 45,
+        "fields": {
+            "name": "Sheepish",
+            "type": "Embarrassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 46,
+        "fields": {
+            "name": "Ashamed",
+            "type": "Embarrassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 47,
+        "fields": {
+            "name": "Inferior",
+            "type": "Embarrassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 48,
+        "fields": {
+            "name": "Disrespected",
+            "type": "Dismissive"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 49,
+        "fields": {
+            "name": "Worthless",
+            "type": "Dismissive"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 50,
+        "fields": {
+            "name": "Revolted",
+            "type": "Disgusted"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 51,
+        "fields": {
+            "name": "Nauseated",
+            "type": "Disgusted"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 52,
+        "fields": {
+            "name": "Disturbed",
+            "type": "Suspicious"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 53,
+        "fields": {
+            "name": "Scandalized",
+            "type": "Suspicious"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 54,
+        "fields": {
+            "name": "Sickened",
+            "type": "Appalled"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 55,
+        "fields": {
+            "name": "Aghast",
+            "type": "Appalled"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 56,
+        "fields": {
+            "name": "Repulsed",
+            "type": "Repelled"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 57,
+        "fields": {
+            "name": "Loathe",
+            "type": "Repelled"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 58,
+        "fields": {
+            "name": "Critical",
+            "type": "Skeptical"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 59,
+        "fields": {
+            "name": "Disapproving",
+            "type": "Skeptical"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 60,
+        "fields": {
+            "name": "Bleak",
+            "type": "Depressed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 61,
+        "fields": {
+            "name": "Despondent",
+            "type": "Depressed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 62,
+        "fields": {
+            "name": "Injured",
+            "type": "Hurt"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 63,
+        "fields": {
+            "name": "Deflated",
+            "type": "Hurt"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 64,
+        "fields": {
+            "name": "Disconsolate",
+            "type": "Bereft"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 65,
+        "fields": {
+            "name": "Inconsolable",
+            "type": "Bereft"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 66,
+        "fields": {
+            "name": "Forlorn",
+            "type": "Melancholy"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 67,
+        "fields": {
+            "name": "Sorrowful",
+            "type": "Melancholy"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 68,
+        "fields": {
+            "name": "Gloomy",
+            "type": "Subdued"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 69,
+        "fields": {
+            "name": "Sombre",
+            "type": "Subdued"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 70,
+        "fields": {
+            "name": "Agonized",
+            "type": "Aggrieved"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 71,
+        "fields": {
+            "name": "Desolate",
+            "type": "Aggrieved"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 72,
+        "fields": {
+            "name": "Small",
+            "type": "Discouraged"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 73,
+        "fields": {
+            "name": "Broken",
+            "type": "Discouraged"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 74,
+        "fields": {
+            "name": "Withdrawn",
+            "type": "Distant"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 75,
+        "fields": {
+            "name": "Detached",
+            "type": "Distant"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 76,
+        "fields": {
+            "name": "Isolated",
+            "type": "Lonely"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 77,
+        "fields": {
+            "name": "Forlorn",
+            "type": "Lonely"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 78,
+        "fields": {
+            "name": "Deserted",
+            "type": "Excluded"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 79,
+        "fields": {
+            "name": "Forsaken",
+            "type": "Excluded"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 80,
+        "fields": {
+            "name": "Vulnerable",
+            "type": "Fragile"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 81,
+        "fields": {
+            "name": "Exposed",
+            "type": "Fragile"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 82,
+        "fields": {
+            "name": "Rejected",
+            "type": "Abandoned"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 83,
+        "fields": {
+            "name": "Friendless",
+            "type": "Abandoned"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 84,
+        "fields": {
+            "name": "Bleak",
+            "type": "Desolate"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 85,
+        "fields": {
+            "name": "Destroyed",
+            "type": "Desolate"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 86,
+        "fields": {
+            "name": "Pushed",
+            "type": "Rushed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 87,
+        "fields": {
+            "name": "Pressured",
+            "type": "Rushed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 86,
+        "fields": {
+            "name": "Indifferent",
+            "type": "Bored"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 87,
+        "fields": {
+            "name": "Apathetic",
+            "type": "Bored"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 88,
+        "fields": {
+            "name": "Persecuted",
+            "type": "Harassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 89,
+        "fields": {
+            "name": "Provoked",
+            "type": "Harassed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 90,
+        "fields": {
+            "name": "Humiliated",
+            "type": "Disrespected"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 91,
+        "fields": {
+            "name": "Ridiculed",
+            "type": "Disrespected"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 92,
+        "fields": {
+            "name": "Insignificant",
+            "type": "Worthless"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 93,
+        "fields": {
+            "name": "Inadequate",
+            "type": "Worthless"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 94,
+        "fields": {
+            "name": "Remorseful",
+            "type": "Guilty"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 95,
+        "fields": {
+            "name": "Repentant",
+            "type": "Guilty"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 96,
+        "fields": {
+            "name": "Contrite",
+            "type": "Sheepish"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 97,
+        "fields": {
+            "name": "Abashed",
+            "type": "Sheepish"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 98,
+        "fields": {
+            "name": "Mortified",
+            "type": "Ashamed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 99,
+        "fields": {
+            "name": "Humiliated",
+            "type": "Ashamed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 100,
+        "fields": {
+            "name": "Weak",
+            "type": "Inferior"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 101,
+        "fields": {
+            "name": "Small",
+            "type": "Inferior"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 102,
+        "fields": {
+            "name": "Belligerent",
+            "type": "Aggressive"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 103,
+        "fields": {
+            "name": "Hostile",
+            "type": "Aggressive"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 104,
+        "fields": {
+            "name": "Infuriated",
+            "type": "Frustrated"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 105,
+        "fields": {
+            "name": "Annoyed",
+            "type": "Frustrated"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 106,
+        "fields": {
+            "name": "Jealous",
+            "type": "Bitter"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 107,
+        "fields": {
+            "name": "Resentful",
+            "type": "Bitter"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 108,
+        "fields": {
+            "name": "Betrayed",
+            "type": "Dismayed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 109,
+        "fields": {
+            "name": "Let down",
+            "type": "Dismayed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 110,
+        "fields": {
+            "name": "Outraged",
+            "type": "Indignant"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 111,
+        "fields": {
+            "name": "Violated",
+            "type": "Indignant"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 112,
+        "fields": {
+            "name": "Mocked",
+            "type": "Offended"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 113,
+        "fields": {
+            "name": "Insulted",
+            "type": "Offended"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 114,
+        "fields": {
+            "name": "Timid",
+            "type": "Apprehensive"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 115,
+        "fields": {
+            "name": "Nervous",
+            "type": "Apprehensive"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 116,
+        "fields": {
+            "name": "Overwhelmed",
+            "type": "Stressed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 117,
+        "fields": {
+            "name": "Desperate",
+            "type": "Stressed"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 118,
+        "fields": {
+            "name": "Anxious",
+            "type": "Worried"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 119,
+        "fields": {
+            "name": "Alarmed",
+            "type": "Worried"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 120,
+        "fields": {
+            "name": "Inferior",
+            "type": "Inadequate"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 121,
+        "fields": {
+            "name": "Insecure",
+            "type": "Inadequate"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 122,
+        "fields": {
+            "name": "Perturbed",
+            "type": "Confused"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 123,
+        "fields": {
+            "name": "Bewildered",
+            "type": "Confused"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 124,
+        "fields": {
+            "name": "Intimidated",
+            "type": "Threatened"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 125,
+        "fields": {
+            "name": "Exposed",
+            "type": "Threatened"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 126,
+        "fields": {
+            "name": "Powerless",
+            "type": "Helpless"
+        }
+    },
+    {
+        "model": "journal.emotion",
+        "pk": 127,
+        "fields": {
+            "name": "Out of control",
+            "type": "Helpless"
+        }
+    }
+
+]

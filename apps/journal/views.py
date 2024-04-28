@@ -1,13 +1,14 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
-from datetime import date
+from datetime import date, timedelta
 from .serializers import *
 from rest_framework import status
 import calendar
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import *
-
+from django.core.management import call_command
+from datetime import datetime, date, timedelta
 
 
 class PrimaryEmotionList(APIView):
@@ -75,37 +76,102 @@ class MoodSecondEntryAPIView(APIView):
 
 class CurrentMonthMoodsAPIView(APIView):
     serializer_class = MoodPrimaryEntrySerializer
+
     def get(self, request, *args, **kwargs):
         current_user = self.request.user
-        today = date.today()
-        first_day_of_month = date(today.year, today.month, 1)
-        last_day_of_month = date(today.year, today.month, calendar.monthrange(today.year, today.month)[1])
-        moods = MoodPrimaryEntry.objects.filter(user=current_user, date__range=(first_day_of_month, last_day_of_month))
-        if moods.exists():
-            serializer = self.serializer_class(moods, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response({"message": "None"}, status=status.HTTP_200_OK)
-        
-        
+        today = datetime.today()
+        first_day_of_month = today.replace(day=1)
+        last_day_of_month = today.replace(day=calendar.monthrange(today.year, today.month)[1])
 
+        # Retrieve mood entries for the current month
+        mood_entries = MoodPrimaryEntry.objects.filter(user=current_user, date__range=(first_day_of_month, last_day_of_month)).order_by('date')
+
+        mood_data = []
+
+        # Iterate over each day of the month
+        current_date = first_day_of_month
+        while current_date <= last_day_of_month:
+            mood_entry = mood_entries.filter(date=current_date).first()
+
+            # If no mood entry exists for the current day, add a special image
+            if not mood_entry:
+                # Add special image data for days without entries
+                mood_data.append({
+                    'date': current_date.date(),
+                    'mood': None,
+                    'emotion_image': '/media/Cream1.png'  
+                })
+            else:
+                # Retrieve the emotion image for the mood entry
+                mood = mood_entry.mood
+                emotion_instance = Emotion.objects.filter(name=mood, type='primary').first()
+                emotion_image_url = emotion_instance.image.url if emotion_instance else None
+                
+                mood_data.append({
+                    'date': current_date.date(),
+                    'mood': mood,
+                    'emotion_image': emotion_image_url
+                })
+
+            # Move to the next day
+            current_date += timedelta(days=1)
+
+        return Response(mood_data, status=status.HTTP_200_OK)
+        
 class JournalEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        # Check if mood entry already exists for the current user and date
+        # Check if a mood entry already exists for the current user and date
         existing_entry = JournalEntry.objects.filter(user=request.user, date=date.today()).first()
         if existing_entry:
             # Update the existing entry with the new mood
-            existing_entry.notes= request.data.get('notes')
+            existing_entry.notes = request.data.get('notes')
             existing_entry.save()
             serializer = JournalEntrySerializer(existing_entry)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            
+            # Call the management commands to detect depression and stress
+            depression_detected = call_command('depression_detection_command')
+            stress_detected = call_command('stress_detection_command')
 
-        # If no existing entry, create a new entry
+            if depression_detected or stress_detected:
+                message = "Depression or stress detected"
+                status_code = status.HTTP_200_OK
+            else:
+                message = "No depression or stress detected"
+                status_code = status.HTTP_200_OK
+
+            response_data = {
+                "notes": serializer.data['notes'],
+                "date": date.today()
+            }
+
+            return Response(response_data, status=status_code)
+
+        # If no existing entry, create a new one
         serializer = JournalEntrySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            
+            # Call the management commands to detect depression and stress
+            depression_detected = call_command('depression_detection_command')
+            stress_detected = call_command('stress_detection_command')
+
+            if depression_detected or stress_detected:
+                message = "Depression or stress detected"
+                status_code = status.HTTP_201_CREATED
+            else:
+                message = "No depression or stress detected"
+                status_code = status.HTTP_201_CREATED
+
+            response_data = {
+                "notes": serializer.data['notes'],
+                "date": date.today()
+            }
+
+            return Response(response_data, status=status_code)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
     
 class PreferenceQuestionListView(APIView):
     def get(self, request):
