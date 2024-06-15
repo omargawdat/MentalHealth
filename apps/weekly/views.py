@@ -1,5 +1,3 @@
-from django.db.models import DateField, Avg
-from django.db.models.functions import Trunc
 from django.utils import timezone
 from rest_framework import generics
 from rest_framework import status
@@ -61,23 +59,17 @@ class LifeAspectHistoryView(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
-        queryset = queryset.annotate(day=Trunc('date', 'day', output_field=DateField())).values('day',
-                                                                                                'aspect_type__name').annotate(
-            avg_value=Avg('value')).order_by('day', 'aspect_type__name')
-
         grouped_data = {}
 
-        for item in queryset:
-            day = item['day'].strftime('%Y-%m-%d')
-            aspect_type = item['aspect_type__name']
-            avg_value = item['avg_value']
-
-            if day not in grouped_data:
-                grouped_data[day] = []
-
-            grouped_data[day].append({
-                'aspect_type': aspect_type,
-                'value': avg_value
+        # Group by aspect type
+        for aspect in queryset:
+            aspect_type = aspect.aspect_type.name
+            if aspect_type not in grouped_data:
+                grouped_data[aspect_type] = []
+            grouped_data[aspect_type].append({
+                'id': aspect.id,
+                'value': aspect.value,
+                'date': aspect.date,
             })
 
         last_record = self.get_queryset().order_by('-date').first()
