@@ -24,7 +24,6 @@ class LifeAspect(models.Model):
 class LifeActivity(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
-    icon = models.ImageField(blank=True, null=True)
     aspect_type = models.ForeignKey(LifeAspectType, on_delete=models.CASCADE, related_name='activities')
 
     def __str__(self):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import LifeAspect
+from .models import LifeAspect, LifeActivityTrack
 from .models import LifeAspectType
 
 
@@ -33,3 +33,12 @@ class LifeAspectHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = LifeAspect
         fields = ['aspect_type', 'value', 'date']
+
+
+class LifeActivityTrackSerializer(serializers.ModelSerializer):
+    activity_name = serializers.CharField(source='life_activity.name', read_only=True)
+    activity_description = serializers.CharField(source='life_activity.description', read_only=True)
+
+    class Meta:
+        model = LifeActivityTrack
+        fields = ['id', 'activity_name', 'activity_description', 'created_at', 'is_checked']

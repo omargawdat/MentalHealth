@@ -4,10 +4,11 @@ from django.utils import timezone
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from .models import LifeAspect
+from .models import LifeAspect, LifeActivity, LifeActivityTrack
 from .models import LifeAspectType
-from .serializer import LifeAspectHistorySerializer
+from .serializer import LifeAspectHistorySerializer, LifeActivityTrackSerializer
 from .serializer import LifeAspectTypeSerializer, LifeAspectSerializer
 
 
@@ -22,14 +23,34 @@ class LifeAspectCreateView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         aspect_scores = request.data.get('scores', [])
         created_records = []
+        added_activities = []
 
         for aspect_score in aspect_scores:
             serializer = self.get_serializer(data=aspect_score)
             serializer.is_valid(raise_exception=True)
-            self.perform_create(serializer)
+            life_aspect = serializer.save(user=request.user)
+            if life_aspect.value < 3:
+                activities = self.add_needed_activities(life_aspect, request.user, num_activities=2)
+                added_activities.extend(activities)
+            elif life_aspect.value < 6:
+                activities = self.add_needed_activities(life_aspect, request.user, num_activities=1)
+                added_activities.extend(activities)
             created_records.append(serializer.data)
 
-        return Response(created_records, status=status.HTTP_201_CREATED)
+        response_data = {
+            "created_records": created_records,
+            "added_activities": LifeActivityTrackSerializer(added_activities, many=True).data,
+        }
+
+        return Response(response_data, status=status.HTTP_201_CREATED)
+
+    def add_needed_activities(self, life_aspect, user, num_activities):
+        activities = LifeActivity.objects.filter(aspect_type=life_aspect.aspect_type)[:num_activities]
+        added_activities = []
+        for activity in activities:
+            activity_track = LifeActivityTrack.objects.create(user=user, life_activity=activity)
+            added_activities.append(activity_track)
+        return added_activities
 
 
 class LifeAspectHistoryView(generics.ListAPIView):
@@ -59,7 +80,6 @@ class LifeAspectHistoryView(generics.ListAPIView):
                 'value': avg_value
             })
 
-        # Check if the last record was 7 days ago
         last_record = self.get_queryset().order_by('-date').first()
         last_record_7_days_ago = False
 
@@ -74,3 +94,24 @@ class LifeAspectHistoryView(generics.ListAPIView):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
+
+
+class UncheckedLifeActivityTrackListView(generics.ListAPIView):
+    serializer_class = LifeActivityTrackSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return LifeActivityTrack.objects.filter(user=user, is_checked=False)
+
+
+class CheckLifeActivityTrackView(APIView):
+
+    def patch(self, request, pk, *args, **kwargs):
+        try:
+            activity_track = LifeActivityTrack.objects.get(pk=pk, user=request.user)
+            activity_track.is_checked = True
+            activity_track.save()
+            return Response({"detail": "Activity marked as done."}, status=status.HTTP_200_OK)
+        except LifeActivityTrack.DoesNotExist:
+            return Response({"detail": "Not found or you do not have permission to perform this action."},
+                            status=status.HTTP_404_NOT_FOUND)
