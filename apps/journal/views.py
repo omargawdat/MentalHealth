@@ -1,14 +1,13 @@
-from rest_framework import generics, status
-from rest_framework.response import Response
-from datetime import date, timedelta
-from .serializers import *
-from rest_framework import status
 import calendar
+from datetime import datetime, date, timedelta
+
+from django.core.management import call_command
+from rest_framework import generics
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import *
-from django.core.management import call_command
-from datetime import datetime, date, timedelta
+
+from .serializers import *
 
 
 class PrimaryEmotionList(APIView):
@@ -16,15 +15,18 @@ class PrimaryEmotionList(APIView):
         primary_emotions = Emotion.objects.filter(type="primary")
         serializer = EmotionSerializer(primary_emotions, many=True)
         return Response(serializer.data)
-    
+
+
 class ActivityListView(generics.ListAPIView):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
 
+
 class ReasonListView(generics.ListAPIView):
     queryset = Reason.objects.all()
-    serializer_class = ReasonSerializer     
-    
+    serializer_class = ReasonSerializer
+
+
 class EmotionList(APIView):
     def post(self, request):
         filter_serializer = FilterSerializer(data=request.data)
@@ -33,7 +35,7 @@ class EmotionList(APIView):
             primary_emotions = Emotion.objects.filter(type=filter_data['type'])
             serializer = SubEmotionSerializer(primary_emotions, many=True)
             return Response(serializer.data)
-        return Response(filter_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+        return Response(filter_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MoodPrimaryEntryAPIView(APIView):
@@ -53,8 +55,7 @@ class MoodPrimaryEntryAPIView(APIView):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-        
+
 
 class MoodSecondEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
@@ -74,6 +75,7 @@ class MoodSecondEntryAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class CurrentMonthMoodsAPIView(APIView):
     serializer_class = MoodPrimaryEntrySerializer
 
@@ -84,7 +86,9 @@ class CurrentMonthMoodsAPIView(APIView):
         last_day_of_month = today.replace(day=calendar.monthrange(today.year, today.month)[1])
 
         # Retrieve mood entries for the current month
-        mood_entries = MoodPrimaryEntry.objects.filter(user=current_user, date__range=(first_day_of_month, last_day_of_month)).order_by('date')
+        mood_entries = MoodPrimaryEntry.objects.filter(user=current_user,
+                                                       date__range=(first_day_of_month, last_day_of_month)).order_by(
+            'date')
 
         mood_data = []
 
@@ -99,14 +103,14 @@ class CurrentMonthMoodsAPIView(APIView):
                 mood_data.append({
                     'date': current_date.date(),
                     'mood': None,
-                    'emotion_image': '/media/Cream1.png'  
+                    'emotion_image': '/media/Cream1.png'
                 })
             else:
                 # Retrieve the emotion image for the mood entry
                 mood = mood_entry.mood
                 emotion_instance = Emotion.objects.filter(name=mood, type='primary').first()
                 emotion_image_url = emotion_instance.image.url if emotion_instance else None
-                
+
                 mood_data.append({
                     'date': current_date.date(),
                     'mood': mood,
@@ -117,7 +121,8 @@ class CurrentMonthMoodsAPIView(APIView):
             current_date += timedelta(days=1)
 
         return Response(mood_data, status=status.HTTP_200_OK)
-        
+
+
 class JournalEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
         # Check if a mood entry already exists for the current user and date
@@ -127,7 +132,7 @@ class JournalEntryAPIView(APIView):
             existing_entry.notes = request.data.get('notes')
             existing_entry.save()
             serializer = JournalEntrySerializer(existing_entry)
-            
+
             # Call the management commands to detect depression and stress
             depression_detected = call_command('depression_detection_command')
             stress_detected = call_command('stress_detection_command')
@@ -150,7 +155,7 @@ class JournalEntryAPIView(APIView):
         serializer = JournalEntrySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
-            
+
             # Call the management commands to detect depression and stress
             depression_detected = call_command('depression_detection_command')
             stress_detected = call_command('stress_detection_command')
@@ -168,17 +173,17 @@ class JournalEntryAPIView(APIView):
             }
 
             return Response(response_data, status=status_code)
-        
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    
 class PreferenceQuestionListView(APIView):
     def get(self, request):
         questions = Preference.objects.all()
         serializer = PreferenceSerializer(questions, many=True)
         return Response(serializer.data)
-    
+
+
 class PreferenceQuestionAnswerView(APIView):
     def post(self, request):
         user = request.user
@@ -192,7 +197,8 @@ class PreferenceQuestionAnswerView(APIView):
             UserTags.objects.create(user=user, tag=tag)
 
         return Response({'message': 'Answers saved successfully'})
-    
+
+
 class ActivityEntryView(APIView):
     def post(self, request, *args, **kwargs):
         # Get today's date
@@ -214,8 +220,8 @@ class ActivityEntryView(APIView):
             return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-        
+
+
 class ReasonEntryView(APIView):
     def post(self, request, *args, **kwargs):
         # Get today's date
@@ -237,5 +243,3 @@ class ReasonEntryView(APIView):
             return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-        

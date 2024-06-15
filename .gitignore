@@ -22,8 +22,7 @@ __pycache__/
 env/
 .env
 
-/apps/*/migrations/*
-!/apps/*/migrations/__init__.py
+
 
 general.log
 

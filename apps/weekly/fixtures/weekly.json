@@ -1,0 +1,65 @@
+[
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 1,
+    "fields": {
+      "name": "Friends"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 2,
+    "fields": {
+      "name": "Body"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 3,
+    "fields": {
+      "name": "Mind"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 4,
+    "fields": {
+      "name": "Spirit"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 5,
+    "fields": {
+      "name": "Mission"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 6,
+    "fields": {
+      "name": "Money"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 7,
+    "fields": {
+      "name": "Growth"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 8,
+    "fields": {
+      "name": "Family"
+    }
+  },
+  {
+    "model": "weekly.lifeaspecttype",
+    "pk": 9,
+    "fields": {
+      "name": "Love"
+    }
+  }
+]

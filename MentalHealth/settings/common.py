@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "apps.core",
     "apps.journal",
     "apps.meditation",
+    "apps.weekly",
 ]
 
 MIDDLEWARE = [
