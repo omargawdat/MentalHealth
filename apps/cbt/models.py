@@ -12,7 +12,10 @@ class NegativeThinkingType(models.Model):
 
 class CBTQuestion(models.Model):
     question_text = models.TextField()
-    thinking_type = models.ForeignKey(NegativeThinkingType, on_delete=models.CASCADE, related_name='questions')
+    thinking_type = models.ForeignKey(NegativeThinkingType, on_delete=models.CASCADE, related_name='questions',
+                                      null=True, blank=True)
+    is_general = models.BooleanField(default=False)
+    after_question_tip = models.TextField(blank=True)
 
     def __str__(self):
         return self.question_text

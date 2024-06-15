@@ -1,0 +1,322 @@
+[
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 1,
+    "fields": {
+      "name": "All-or-Nothing Thinking",
+      "explanation": "This cognitive distortion involves seeing situations in black-and-white terms. For instance, if your performance falls short of perfect, you view yourself as a complete failure. This thinking pattern often leads to extreme reactions and stress.",
+      "tips": "Identify areas where you use terms like 'always' or 'never'. Practice acknowledging the gray areas. For example, if you make a mistake at work, instead of thinking 'I always mess up', consider 'I did well on this project, but there's room for improvement'."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 2,
+    "fields": {
+      "name": "Overgeneralization",
+      "explanation": "Overgeneralization occurs when you perceive a single negative event as a never-ending pattern of defeat. For example, after failing a test, you might think, 'I’m always bad at tests, I’ll never succeed in school.'",
+      "tips": "Challenge overgeneralized thoughts by looking at evidence. Ask yourself, 'Is it really true that this one event defines all my future experiences?' Write down counterexamples where you have succeeded."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 3,
+    "fields": {
+      "name": "Mental Filter",
+      "explanation": "This involves focusing solely on the negative aspects of a situation, filtering out all positive aspects. For instance, receiving praise on a project but dwelling on a minor criticism.",
+      "tips": "Practice balanced thinking by acknowledging both positive and negative aspects. Keep a journal to note positive experiences daily. This helps create a more balanced view of situations."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 4,
+    "fields": {
+      "name": "Disqualifying the Positive",
+      "explanation": "You dismiss positive experiences by insisting they 'don’t count'. For example, you may believe that your success is due to luck, rather than your skills and effort.",
+      "tips": "When you catch yourself disqualifying the positive, take a moment to reframe your thoughts. Acknowledge your role in your successes. Keep a success log to remind yourself of your achievements."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 5,
+    "fields": {
+      "name": "Jumping to Conclusions",
+      "explanation": "This involves making negative interpretations without concrete evidence. This can take two forms: mind reading (assuming others think negatively of you) and fortune telling (predicting a negative outcome).",
+      "tips": "Ask yourself, 'What evidence do I have for this thought?' Practice gathering facts before jumping to conclusions. Engage in open communication to clarify misunderstandings."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 6,
+    "fields": {
+      "name": "Magnification or Minimization",
+      "explanation": "Magnification involves exaggerating the importance of problems or flaws, while minimization involves downplaying your strengths and achievements.",
+      "tips": "Aim for a balanced perspective. When facing a problem, consider its actual impact. When reflecting on achievements, acknowledge your hard work and effort objectively."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 7,
+    "fields": {
+      "name": "Emotional Reasoning",
+      "explanation": "This involves assuming that your negative emotions reflect the reality of a situation. For example, feeling anxious about a presentation might lead you to believe it's going to be a disaster.",
+      "tips": "Separate feelings from facts. When you feel a certain way, ask yourself, 'What evidence do I have that supports this feeling?' Practice grounding techniques to stay present and factual."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 8,
+    "fields": {
+      "name": "Should Statements",
+      "explanation": "Using 'should' statements can create unrealistic expectations and lead to feelings of guilt or frustration. For example, 'I should always be successful at everything I do.'",
+      "tips": "Replace 'should' with 'could' or 'it would be nice if'. This shift helps set realistic goals and reduces self-imposed pressure. Recognize and accept your limitations as a part of being human."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 9,
+    "fields": {
+      "name": "Labeling and Mislabeling",
+      "explanation": "This involves assigning a label to yourself or others based on one instance. For example, calling yourself 'a failure' after making a mistake.",
+      "tips": "Focus on specific behaviors instead of labels. For example, instead of saying 'I’m a failure', say 'I made a mistake this time, but I can learn from it and do better next time'."
+    }
+  },
+  {
+    "model": "cbt.negativethinkingtype",
+    "pk": 10,
+    "fields": {
+      "name": "Personalization",
+      "explanation": "Blaming yourself for events outside of your control or taking responsibility for negative outcomes that are not entirely your fault.",
+      "tips": "Assess situations realistically. Recognize what is and isn’t within your control. Share responsibility with others involved in the situation. Practice self-compassion and realistic appraisal."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 1,
+    "fields": {
+      "question_text": "What is the evidence that supports this thought?",
+      "is_general": true,
+      "thinking_type": null,
+      "after_question_tip": "Always gather concrete evidence before drawing conclusions. It helps to have facts to support your beliefs."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 2,
+    "fields": {
+      "question_text": "What is the evidence against this thought?",
+      "is_general": true,
+      "thinking_type": null,
+      "after_question_tip": "Consider the evidence that contradicts your negative thoughts. This can help you see a more balanced perspective."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 3,
+    "fields": {
+      "question_text": "If a friend faced the same thought, what would you tell them?",
+      "is_general": true,
+      "thinking_type": null,
+      "after_question_tip": "Always remember to emphasize on yourself more than on the people you know. Treat yourself with the same kindness you would offer a friend."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 4,
+    "fields": {
+      "question_text": "Can you find a middle ground in this situation instead of seeing it as all-or-nothing?",
+      "is_general": false,
+      "thinking_type": 1,
+      "after_question_tip": "Practicing to see the gray areas can help reduce the stress of extreme reactions."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 5,
+    "fields": {
+      "question_text": "How would you describe this situation if you were being more flexible in your thinking?",
+      "is_general": false,
+      "thinking_type": 1,
+      "after_question_tip": "Flexibility in thinking allows for a more nuanced understanding of situations."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 6,
+    "fields": {
+      "question_text": "Have there been times when a single negative event did not lead to a pattern of defeat?",
+      "is_general": false,
+      "thinking_type": 2,
+      "after_question_tip": "Recognizing exceptions can help challenge overgeneralized thoughts."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 7,
+    "fields": {
+      "question_text": "What are some examples where you succeeded despite initial failures?",
+      "is_general": false,
+      "thinking_type": 2,
+      "after_question_tip": "Reflecting on past successes can help break the cycle of overgeneralization."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 8,
+    "fields": {
+      "question_text": "What positive aspects of the situation are you overlooking?",
+      "is_general": false,
+      "thinking_type": 3,
+      "after_question_tip": "Acknowledging positive aspects can create a more balanced view."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 9,
+    "fields": {
+      "question_text": "How can you ensure you're considering both positive and negative aspects?",
+      "is_general": false,
+      "thinking_type": 3,
+      "after_question_tip": "A balanced approach helps to mitigate the impact of mental filtering."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 10,
+    "fields": {
+      "question_text": "Can you acknowledge the positive experiences you are disqualifying?",
+      "is_general": false,
+      "thinking_type": 4,
+      "after_question_tip": "Recognizing your achievements helps combat disqualifying the positive."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 11,
+    "fields": {
+      "question_text": "What role did your skills and efforts play in your successes?",
+      "is_general": false,
+      "thinking_type": 4,
+      "after_question_tip": "Acknowledging your role in successes helps reinforce positive self-perception."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 12,
+    "fields": {
+      "question_text": "What concrete evidence do you have for your assumption?",
+      "is_general": false,
+      "thinking_type": 5,
+      "after_question_tip": "Gathering facts before jumping to conclusions can reduce negative interpretations."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 13,
+    "fields": {
+      "question_text": "Could there be another explanation for this situation?",
+      "is_general": false,
+      "thinking_type": 5,
+      "after_question_tip": "Considering alternative explanations helps prevent hasty conclusions."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 14,
+    "fields": {
+      "question_text": "Are you exaggerating the importance of this problem?",
+      "is_general": false,
+      "thinking_type": 6,
+      "after_question_tip": "Keeping a balanced perspective can help manage magnification."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 15,
+    "fields": {
+      "question_text": "Are you minimizing your strengths and achievements?",
+      "is_general": false,
+      "thinking_type": 6,
+      "after_question_tip": "Recognizing your strengths helps counteract minimization."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 16,
+    "fields": {
+      "question_text": "What evidence do you have that supports your feelings?",
+      "is_general": false,
+      "thinking_type": 7,
+      "after_question_tip": "Separating feelings from facts helps maintain a realistic perspective."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 17,
+    "fields": {
+      "question_text": "How might you view this situation differently if you felt more positive?",
+      "is_general": false,
+      "thinking_type": 7,
+      "after_question_tip": "Considering different emotional perspectives can reduce the impact of emotional reasoning."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 18,
+    "fields": {
+      "question_text": "What are some more flexible alternatives to your 'should' statement?",
+      "is_general": false,
+      "thinking_type": 8,
+      "after_question_tip": "Using more flexible language can reduce unrealistic expectations."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 19,
+    "fields": {
+      "question_text": "How might you reframe this 'should' statement to be more realistic?",
+      "is_general": false,
+      "thinking_type": 8,
+      "after_question_tip": "Reframing 'should' statements helps set realistic goals and reduce self-imposed pressure."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 20,
+    "fields": {
+      "question_text": "Can you focus on specific behaviors instead of labels?",
+      "is_general": false,
+      "thinking_type": 9,
+      "after_question_tip": "Focusing on behaviors rather than labels helps improve self-assessment."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 21,
+    "fields": {
+      "question_text": "What can you learn from this mistake to do better next time?",
+      "is_general": false,
+      "thinking_type": 9,
+      "after_question_tip": "Learning from mistakes helps develop a growth mindset and avoid negative labels."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 22,
+    "fields": {
+      "question_text": "What aspects of this situation are within your control?",
+      "is_general": false,
+      "thinking_type": 10,
+      "after_question_tip": "Recognizing control over situations helps manage personalization."
+    }
+  },
+  {
+    "model": "cbt.cbtquestion",
+    "pk": 23,
+    "fields": {
+      "question_text": "How can you realistically share responsibility for this outcome?",
+      "is_general": false,
+      "thinking_type": 10,
+      "after_question_tip": "Sharing responsibility realistically helps reduce self-blame and personalization."
+    }
+  }
+]
