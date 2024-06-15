@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from .models import LifeAspectType, LifeAspect
+from .models import LifeAspect
+from .models import LifeAspectType
+
+
+class LifeAspectTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LifeAspectType
+        fields = ['id', 'name']
 
 
 class LifeAspectSerializer(serializers.ModelSerializer):
@@ -11,10 +18,18 @@ class LifeAspectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LifeAspect
-        fields = ['id', 'aspect_type_id', 'aspect_type', 'value', 'date']
+        fields = ['id', 'aspect_type_id', 'aspect_type', 'value', 'date', ]
+
+    def create(self, validated_data):
+        request = self.context.get('request', None)
+        if request is not None:
+            validated_data['user'] = request.user
+        return super().create(validated_data)
 
 
-class LifeAspectTypeSerializer(serializers.ModelSerializer):
+class LifeAspectHistorySerializer(serializers.ModelSerializer):
+    aspect_type = serializers.StringRelatedField()
+
     class Meta:
-        model = LifeAspectType
-        fields = ['id', 'name']
+        model = LifeAspect
+        fields = ['aspect_type', 'value', 'date']

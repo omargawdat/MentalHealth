@@ -1,6 +1,8 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
+from apps.authentication.models import CustomUser
+
 
 class LifeAspectType(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -10,6 +12,7 @@ class LifeAspectType(models.Model):
 
 
 class LifeAspect(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     aspect_type = models.ForeignKey(LifeAspectType, on_delete=models.CASCADE)
     value = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     date = models.DateField(auto_now_add=True)
