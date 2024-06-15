@@ -61,5 +61,185 @@
     "fields": {
       "name": "Love"
     }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 1,
+    "fields": {
+      "name": "Catch Up Over Coffee",
+      "description": "Meet up with a friend over a cup of coffee and catch up on life.",
+      "icon": "",
+      "aspect_type": 1
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 2,
+    "fields": {
+      "name": "Weekend Hike",
+      "description": "Organize a hiking trip with friends to enjoy nature and each other's company.",
+      "icon": "",
+      "aspect_type": 1
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 3,
+    "fields": {
+      "name": "Daily Stretch Routine",
+      "description": "Incorporate a daily stretching routine to improve flexibility and reduce tension.",
+      "icon": "",
+      "aspect_type": 2
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 4,
+    "fields": {
+      "name": "Cycling Adventure",
+      "description": "Go on a cycling adventure to explore new areas and get a good workout.",
+      "icon": "",
+      "aspect_type": 2
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 5,
+    "fields": {
+      "name": "Journal Your Thoughts",
+      "description": "Spend time journaling to reflect on your thoughts and emotions.",
+      "icon": "",
+      "aspect_type": 3
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 6,
+    "fields": {
+      "name": "Brain Teasers",
+      "description": "Challenge yourself with brain teasers and puzzles to keep your mind sharp.",
+      "icon": "",
+      "aspect_type": 3
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 7,
+    "fields": {
+      "name": "Meditative Walk",
+      "description": "Take a walk focusing on mindfulness and meditation to connect with your inner self.",
+      "icon": "",
+      "aspect_type": 4
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 8,
+    "fields": {
+      "name": "Gratitude Practice",
+      "description": "Spend a few minutes each day practicing gratitude and reflecting on positive aspects of your life.",
+      "icon": "",
+      "aspect_type": 4
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 9,
+    "fields": {
+      "name": "Community Service",
+      "description": "Participate in community service projects to contribute positively to society.",
+      "icon": "",
+      "aspect_type": 5
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 10,
+    "fields": {
+      "name": "Career Planning",
+      "description": "Dedicate time to plan and strategize your career path and professional development.",
+      "icon": "",
+      "aspect_type": 5
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 11,
+    "fields": {
+      "name": "Budget Planning",
+      "description": "Spend time creating a budget to manage your finances effectively and reduce stress.",
+      "icon": "",
+      "aspect_type": 6
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 12,
+    "fields": {
+      "name": "Financial Literacy Course",
+      "description": "Enroll in a financial literacy course to enhance your understanding of managing money.",
+      "icon": "",
+      "aspect_type": 6
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 13,
+    "fields": {
+      "name": "Set Personal Goals",
+      "description": "Take time to set achievable personal growth goals and create a plan to reach them.",
+      "icon": "",
+      "aspect_type": 7
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 14,
+    "fields": {
+      "name": "Attend a Workshop",
+      "description": "Participate in a workshop or seminar to learn new skills and promote personal growth.",
+      "icon": "",
+      "aspect_type": 7
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 15,
+    "fields": {
+      "name": "Family Game Night",
+      "description": "Organize a game night with your family to strengthen bonds and create happy memories.",
+      "icon": "",
+      "aspect_type": 8
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 16,
+    "fields": {
+      "name": "Family Dinner",
+      "description": "Plan a special family dinner to enjoy quality time and meaningful conversations.",
+      "icon": "",
+      "aspect_type": 8
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 17,
+    "fields": {
+      "name": "Express Gratitude",
+      "description": "Take time to express gratitude and appreciation to your loved ones.",
+      "icon": "",
+      "aspect_type": 9
+    }
+  },
+  {
+    "model": "weekly.lifeactivity",
+    "pk": 18,
+    "fields": {
+      "name": "Plan a Date Night",
+      "description": "Plan a special date night to connect and spend quality time with your partner.",
+      "icon": "",
+      "aspect_type": 9
+    }
   }
 ]
