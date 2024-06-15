@@ -13,6 +13,7 @@ urlpatterns = [
     path("api/", include("apps.journal.urls")),
     path("api/", include("apps.meditation.urls")),
     path("api/", include("apps.weekly.urls")),
+    path("api/", include("apps.cbt.urls")),
 ]
 
 if settings.DEBUG:
