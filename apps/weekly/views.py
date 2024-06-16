@@ -43,7 +43,13 @@ class LifeAspectCreateView(generics.CreateAPIView):
         return Response(response_data, status=status.HTTP_201_CREATED)
 
     def add_needed_activities(self, life_aspect, user, num_activities):
-        activities = LifeActivity.objects.filter(aspect_type=life_aspect.aspect_type)[:num_activities]
+        existing_activities = LifeActivityTrack.objects.filter(user=user,
+                                                               life_activity__aspect_type=life_aspect.aspect_type,
+                                                               is_checked=False)
+        existing_activity_ids = existing_activities.values_list('life_activity_id', flat=True)
+
+        activities = LifeActivity.objects.filter(aspect_type=life_aspect.aspect_type).exclude(
+            id__in=existing_activity_ids)[:num_activities]
         added_activities = []
         for activity in activities:
             activity_track = LifeActivityTrack.objects.create(user=user, life_activity=activity)
