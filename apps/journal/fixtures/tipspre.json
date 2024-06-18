@@ -1,0 +1,380 @@
+[
+    {
+        "model": "journal.tips",
+        "pk": 1,
+        "fields": {
+            "description": "Engaging in a team sport can help lift your spirits and provide a sense of camaraderie and support. Consider joining a local sports team to stay active and connected.",
+            "tag": 1,
+            "emotion": "Sadness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 2,
+        "fields": {
+            "description": "Share your love for sports with a partner or loved one by participating in activities together. Whether it's playing a game of tennis or going for a hike, sharing these experiences can strengthen your bond.",
+            "tag": 1,
+            "emotion": "Love"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 3,
+        "fields": {
+            "description": "If you're feeling disgusted, channel that energy into a high-intensity workout. Running, cycling, or playing a vigorous sport can help you release tension and feel more positive.",
+            "tag": 1,
+            "emotion": "Disgust"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 4,
+        "fields": {
+            "description": "Surprise yourself by trying a new sport or physical activity. Whether it's rock climbing, kayaking, or even a dance class, stepping out of your comfort zone can be exhilarating and refreshing.",
+            "tag": 1,
+            "emotion": "Surprise"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 5,
+        "fields": {
+            "description": "Continue to enjoy your favorite sports or physical activities that bring you joy. Whether it's shooting hoops, hitting the tennis court, or going for a swim, engaging in these activities can enhance your happiness.",
+            "tag": 1,
+            "emotion": "Happiness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 6,
+        "fields": {
+            "description": "Confront your fears through sports that challenge you mentally and physically. Activities like rock climbing, martial arts, or even solo sports like running can help you build confidence and resilience.",
+            "tag": 1,
+            "emotion": "Fear"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 7,
+        "fields": {
+            "description": "Use sports as a healthy outlet for anger. Punching a boxing bag, hitting a baseball, or kicking a soccer ball can help release pent-up frustration and promote a sense of calm.",
+            "tag": 1,
+            "emotion": "Anger"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 8,
+        "fields": {
+            "description": "Reading a book can provide comfort and solace during times of sadness. Choose a genre that resonates with you and immerse yourself in the story.",
+            "tag": 2,
+            "emotion": "Sadness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 9,
+        "fields": {
+            "description": "Share your favorite books with your loved ones to deepen your connection. Discussing characters and plotlines can lead to meaningful conversations.",
+            "tag": 2,
+            "emotion": "Love"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 10,
+        "fields": {
+            "description": "Explore books that challenge your perspective to overcome feelings of disgust. Reading can broaden your understanding and empathy.",
+            "tag": 2,
+            "emotion": "Disgust"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 11,
+        "fields": {
+            "description": "Surprise yourself with a book from a genre you've never tried before. You might discover a new favorite author or style.",
+            "tag": 2,
+            "emotion": "Surprise"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 12,
+        "fields": {
+            "description": "Reading a book that brings you joy can uplift your spirits. Choose a light-hearted or humorous story to brighten your day.",
+            "tag": 2,
+            "emotion": "Happiness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 13,
+        "fields": {
+            "description": "Read books that address your fears or anxieties. Self-help books or stories of overcoming challenges can provide inspiration and courage.",
+            "tag": 2,
+            "emotion": "Fear"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 14,
+        "fields": {
+            "description": "Channel your anger into reading to find peace and understanding. Choose books that explore themes of forgiveness and resilience.",
+            "tag": 2,
+            "emotion": "Anger"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 15,
+        "fields": {
+            "description": "Treat yourself to something that brings you joy, like a favorite meal or a small luxury item. It's okay to indulge occasionally, especially when feeling sad.",
+            "tag": 3,
+            "emotion": "Sadness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 16,
+        "fields": {
+            "description": "Show your love for someone by giving a thoughtful gift. The act of giving can strengthen your bond and bring happiness to both of you.",
+            "tag": 3,
+            "emotion": "Love"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 17,
+        "fields": {
+            "description": "Invest in self-care products or experiences that make you feel good about yourself. It's important to prioritize your well-being, even if it requires spending some money.",
+            "tag": 3,
+            "emotion": "Disgust"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 18,
+        "fields": {
+            "description": "Surprise yourself with a new experience or adventure. Whether it's trying a new hobby or traveling to a new destination, the memories created can be priceless.",
+            "tag": 3,
+            "emotion": "Surprise"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 19,
+        "fields": {
+            "description": "Invest in your hobbies or passions. Spending money on things you love can bring long-term happiness and fulfillment.",
+            "tag": 3,
+            "emotion": "Happiness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 20,
+        "fields": {
+            "description": "Face your fears by investing in experiences that challenge you. Whether it's taking a course to learn something new or traveling solo, stepping out of your comfort zone can be empowering.",
+            "tag": 3,
+            "emotion": "Fear"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 21,
+        "fields": {
+            "description": "Channel your anger into a constructive outlet, such as investing in a gym membership or sports equipment. Physical activity can help release pent-up anger and improve your overall well-being.",
+            "tag": 3,
+            "emotion": "Anger"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 22,
+        "fields": {
+            "description": "Create a cozy and comforting space at home. Surround yourself with things that bring you joy, such as soft blankets, scented candles, and your favorite books.",
+            "tag": 4,
+            "emotion": "Sadness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 23,
+        "fields": {
+            "description": "Express your love for your home by organizing and decorating it. Adding personal touches can make your space feel warm and inviting.",
+            "tag": 4,
+            "emotion": "Love"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 24,
+        "fields": {
+            "description": "Use feelings of Disgust as motivation to declutter and clean. A tidy space can have a positive impact on your mood and mindset.",
+            "tag": 4,
+            "emotion": "Disgust"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 25,
+        "fields": {
+            "description": "Surprise yourself by trying out a new recipe or cooking technique. Cooking can be a creative and rewarding indoor activity.",
+            "tag": 4,
+            "emotion": "Surprise"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 26,
+        "fields": {
+            "description": "Create a relaxing home spa experience. Take a long bath, do a face mask, and pamper yourself to unwind and destress.",
+            "tag": 4,
+            "emotion": "Happiness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 27,
+        "fields": {
+            "description": "Use fear of the outdoors as an opportunity to try indoor exercises. Yoga, Pilates, or online workout classes can help you stay active at home.",
+            "tag": 4,
+            "emotion": "Fear"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 28,
+        "fields": {
+            "description": "Channel your anger into a productive home project. Whether it's DIY furniture, painting a room, or gardening indoors, creating something can be therapeutic.",
+            "tag": 4,
+            "emotion": "Anger"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 29,
+        "fields": {
+            "description": "Reach out to friends or family members for support during times of sadness. Talking to someone you trust can help you feel less alone.",
+            "tag": 5,
+            "emotion": "Sadness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 30,
+        "fields": {
+            "description": "Show love for your social circle by organizing a get-together or outing. Spending quality time together can strengthen your relationships.",
+            "tag": 5,
+            "emotion": "Love"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 31,
+        "fields": {
+            "description": "Use feelings of disgust as motivation to step out of your comfort zone. Attend a social event or join a group to meet new people.",
+            "tag": 5,
+            "emotion": "Disgust"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 32,
+        "fields": {
+            "description": "Surprise yourself by reconnecting with old friends or acquaintances. Reach out and catch up over coffee or a virtual chat.",
+            "tag": 5,
+            "emotion": "Surprise"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 33,
+        "fields": {
+            "description": "Happiness is contagious. Spread joy by organizing a fun activity or outing with friends and loved ones.",
+            "tag": 5,
+            "emotion": "Happiness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 34,
+        "fields": {
+            "description": "Overcome fear  by Attending a social gathering or event with a trusted friend for support.",
+            "tag": 5,
+            "emotion": "Fear"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 35,
+        "fields": {
+            "description": "Channel your anger into a positive social cause. Volunteer for a charity or join a community group to make a difference.",
+            "tag": 5,
+            "emotion": "Anger"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 36,
+        "fields": {
+            "description": "Practice self-care and self-compassion during times of sadness. Be gentle with yourself and engage in activities that nurture your well-being.",
+            "tag": 6,
+            "emotion": "Sadness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 37,
+        "fields": {
+            "description": "Show love for yourself by practicing self-love and self-acceptance. Treat yourself with kindness and prioritize your needs.",
+            "tag": 6,
+            "emotion": "Love"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 38,
+        "fields": {
+            "description": "Use feelings of disgust as motivation to make positive changes in your life. Identify areas for improvement and take small steps towards your goals.",
+            "tag": 6,
+            "emotion": "Disgust"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 39,
+        "fields": {
+            "description": "Surprise yourself by trying something new and exciting. Step out of your comfort zone and embrace new experiences.",
+            "tag": 6,
+            "emotion": "Surprise"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 40,
+        "fields": {
+            "description": "Seek happiness in the present moment. Practice mindfulness and gratitude to appreciate the simple joys of life.",
+            "tag": 6,
+            "emotion": "Happiness"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 41,
+        "fields": {
+            "description": "Overcome fear by facing your fears head-on. Challenge negative thoughts and beliefs to build courage and resilience.",
+            "tag": 6,
+            "emotion": "Fear"
+        }
+    },
+    {
+        "model": "journal.tips",
+        "pk": 42,
+        "fields": {
+            "description": "Channel your anger into constructive activities. Practice deep breathing, exercise, or journaling to release pent-up anger.",
+            "tag": 6,
+            "emotion": "Anger"
+        }
+    }
+]

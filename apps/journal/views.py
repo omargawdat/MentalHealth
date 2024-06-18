@@ -5,9 +5,13 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import *
-from .scripts.Dep_test import predict
-from .scripts.Stress_test import predict
-
+# from .scripts.Dep_test import predict
+# from .scripts.Stress_test import predict
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from calendar import monthrange
+from random import choice
+import random
 
 
 class PrimaryEmotionList(APIView):
@@ -123,24 +127,24 @@ class CurrentMonthMoodsAPIView(APIView):
         return Response(mood_data, status=status.HTTP_200_OK)
 
 
-class JournalEntryAPIView(APIView):
-    def post(self, request, *args, **kwargs):
-        existing_entry = JournalEntry.objects.filter(user=request.user, date=date.today()).first()
-        if existing_entry:
-            existing_entry.notes = request.data.get('notes')
-            existing_entry.has_stress = predict(existing_entry.notes)
-            existing_entry.has_depression = predict(existing_entry.notes)
-            existing_entry.save()
-            serializer = JournalEntrySerializer(existing_entry)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        serializer = JournalEntrySerializer(data=request.data)
-        if serializer.is_valid():
-            journal_entry = serializer.save(user=request.user)
-            journal_entry.has_stress = predict(journal_entry.notes)
-            journal_entry.has_depression = predict(journal_entry.notes)
-            journal_entry.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# class JournalEntryAPIView(APIView):
+#     def post(self, request, *args, **kwargs):
+#         existing_entry = JournalEntry.objects.filter(user=request.user, date=date.today()).first()
+#         if existing_entry:
+#             existing_entry.notes = request.data.get('notes')
+#             existing_entry.has_stress = predict(existing_entry.notes)
+#             existing_entry.has_depression = predict(existing_entry.notes)
+#             existing_entry.save()
+#             serializer = JournalEntrySerializer(existing_entry)
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         serializer = JournalEntrySerializer(data=request.data)
+#         if serializer.is_valid():
+#             journal_entry = serializer.save(user=request.user)
+#             journal_entry.has_stress = predict(journal_entry.notes)
+#             journal_entry.has_depression = predict(journal_entry.notes)
+#             journal_entry.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 class PreferenceQuestionListView(APIView):
@@ -273,3 +277,103 @@ class UserInputListByMonthAPIView(APIView):
             # Move to the next day
             current_date += timedelta(days=1)
         return Response(mood_data, status=status.HTTP_200_OK)
+
+
+class Report(APIView):
+    def get(self, request, format=None):
+        # Get today's date
+        current_datetime = datetime.now()
+        date = current_datetime.date()
+        user = request.user
+        primary_mood_entry = get_object_or_404(MoodPrimaryEntry, user=user, date=date)
+        primary_mood_serializer = MoodPrimaryEntrySerializer(primary_mood_entry)
+        secondary_mood_entry = MoodSecondEntry.objects.filter(user=user, date=date).first()
+        secondary_mood_serializer = MoodSecondEntrySerializer(secondary_mood_entry) if secondary_mood_entry else None
+        reason_entries = ReasonEntry.objects.filter(user=user, date=date)
+        reason_serializer = ReasonEntrySerializer(reason_entries, many=True) if reason_entries else None
+        activity_entries = ActivityEntry.objects.filter(user=user, date=date)
+        activity_serializer = ActivityEntrySerializer(activity_entries, many=True) if activity_entries else None
+        journal_entry = JournalEntry.objects.filter(user=user, date=date).first()
+        journal_serializer = JournalEntrySerializer(journal_entry) if journal_entry else None
+        stress_tip = None
+        if journal_entry and journal_entry.has_stress:
+                stress_tips = TipsStress.objects.all()
+                stress_tip = random.choice(stress_tips).description if stress_tips else None
+        # Get the primary emotion for the primary mood entry
+        primary_emotion = primary_mood_entry.mood
+        primary_emotion_instance = Emotion.objects.filter(name=primary_emotion, type='primary').first()
+        primary_emotion_image = primary_emotion_instance.image.url if primary_emotion_instance else None
+        # Get the secondary emotion for the secondary mood entry
+        secondary_emotion = secondary_mood_entry.mood if secondary_mood_entry else None
+        secondary_emotion_instance = Emotion.objects.filter(name=secondary_emotion, type='primary').first()
+        secondary_emotion_image = secondary_emotion_instance.image.url if secondary_emotion_instance else None
+        # Get user's tags
+        user_tags = UserTags.objects.filter(user=user)
+        # Filter tips based on user's tags and primary emotion
+        filtered_tips = Tips.objects.filter(tag__in=user_tags.values_list('tag', flat=True), emotion=primary_emotion)
+        # Randomly select a tip
+        tip_of_the_day = random.choice(filtered_tips).description if filtered_tips else None
+        data = {
+            "primary_mood": {
+                "mood": primary_mood_serializer.data['mood'],
+                "date": primary_mood_serializer.data['date'],
+                "emotion_image": primary_emotion_image
+            },
+            "secondary_mood": {
+                "mood": secondary_mood_serializer.data['mood'] if secondary_mood_serializer else None,
+                "date": secondary_mood_serializer.data['date'] if secondary_mood_serializer else None,
+                
+            },
+            "reason": reason_serializer.data if reason_serializer else None,
+            "activity": activity_serializer.data if activity_serializer else None,
+            "note": journal_serializer.data['notes'] if journal_serializer else None,
+            "stress_tip": stress_tip,
+            "tip_of_the_day": tip_of_the_day
+        }
+        return Response(data, status=status.HTTP_200_OK)
+
+
+class Report2(APIView):
+    def get(self, request, format=None):
+        # Get the first and last day of the current month
+        current_datetime = datetime.now()
+        first_day = current_datetime.replace(day=1)
+        last_day = current_datetime.replace(day=monthrange(current_datetime.year, current_datetime.month)[1])
+        user = request.user
+        data = {}
+        for i in range((last_day - first_day).days + 1):
+            date = first_day + timedelta(days=i)
+            primary_mood_entry = MoodPrimaryEntry.objects.filter(user=user, date=date).first()
+            secondary_mood_entry = MoodSecondEntry.objects.filter(user=user, date=date).first()
+            reason_entries = ReasonEntry.objects.filter(user=user, date=date)
+            activity_entries = ActivityEntry.objects.filter(user=user, date=date)
+            journal_entry = JournalEntry.objects.filter(user=user, date=date).first()
+            # Skip the day if all entries are null except for "tip_of_the_day"
+            if not any([primary_mood_entry, secondary_mood_entry, reason_entries, activity_entries, journal_entry]):
+                continue
+            primary_mood_serializer = MoodPrimaryEntrySerializer(primary_mood_entry) if primary_mood_entry else None
+            secondary_mood_serializer = MoodSecondEntrySerializer(secondary_mood_entry) if secondary_mood_entry else None
+            reason_serializer = ReasonEntrySerializer(reason_entries, many=True) if reason_entries else None
+            activity_serializer = ActivityEntrySerializer(activity_entries, many=True) if activity_entries else None
+            journal_serializer = JournalEntrySerializer(journal_entry) if journal_entry else None
+            primary_emotion_image = None
+            if primary_mood_entry:
+                primary_emotion_instance = Emotion.objects.filter(name=primary_mood_entry.mood, type='primary').first()
+                if primary_emotion_instance:
+                    primary_emotion_image = primary_emotion_instance.image.url
+            data[str(date.date())] = {
+                "primary_mood": {
+                    "mood": primary_mood_serializer.data['mood'] if primary_mood_serializer else None,
+                    "date": str(date.date()),
+                    "emotion_image": primary_emotion_image
+                },
+                "secondary_mood": {
+                    "mood": secondary_mood_serializer.data['mood'] if secondary_mood_serializer else None,
+                    "date": str(date.date())
+                },
+                "reason": reason_serializer.data if reason_serializer else None,
+                "activity": activity_serializer.data if activity_serializer else None,
+                "note": journal_serializer.data['notes'] if journal_serializer else None,
+                
+            }
+        return Response(data, status=status.HTTP_200_OK)

@@ -94,3 +94,14 @@ class UserTags(models.Model):
 
     
     
+class TipsStress(models.Model):
+    description = models.TextField()
+    def _str_(self):
+        return self.description
+    
+class Tips(models.Model):
+    description = models.TextField()
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    emotion = models.CharField(max_length=100)
+    def _str_(self):
+        return self.description
