@@ -1,9 +1,11 @@
-# Dep_test.py
+
+
 
 ## warnings
 import warnings
 
 ## for data
+from MentalHealth.settings.common import BASE_DIR
 import numpy as np
 import pandas as pd
 
@@ -14,7 +16,7 @@ import seaborn as sns
 ## Bag of Words
 from sklearn.feature_extraction.text import CountVectorizer
 
-## TF-IDF
+## TF-IDF 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 ## Train-Test Split
@@ -24,7 +26,7 @@ from sklearn.model_selection import train_test_split
 import nltk
 import re
 import ftfy
-from nltk.stem import WordNetLemmatizer
+from nltk.stem import WordNetLemmatizer 
 from nltk.corpus import stopwords
 
 
@@ -50,137 +52,137 @@ import en_core_web_lg
 
 # Expand Contraction
 cList = {
-    "ain't": "am not",
-    "aren't": "are not",
-    "can't": "cannot",
-    "can't've": "cannot have",
-    "'cause": "because",
-    "could've": "could have",
-    "couldn't": "could not",
-    "couldn't've": "could not have",
-    "didn't": "did not",
-    "doesn't": "does not",
-    "don't": "do not",
-    "hadn't": "had not",
-    "hadn't've": "had not have",
-    "hasn't": "has not",
-    "haven't": "have not",
-    "he'd": "he would",
-    "he'd've": "he would have",
-    "he'll": "he will",
-    "he'll've": "he will have",
-    "he's": "he is",
-    "how'd": "how did",
-    "how'd'y": "how do you",
-    "how'll": "how will",
-    "how's": "how is",
-    "I'd": "I would",
-    "I'd've": "I would have",
-    "I'll": "I will",
-    "I'll've": "I will have",
-    "I'm": "I am",
-    "I've": "I have",
-    "isn't": "is not",
-    "it'd": "it had",
-    "it'd've": "it would have",
-    "it'll": "it will",
-    "it'll've": "it will have",
-    "it's": "it is",
-    "let's": "let us",
-    "ma'am": "madam",
-    "mayn't": "may not",
-    "might've": "might have",
-    "mightn't": "might not",
-    "mightn't've": "might not have",
-    "must've": "must have",
-    "mustn't": "must not",
-    "mustn't've": "must not have",
-    "needn't": "need not",
-    "needn't've": "need not have",
-    "o'clock": "of the clock",
-    "oughtn't": "ought not",
-    "oughtn't've": "ought not have",
-    "shan't": "shall not",
-    "sha'n't": "shall not",
-    "shan't've": "shall not have",
-    "she'd": "she would",
-    "she'd've": "she would have",
-    "she'll": "she will",
-    "she'll've": "she will have",
-    "she's": "she is",
-    "should've": "should have",
-    "shouldn't": "should not",
-    "shouldn't've": "should not have",
-    "so've": "so have",
-    "so's": "so is",
-    "that'd": "that would",
-    "that'd've": "that would have",
-    "that's": "that is",
-    "there'd": "there had",
-    "there'd've": "there would have",
-    "there's": "there is",
-    "they'd": "they would",
-    "they'd've": "they would have",
-    "they'll": "they will",
-    "they'll've": "they will have",
-    "they're": "they are",
-    "they've": "they have",
-    "to've": "to have",
-    "wasn't": "was not",
-    "we'd": "we had",
-    "we'd've": "we would have",
-    "we'll": "we will",
-    "we'll've": "we will have",
-    "we're": "we are",
-    "we've": "we have",
-    "weren't": "were not",
-    "what'll": "what will",
-    "what'll've": "what will have",
-    "what're": "what are",
-    "what's": "what is",
-    "what've": "what have",
-    "when's": "when is",
-    "when've": "when have",
-    "where'd": "where did",
-    "where's": "where is",
-    "where've": "where have",
-    "who'll": "who will",
-    "who'll've": "who will have",
-    "who's": "who is",
-    "who've": "who have",
-    "why's": "why is",
-    "why've": "why have",
-    "will've": "will have",
-    "won't": "will not",
-    "won't've": "will not have",
-    "would've": "would have",
-    "wouldn't": "would not",
-    "wouldn't've": "would not have",
-    "y'all": "you all",
-    "y'alls": "you alls",
-    "y'all'd": "you all would",
-    "y'all'd've": "you all would have",
-    "y'all're": "you all are",
-    "y'all've": "you all have",
-    "you'd": "you had",
-    "you'd've": "you would have",
-    "you'll": "you you will",
-    "you'll've": "you you will have",
-    "you're": "you are",
-    "you've": "you have",
+  "ain't": "am not",
+  "aren't": "are not",
+  "can't": "cannot",
+  "can't've": "cannot have",
+  "'cause": "because",
+  "could've": "could have",
+  "couldn't": "could not",
+  "couldn't've": "could not have",
+  "didn't": "did not",
+  "doesn't": "does not",
+  "don't": "do not",
+  "hadn't": "had not",
+  "hadn't've": "had not have",
+  "hasn't": "has not",
+  "haven't": "have not",
+  "he'd": "he would",
+  "he'd've": "he would have",
+  "he'll": "he will",
+  "he'll've": "he will have",
+  "he's": "he is",
+  "how'd": "how did",
+  "how'd'y": "how do you",
+  "how'll": "how will",
+  "how's": "how is",
+  "I'd": "I would",
+  "I'd've": "I would have",
+  "I'll": "I will",
+  "I'll've": "I will have",
+  "I'm": "I am",
+  "I've": "I have",
+  "isn't": "is not",
+  "it'd": "it had",
+  "it'd've": "it would have",
+  "it'll": "it will",
+  "it'll've": "it will have",
+  "it's": "it is",
+  "let's": "let us",
+  "ma'am": "madam",
+  "mayn't": "may not",
+  "might've": "might have",
+  "mightn't": "might not",
+  "mightn't've": "might not have",
+  "must've": "must have",
+  "mustn't": "must not",
+  "mustn't've": "must not have",
+  "needn't": "need not",
+  "needn't've": "need not have",
+  "o'clock": "of the clock",
+  "oughtn't": "ought not",
+  "oughtn't've": "ought not have",
+  "shan't": "shall not",
+  "sha'n't": "shall not",
+  "shan't've": "shall not have",
+  "she'd": "she would",
+  "she'd've": "she would have",
+  "she'll": "she will",
+  "she'll've": "she will have",
+  "she's": "she is",
+  "should've": "should have",
+  "shouldn't": "should not",
+  "shouldn't've": "should not have",
+  "so've": "so have",
+  "so's": "so is",
+  "that'd": "that would",
+  "that'd've": "that would have",
+  "that's": "that is",
+  "there'd": "there had",
+  "there'd've": "there would have",
+  "there's": "there is",
+  "they'd": "they would",
+  "they'd've": "they would have",
+  "they'll": "they will",
+  "they'll've": "they will have",
+  "they're": "they are",
+  "they've": "they have",
+  "to've": "to have",
+  "wasn't": "was not",
+  "we'd": "we had",
+  "we'd've": "we would have",
+  "we'll": "we will",
+  "we'll've": "we will have",
+  "we're": "we are",
+  "we've": "we have",
+  "weren't": "were not",
+  "what'll": "what will",
+  "what'll've": "what will have",
+  "what're": "what are",
+  "what's": "what is",
+  "what've": "what have",
+  "when's": "when is",
+  "when've": "when have",
+  "where'd": "where did",
+  "where's": "where is",
+  "where've": "where have",
+  "who'll": "who will",
+  "who'll've": "who will have",
+  "who's": "who is",
+  "who've": "who have",
+  "why's": "why is",
+  "why've": "why have",
+  "will've": "will have",
+  "won't": "will not",
+  "won't've": "will not have",
+  "would've": "would have",
+  "wouldn't": "would not",
+  "wouldn't've": "would not have",
+  "y'all": "you all",
+  "y'alls": "you alls",
+  "y'all'd": "you all would",
+  "y'all'd've": "you all would have",
+  "y'all're": "you all are",
+  "y'all've": "you all have",
+  "you'd": "you had",
+  "you'd've": "you would have",
+  "you'll": "you you will",
+  "you'll've": "you you will have",
+  "you're": "you are",
+  "you've": "you have"
 }
 
-c_re = re.compile("(%s)" % "|".join(cList.keys()))
-
+c_re = re.compile('(%s)' % '|'.join(cList.keys()))
 
 def expandContractions(text, c_re=c_re):
     def replace(match):
         return cList[match.group(0)]
-
     return c_re.sub(replace, text)
 
 
 # In[35]:
+
+
 def tokenize_sentece(t):
     # Define the number of words per substring
     words_per_slice = 7
@@ -189,19 +191,16 @@ def tokenize_sentece(t):
     words = t.split()
 
     # Use a list comprehension to group words into substrings
-    sliced_strings = [
-        " ".join(words[i : i + words_per_slice])
-        for i in range(0, len(words), words_per_slice)
-    ]
+    sliced_strings = [' '.join(words[i:i + words_per_slice]) for i in range(0, len(words), words_per_slice)]
 
     # Check if the last string has fewer words than the specified 'words_per_slice'
-    if len(words) % words_per_slice != 0 and len(words) > words_per_slice:
+    if len(words) % words_per_slice != 0:
         # If yes, append it to the previous string in the array with a space
-        sliced_strings[-2] += " " + " ".join(words[-(len(words) % words_per_slice) :])
+        sliced_strings[-2] += ' ' + ' '.join(words[-(len(words) % words_per_slice):])
         # Remove the last element from the array
         sliced_strings.pop()
 
-    # Return the result
+    # Print the result
     return sliced_strings
 
 
@@ -212,62 +211,58 @@ def tokenize_sentece(t):
 def text_cleaner(tweet):
 
     cleaned_tweets = []
-    tweet = tweet.lower()  # lowercase
-
+    tweet = tweet.lower() #lowercase
+    
     # if url links then don't append to avoid news articles
-    # also check tweet length, save those > 5
+    # also check tweet length, save those > 5 
     if re.match("(\w+:\/\/\S+)", tweet) == None and len(tweet) > 5:
+    
+        #remove hashtag, @mention, emoji and image URLs
+        tweet = ' '.join(re.sub("(@[A-Za-z0-9]+)|(\#[A-Za-z0-9]+)|(<.>)|(pic\.twitter\.com\/.*)", " ", tweet).split())
 
-        # remove hashtag, @mention, emoji and image URLs
-        tweet = " ".join(
-            re.sub(
-                "(@[A-Za-z0-9]+)|(\#[A-Za-z0-9]+)|(<.>)|(pic\.twitter\.com\/.*)",
-                " ",
-                tweet,
-            ).split()
-        )
-
-        # fix weirdly encoded texts
+        #fix weirdly encoded texts
         tweet = ftfy.fix_text(tweet)
 
-        # expand contraction
+        #expand contraction
         tweet = expandContractions(tweet)
 
-        # remove punctuation
-        tweet = " ".join(re.sub("([^0-9A-Za-z \t])", " ", tweet).split())
 
-        # stop words and lemmatization
-        stop_words = set(stopwords.words("english"))
+        #remove punctuation
+        tweet = ' '.join(re.sub("([^0-9A-Za-z \t])", " ", tweet).split())
+
+        #stop words and lemmatization
+        stop_words = set(stopwords.words('english'))
         word_tokens = nltk.word_tokenize(tweet)
 
-        lemmatizer = WordNetLemmatizer()
-        filtered_sentence = [
-            lemmatizer.lemmatize(word) for word in word_tokens if not word in stop_words
-        ]
+        lemmatizer=WordNetLemmatizer()
+        filtered_sentence = [lemmatizer.lemmatize(word) for word in word_tokens if not word in stop_words]
         # back to string from list
-        tweet = " ".join(filtered_sentence)  # join words with a space in between them
+        tweet = ' '.join(filtered_sentence) # join words with a space in between them
 
         cleaned_tweets.append(tweet)
+        
 
     return cleaned_tweets
+     
 
 
 # In[37]:
 
 
 def final_res(t):
-    dep = 0
-    nondep = 0
+    dep=0
+    nondep=0
     for sentence in t:
         pred = model.predict(sentence)
-        if pred[0] == 1:
-            dep += 1
+        if pred[0]==1:
+            dep+=1
         else:
-            nondep += 1
-    if dep >= nondep:
+            nondep+=1
+    if dep>=nondep:
         return 1
     else:
         return 0
+    
 
 
 # In[38]:
@@ -279,20 +274,13 @@ nlp = en_core_web_lg.load()
 # In[46]:
 
 
-# with open("Depression_model.pkl", "rb") as file:
+# with open("Depression_model.pkl", 'rb') as file:  
 #     model = pickle.load(file)
 
 # model
 import os
-
-# Get the directory of the current script file
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Full path to the model file
-model_file = os.path.join(script_dir, "Depression_model.pkl")
-
-# Load the model
-with open(model_file, "rb") as file:
+model_path = os.path.join(BASE_DIR, 'apps', 'journal', 'scripts', 'Depression_model.pkl')
+with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
 
@@ -301,26 +289,25 @@ with open(model_file, "rb") as file:
 
 def text_processing1(text):
     senteces = tokenize_sentece(text)
-    results = []
-    for sentece in senteces:
+    results=[]
+    for sentece  in senteces: 
         corpus = text_cleaner(sentece)
-        result = np.array(
-            [
-                np.array([token.vector for token in nlp(s)]).mean(axis=0)
-                * np.ones((300))
-                for s in corpus
-            ]
-        )
+        result = np.array([np.array([token.vector for token in nlp(s)]).mean(axis=0) * np.ones((300)) \
+                   for s in corpus])
         results.append(result)
-
+    
     return results
 
 
 # In[48]:
 
-
 # return 1 for depression and 0 for not depression
 def predict(text):
-    test = text_processing1(text)
-    result = final_res(test)
+    test=text_processing1(text)
+    result=final_res(test)
     return result
+    
+    
+    
+
+

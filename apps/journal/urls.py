@@ -1,6 +1,4 @@
 from django.urls import include, path
-
-
 from .views import *
 
 
@@ -19,7 +17,10 @@ urlpatterns = [
     path('reasons/', ReasonListView.as_view(), name='reason-list'),
     path('activity-entries/', ActivityEntryView.as_view(), name='activity_entries'),
     path('reason-entries/', ReasonEntryView.as_view(), name='reason_entries'),
+    path('delete-user-input-today/', DeleteUserInputToday.as_view(), name='delete-user-input-today'),
+    path('user-input-list-by-month/', UserInputListByMonthAPIView.as_view(), name='user-input-list-by-month'),
 ]
+
 
 
 

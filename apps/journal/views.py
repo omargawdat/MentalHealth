@@ -1,13 +1,13 @@
 import calendar
 from datetime import datetime, date, timedelta
-
-from django.core.management import call_command
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .serializers import *
+from .scripts.Dep_test import predict
+from .scripts.Stress_test import predict
+
 
 
 class PrimaryEmotionList(APIView):
@@ -125,57 +125,23 @@ class CurrentMonthMoodsAPIView(APIView):
 
 class JournalEntryAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        # Check if a mood entry already exists for the current user and date
         existing_entry = JournalEntry.objects.filter(user=request.user, date=date.today()).first()
         if existing_entry:
-            # Update the existing entry with the new mood
             existing_entry.notes = request.data.get('notes')
+            existing_entry.has_stress = predict(existing_entry.notes)
+            existing_entry.has_depression = predict(existing_entry.notes)
             existing_entry.save()
             serializer = JournalEntrySerializer(existing_entry)
-
-            # Call the management commands to detect depression and stress
-            depression_detected = call_command('depression_detection_command')
-            stress_detected = call_command('stress_detection_command')
-
-            if depression_detected or stress_detected:
-                message = "Depression or stress detected"
-                status_code = status.HTTP_200_OK
-            else:
-                message = "No depression or stress detected"
-                status_code = status.HTTP_200_OK
-
-            response_data = {
-                "notes": serializer.data['notes'],
-                "date": date.today()
-            }
-
-            return Response(response_data, status=status_code)
-
-        # If no existing entry, create a new one
+            return Response(serializer.data, status=status.HTTP_200_OK)
         serializer = JournalEntrySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)
-
-            # Call the management commands to detect depression and stress
-            depression_detected = call_command('depression_detection_command')
-            stress_detected = call_command('stress_detection_command')
-
-            if depression_detected or stress_detected:
-                message = "Depression or stress detected"
-                status_code = status.HTTP_201_CREATED
-            else:
-                message = "No depression or stress detected"
-                status_code = status.HTTP_201_CREATED
-
-            response_data = {
-                "notes": serializer.data['notes'],
-                "date": date.today()
-            }
-
-            return Response(response_data, status=status_code)
-
+            journal_entry = serializer.save(user=request.user)
+            journal_entry.has_stress = predict(journal_entry.notes)
+            journal_entry.has_depression = predict(journal_entry.notes)
+            journal_entry.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    
 
 class PreferenceQuestionListView(APIView):
     def get(self, request):
@@ -243,3 +209,67 @@ class ReasonEntryView(APIView):
             return Response({'status': 'Success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class DeleteUserInputToday(APIView):
+    def delete(self, request):
+        user = request.user
+        today = date.today()
+        # Delete primary mood entry for today
+        MoodPrimaryEntry.objects.filter(user=user, date=today).delete()
+        # Delete secondary mood entry for today
+        MoodSecondEntry.objects.filter(user=user, date=today).delete()
+        # Delete journal entry for today
+        JournalEntry.objects.filter(user=user, date=today).delete()
+        # Delete activity entries for today
+        ActivityEntry.objects.filter(user=user, date=today).delete()
+        # Delete reason entries for today
+        ReasonEntry.objects.filter(user=user, date=today).delete()
+        return Response({'message': 'User input for today deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+
+
+class UserInputListByMonthAPIView(APIView):
+    serializer_class = MoodPrimaryEntrySerializer
+    def post(self, request):
+        # Get the month number from the request body
+        month_number = request.data.get('month_number')
+        if month_number is None:
+            return Response({'error': 'Month number is required'}, status=status.HTTP_400_BAD_REQUEST)
+        # Get the current user
+        current_user = self.request.user
+        # Get the year and month from the current date
+        today = datetime.today()
+        year = today.year
+        # Validate the month number
+        if not 1 <= month_number <= 12:
+            return Response({'error': 'Invalid month number'}, status=status.HTTP_400_BAD_REQUEST)
+        # Calculate the start and end dates for the specified month
+        start_date = datetime(year, month_number, 1).date()
+        end_date = start_date + timedelta(days=calendar.monthrange(year, month_number)[1] - 1)
+        # Retrieve mood entries for the specified month
+        mood_entries = MoodPrimaryEntry.objects.filter(user=current_user, date__range=(start_date, end_date)).order_by('date')
+        mood_data = []
+        # Iterate over each day of the specified month
+        current_date = start_date
+        while current_date <= end_date:
+            mood_entry = mood_entries.filter(date=current_date).first()
+            if mood_entry:
+                # If mood entry exists for the current day
+                mood = mood_entry.mood
+                emotion_instance = Emotion.objects.filter(name=mood, type='primary').first()
+                emotion_image_url = emotion_instance.image.url if emotion_instance else None
+                mood_data.append({
+                    'date': current_date,
+                    'mood': mood,
+                    'emotion_image': emotion_image_url
+                })
+            else:
+                # If no mood entry exists for the current day, add a special image
+                mood_data.append({
+                    'date': current_date,
+                    'mood': None,
+                    'emotion_image': '/media/Cream1.png'
+                })
+            # Move to the next day
+            current_date += timedelta(days=1)
+        return Response(mood_data, status=status.HTTP_200_OK)
