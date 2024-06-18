@@ -2,19 +2,22 @@
 
 ## What is [Mental Health]?
 
-[Mental Health] is a mobile/web application designed to uplift your spirits and steer you towards a happier, healthier life. 
+[Mental Health] is a mobile/web application designed to uplift your spirits and steer you towards a happier, healthier
+life.
 
 ## Our Mission 🌟
 
-Our core mission is to help people combat depression and improve their overall mood using proven therapeutic techniques. We leverage Cognitive Behavioral Therapy (CBT) methodologies to bring about positive change.
+Our core mission is to help people combat depression and improve their overall mood using proven therapeutic techniques.
+We leverage Cognitive Behavioral Therapy (CBT) methodologies to bring about positive change.
 
 ## Why Use [Mental Health]? 🤔
 
 - **Holistic Well-Being**: Improve your mental health without any medications or expensive therapy sessions.
-  
+
 - **Daily Journaling 📝**: Write down your thoughts, feelings, and moods to track your emotional well-being over time.
 
-- **Guided CBT Exercises 🌈**: Follow our interactive Cognitive Behavioral Therapy (CBT) exercises designed by experts to make you feel better, day by day.
+- **Guided CBT Exercises 🌈**: Follow our interactive Cognitive Behavioral Therapy (CBT) exercises designed by experts to
+  make you feel better, day by day.
 
 - **Privacy 🔒**: Your data is secure and will never be shared with third parties.
 
@@ -32,5 +35,4 @@ Anyone who is:
 2. Create your profile.
 3. Start your journey to a happier life!
 
-Thank you for considering [Project Name] as your companion in your mental well-being journey. Together, let's strive for a happier, healthier you!
 
