@@ -23,7 +23,6 @@ env/
 .env
 
 
-
 general.log
 
 db.sqlite3
