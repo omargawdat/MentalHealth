@@ -75,3 +75,10 @@ class PreferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Preference
         fields = ('id', 'question_text', 'tag', 'option1', 'option2')
+        
+class EmotionCountSerializer(serializers.Serializer):
+    mood = serializers.CharField()
+    count = serializers.IntegerField()
+class ActivityCountSerializer(serializers.Serializer):
+    activity = serializers.CharField()
+    count = serializers.IntegerField()

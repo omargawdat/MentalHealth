@@ -43,8 +43,8 @@ class JournalEntry(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     notes = models.TextField()
     date = models.DateField(auto_now_add=True)
-    has_stress=models.BooleanField(null=True)
-    has_depression=models.BooleanField(null=True)
+    has_stress=models.BooleanField(default=True)
+    has_depression=models.BooleanField(default=True)
     class Meta:
         unique_together = ('user', 'date')
 
@@ -91,17 +91,19 @@ class Preference(models.Model):
 class UserTags(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    
 
-    
-    
-class TipsStress(models.Model):
-    description = models.TextField()
-    def _str_(self):
-        return self.description
     
 class Tips(models.Model):
     description = models.TextField()
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     emotion = models.CharField(max_length=100)
-    def _str_(self):
+
+    def __str__(self):
         return self.description
+    
+class TipsStress(models.Model):
+    description = models.TextField()
+
+    def __str__(self):
+        return self.description    
