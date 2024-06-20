@@ -1,6 +1,4 @@
-
 [
-
   {
     "model": "journal.emotion",
     "pk": 1,
@@ -9,7 +7,6 @@
       "description": "A strong feeling of affection and concern toward another person.",
       "image": "love.png",
       "type": "primary"
-      
     }
   },
   {
@@ -20,7 +17,6 @@
       "description": "A feeling of revulsion or profound disapproval aroused by something unpleasant or offensive.",
       "image": "disgust.png",
       "type": "primary"
-      
     }
   },
   {
@@ -31,7 +27,6 @@
       "description": "A feeling of mild astonishment or shock caused by something unexpected.",
       "image": "surprise.png",
       "type": "primary"
-      
     }
   },
   {
@@ -450,7 +445,7 @@
     "fields": {
       "name": "hurt",
       "description": "Emotional pain or distress.",
-      "image": "Hurt.png",
+      "image": "hurt.png",
       "type": "Sadness"
     }
   },
