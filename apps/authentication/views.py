@@ -8,6 +8,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken
+from apps.learning.models import *
+from .serializers import RegisterSerializer
 
 from .models import Profile
 from .serializers import EmailVerificationSerializer, LoginSerializer, PasswordChangeSerializer, RegisterSerializer, \
@@ -17,7 +20,10 @@ from .utilities.send_otp_email import send_otp_via_email
 
 User = get_user_model()
 
-
+def initialize_user_progress(user):
+    lessons = Lesson.objects.all()
+    for lesson in lessons:
+        UserProgress.objects.create(user=user, lesson=lesson, read=False)
 class UserRegistrationView(APIView):
     permission_classes = []
 
@@ -26,6 +32,7 @@ class UserRegistrationView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+            initialize_user_progress(user)
 
             otp_sent = send_otp_via_email(user.email, "creating an account")
             cache_key = f"otp_{user.id}"
