@@ -25,7 +25,7 @@ urlpatterns = [
     path('report/', Report.as_view(), name='daily_report'),
     path('report-month/', Report2.as_view(), name='daily_report'),
     path('delete-user-input-today/', DeleteUserInputToday.as_view(), name='delete-user-input-today'),
-   
+    path('user-input-list-by-month/', UserInputListByMonthAPIView.as_view(), name='user-input-list-by-month'),
 
 ]
 

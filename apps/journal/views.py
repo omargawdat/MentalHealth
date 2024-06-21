@@ -403,3 +403,48 @@ class DeleteUserInputToday(APIView):
         ReasonEntry.objects.filter(user=user, date=today).delete()
         return Response({'message': 'User input for today deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
     
+class UserInputListByMonthAPIView(APIView):
+    serializer_class = MoodPrimaryEntrySerializer
+    def post(self, request):
+        # Get the month number from the request body
+        month_number = request.data.get('month_number')
+        if month_number is None:
+            return Response({'error': 'Month number is required'}, status=status.HTTP_400_BAD_REQUEST)
+        # Get the current user
+        current_user = self.request.user
+        # Get the year and month from the current date
+        today = datetime.today()
+        year = today.year
+        # Validate the month number
+        if not 1 <= month_number <= 12:
+            return Response({'error': 'Invalid month number'}, status=status.HTTP_400_BAD_REQUEST)
+        # Calculate the start and end dates for the specified month
+        start_date = datetime(year, month_number, 1).date()
+        end_date = start_date + timedelta(days=calendar.monthrange(year, month_number)[1] - 1)
+        # Retrieve mood entries for the specified month
+        mood_entries = MoodPrimaryEntry.objects.filter(user=current_user, date__range=(start_date, end_date)).order_by('date')
+        mood_data = []
+        # Iterate over each day of the specified month
+        current_date = start_date
+        while current_date <= end_date:
+            mood_entry = mood_entries.filter(date=current_date).first()
+            if mood_entry:
+                # If mood entry exists for the current day
+                mood = mood_entry.mood
+                emotion_instance = Emotion.objects.filter(name=mood, type='primary').first()
+                emotion_image_url = emotion_instance.image.url if emotion_instance else None
+                mood_data.append({
+                    'date': current_date,
+                    'mood': mood,
+                    'emotion_image': emotion_image_url
+                })
+            else:
+                # If no mood entry exists for the current day, add a special image
+                mood_data.append({
+                    'date': current_date,
+                    'mood': None,
+                    'emotion_image': '/media/Cream1.png'
+                })
+            # Move to the next day
+            current_date += timedelta(days=1)
+        return Response(mood_data, status=status.HTTP_200_OK)
