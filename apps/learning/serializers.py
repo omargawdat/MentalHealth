@@ -14,13 +14,7 @@ class SubTopicSerializer(serializers.ModelSerializer):
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
-        fields = ['id', 'name',  'subtopic']
-
-class UserProgressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserProgress
-        fields = ['user', 'lesson', 'read']
-
+        fields = ['id', 'name', 'subtopic']
 
 class UserProgressSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,27 +26,31 @@ class LessonWithProgressSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ['id', 'name',  'subtopic', 'user_progress']
+        fields = ['id', 'name', 'subtopic', 'user_progress']
 
     def get_user_progress(self, obj):
         request = self.context.get('request')
         if request and hasattr(request, 'user'):
+            user = request.user
             try:
-                user = request.user
                 progress = UserProgress.objects.get(user=user, lesson=obj)
-                if not progress.read:
-                    # Check if this is the first lesson for the user
-                    first_lesson = Lesson.objects.filter(subtopic=obj.subtopic).order_by('id').first()
-                    if first_lesson == obj:
+            except UserProgress.DoesNotExist:
+                progress = None
+            
+            # Find the first lesson in the first subtopic of the topic
+            first_subtopic = SubTopic.objects.filter(topic=obj.subtopic.topic).order_by('id').first()
+            if first_subtopic:
+                first_lesson = Lesson.objects.filter(subtopic=first_subtopic).order_by('id').first()
+                if first_lesson == obj:
+                    if not progress:
+                        progress = UserProgress.objects.create(user=user, lesson=obj, read=True)
+                    elif not progress.read:
                         progress.read = True
                         progress.save()
+
+            if progress:
                 return UserProgressSerializer(progress).data
-            except UserProgress.DoesNotExist:
-                # If there's no progress, create a new one for the user
-                first_lesson = Lesson.objects.filter(subtopic=obj.subtopic).order_by('id').first()
-                if first_lesson == obj:
-                    progress = UserProgress.objects.create(user=user, lesson=obj, read=True)
-                    return UserProgressSerializer(progress).data
+        
         return None
 
 class LessonIdSerializer(serializers.Serializer):
