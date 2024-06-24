@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "apps.weekly",
     "apps.cbt",
     "apps.learning",
+    "apps.plan",
 ]
 
 MIDDLEWARE = [
