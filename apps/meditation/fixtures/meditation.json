@@ -48,5 +48,35 @@
       "url": "7J6goi1udgaBa1nVAoeCoH",
       "duration": "364"
     }
+  },
+  {
+    "model": "meditation.meditation",
+    "pk": 6,
+    "fields": {
+      "name": "Grounded Meditation",
+      "image": "meditation1.png",
+      "url": "2JtwMICkM36sP0JIEH29em",
+      "duration": "364"
+    }
+  },
+  {
+    "model": "meditation.meditation",
+    "pk": 7,
+    "fields": {
+      "name": "Grounded Meditation",
+      "image": "meditation2.png",
+      "url": "3TN6sMspsyPFZclSbbCJuz",
+      "duration": "364"
+    }
+  },
+  {
+    "model": "meditation.meditation",
+    "pk": 8,
+    "fields": {
+      "name": "Grounded Meditation",
+      "image": "meditation3.png",
+      "url": "7J6goi1udgaBa1nVAoeCoH",
+      "duration": "364"
+    }
   }
 ]
