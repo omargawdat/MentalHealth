@@ -1,6 +1,6 @@
 # apps/plan/serializers.py
 from rest_framework import serializers
-from .models import Topic, Activity,UserActivity
+from .models import DepActivity, Topic, Activity,UserActivity
 from apps.journal.serializers import TagSerializer
 
 class TopicSerializer(serializers.ModelSerializer):
@@ -26,3 +26,14 @@ class TopicWithActivitiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ('id', 'name', 'color', 'image', 'activities')
+
+
+class DepActivitySerializer(serializers.ModelSerializer):
+    tag = TagSerializer()
+    level = serializers.StringRelatedField()  
+    class Meta:
+        model = DepActivity
+        fields = ('text', 'tag', 'level')
+
+class ActivityNumberSerializer(serializers.Serializer):
+    number = serializers.IntegerField()

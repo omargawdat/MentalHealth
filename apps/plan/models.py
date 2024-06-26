@@ -18,7 +18,6 @@ class Activity(models.Model):
     def __str__(self):
         return f"{self.topic.name} - {self.text[:50]}"
 
-
 class UserActivity(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
@@ -28,3 +27,29 @@ class UserActivity(models.Model):
     flag = models.BooleanField(default=False)  
     def __str__(self):
         return f"{self.user.username} - {self.topic.name} - {self.number}"
+
+
+
+class Level(models.Model):
+    name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
+    
+class DepActivity(models.Model):
+    text = models.TextField()
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.text
+    
+class UserDepActivity(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    number = models.IntegerField()
+    text = models.TextField()
+    flag = models.BooleanField(default=False)  
+
+    def str(self):
+        return f"{self.user.username} - {self.topic.name} - {self.number}"

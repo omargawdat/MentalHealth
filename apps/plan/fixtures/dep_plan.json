@@ -1,0 +1,2997 @@
+[
+    {
+        "model": "plan.level",
+        "pk": 1,
+        "fields": {
+            "name": "no depression"
+        }
+    },
+    {
+        "model": "plan.level",
+        "pk": 2,
+        "fields": {
+            "name": "normal but unhappy"
+        }
+    },
+    {
+        "model": "plan.level",
+        "pk": 3,
+        "fields": {
+            "name": "mild depression"
+        }
+    },
+    {
+        "model": "plan.level",
+        "pk": 4,
+        "fields": {
+            "name": "moderate depression"
+        }
+    },
+    {
+        "model": "plan.level",
+        "pk": 5,
+        "fields": {
+            "name": "severe depression"
+        }
+    },
+    {
+        "model": "plan.level",
+        "pk": 6,
+        "fields": {
+            "name": "extreme depression"
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 1,
+        "fields": {
+            "text": "Light jogging or walking: Enjoy light jogging or walking to get your body moving.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 2,
+        "fields": {
+            "text": "Yoga or stretching: Practice yoga or stretching to improve flexibility and relax.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 3,
+        "fields": {
+            "text": "Swimming: Swim to exercise and feel refreshed.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 4,
+        "fields": {
+            "text": "Biking: Go biking to enjoy the outdoors and stay active.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 5,
+        "fields": {
+            "text": "Playing catch or frisbee: Engage in a fun game of catch or frisbee.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 6,
+        "fields": {
+            "text": "Dance class: Join a dance class for a fun workout.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 7,
+        "fields": {
+            "text": "Pilates: Strengthen your core and improve posture with Pilates.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 8,
+        "fields": {
+            "text": "Hiking: Explore nature with a hiking trip.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 9,
+        "fields": {
+            "text": "Table tennis: Play table tennis for a fun and active time.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 10,
+        "fields": {
+            "text": "Badminton: Enjoy a game of badminton to stay active.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 11,
+        "fields": {
+            "text": "Rollerblading: Go rollerblading for a fun and engaging activity.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 12,
+        "fields": {
+            "text": "Horseback riding: Experience the joy of horseback riding.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 13,
+        "fields": {
+            "text": "Light weight training: Engage in light weight training for strength.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 14,
+        "fields": {
+            "text": "Golfing: Play a round of golf to enjoy some fresh air and light activity.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 15,
+        "fields": {
+            "text": "Bowling: Go bowling for a fun and social activity.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 16,
+        "fields": {
+            "text": "Group fitness class: Join a group fitness class for motivation and social interaction.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 17,
+        "fields": {
+            "text": "Tai Chi: Practice Tai Chi for gentle exercise and relaxation.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 18,
+        "fields": {
+            "text": "Rock climbing (indoor): Try indoor rock climbing for a fun and challenging activity.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 19,
+        "fields": {
+            "text": "Aqua aerobics: Participate in aqua aerobics for a low-impact workout.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 20,
+        "fields": {
+            "text": "Zumba: Join a Zumba class for a high-energy dance workout.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 21,
+        "fields": {
+            "text": "Martial arts class: Learn self-defense and stay active with a martial arts class.",
+            "tag": 1,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 22,
+        "fields": {
+            "text": "Gentle stretching: Ease into your day with some gentle stretches.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 23,
+        "fields": {
+            "text": "Short walks: Take brief walks to clear your mind and get some light exercise.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 24,
+        "fields": {
+            "text": "Breathing exercises: Practice breathing exercises to calm your mind.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 25,
+        "fields": {
+            "text": "Gentle yoga: Perform gentle yoga poses to relax and stretch your body.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 26,
+        "fields": {
+            "text": "Tai Chi: Practice Tai Chi for gentle exercise and relaxation.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 27,
+        "fields": {
+            "text": "Playing with a pet: Spend time playing with a pet for companionship and joy.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 28,
+        "fields": {
+            "text": "Light swimming: Enjoy a light swim for relaxation and exercise.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 29,
+        "fields": {
+            "text": "Gardening: Tend to your garden for a calming and productive activity.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 30,
+        "fields": {
+            "text": "Dancing in your room: Dance in your room to your favorite music for fun and movement.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 31,
+        "fields": {
+            "text": "Stretch bands exercises: Use stretch bands for gentle resistance training.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 32,
+        "fields": {
+            "text": "Short bike rides: Take short bike rides to enjoy the outdoors and get some light exercise.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 33,
+        "fields": {
+            "text": "Light Pilates: Engage in light Pilates for core strength and flexibility.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 34,
+        "fields": {
+            "text": "Foam rolling: Use a foam roller to release muscle tension and relax.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 35,
+        "fields": {
+            "text": "Chair yoga: Practice chair yoga for gentle stretching and relaxation.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 36,
+        "fields": {
+            "text": "Walking a dog: Take your dog for a walk to get some fresh air and light exercise.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 37,
+        "fields": {
+            "text": "Easy hiking trails: Explore easy hiking trails for a gentle outdoor activity.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 38,
+        "fields": {
+            "text": "Light aerobic exercises: Perform light aerobic exercises to get your heart rate up.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 39,
+        "fields": {
+            "text": "Water walking in a pool: Walk in the pool for a low-impact exercise.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 40,
+        "fields": {
+            "text": "Balance exercises: Practice balance exercises to improve stability and coordination.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 41,
+        "fields": {
+            "text": "Gentle dance movements: Perform gentle dance movements to relax and enjoy.",
+            "tag": 1,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 42,
+        "fields": {
+            "text": "Meditation with slight movement: Combine meditation with slight movements for relaxation.",
+            "tag": 1,
+            "level": 5
+        }
+    }, {
+        "model": "plan.DepActivity",
+        "pk": 43,
+        "fields": {
+            "text": "Reading a favorite novel: Lose yourself in a favorite story.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 44,
+        "fields": {
+            "text": "Exploring new genres: Discover new books and genres to expand your reading list.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 45,
+        "fields": {
+            "text": "Reading poetry: Enjoy the rhythm and emotion of poetry.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 46,
+        "fields": {
+            "text": "Audiobooks: Listen to audiobooks to enjoy stories on the go.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 47,
+        "fields": {
+            "text": "Joining a book club: Join a book club for social interaction and new book recommendations.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 48,
+        "fields": {
+            "text": "Reading non-fiction: Learn something new with non-fiction books.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 49,
+        "fields": {
+            "text": "Short stories: Enjoy short stories for a quick reading experience.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 50,
+        "fields": {
+            "text": "Biographies: Read biographies to learn about interesting lives.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 51,
+        "fields": {
+            "text": "Travel books: Explore new destinations with travel books.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 52,
+        "fields": {
+            "text": "Cookbooks: Discover new recipes with cookbooks.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 53,
+        "fields": {
+            "text": "Science fiction: Dive into the world of science fiction.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 54,
+        "fields": {
+            "text": "Fantasy novels: Enjoy the magic of fantasy novels.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 55,
+        "fields": {
+            "text": "Historical fiction: Travel back in time with historical fiction.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 56,
+        "fields": {
+            "text": "Graphic novels: Experience stories through graphic novels.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 57,
+        "fields": {
+            "text": "Children's books: Enjoy the simplicity and joy of children's books.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 58,
+        "fields": {
+            "text": "Self-help books: Read self-help books for personal growth and inspiration.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 59,
+        "fields": {
+            "text": "Magazines: Relax with your favorite magazines.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 60,
+        "fields": {
+            "text": "Reading blogs: Stay updated with interesting blogs.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 61,
+        "fields": {
+            "text": "Reading for relaxation: Choose light reading material for relaxation.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 62,
+        "fields": {
+            "text": "Listening to podcasts about books: Listen to podcasts about books and authors.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 63,
+        "fields": {
+            "text": "Reading comics: Enjoy the fun and creativity of comics.",
+            "tag": 2,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 64,
+        "fields": {
+            "text": "Reading short, uplifting stories: Choose short, uplifting stories for a quick boost.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 65,
+        "fields": {
+            "text": "Picture books: Enjoy the visual and textual simplicity of picture books.",
+            "tag": 2,
+            "level": 5
+        }
+    },    {
+        "model": "plan.DepActivity",
+        "pk": 66,
+        "fields": {
+            "text": "Inspirational quotes: Read collections of inspirational quotes.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 67,
+        "fields": {
+            "text": "Nature books: Read books about nature and wildlife.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 68,
+        "fields": {
+            "text": "Simple poetry: Enjoy simple and uplifting poetry.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 69,
+        "fields": {
+            "text": "Lighthearted fiction: Choose lighthearted fiction for a cheerful reading experience.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 70,
+        "fields": {
+            "text": "Reading book summaries: Read summaries of books to get a quick overview.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 71,
+        "fields": {
+            "text": "Reading calming articles: Choose articles with calming and positive topics.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 72,
+        "fields": {
+            "text": "Reading about hobbies: Find books and articles about hobbies you enjoy.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 73,
+        "fields": {
+            "text": "Reading travel guides: Explore travel guides to plan future trips.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 74,
+        "fields": {
+            "text": "Reading children's literature: Enjoy the simplicity and joy of children's literature.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 75,
+        "fields": {
+            "text": "Browsing coffee table books: Look through coffee table books with beautiful pictures.",
+            "tag": 2,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 76,
+        "fields": {
+            "text": "Financial planning: Take time to plan your finances and budget.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 77,
+        "fields": {
+            "text": "Reading financial advice: Learn from financial advice books and articles.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 78,
+        "fields": {
+            "text": "Saving strategies: Explore different strategies to save money.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 79,
+        "fields": {
+            "text": "Investment research: Spend time researching investment opportunities.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 80,
+        "fields": {
+            "text": "Budgeting apps: Use budgeting apps to manage your finances.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 81,
+        "fields": {
+            "text": "Financial podcasts: Listen to financial podcasts for tips and insights.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 82,
+        "fields": {
+            "text": "Expense tracking: Track your expenses to see where your money goes.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 83,
+        "fields": {
+            "text": "Debt reduction planning: Create a plan to reduce and eliminate debt.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 84,
+        "fields": {
+            "text": "Learning about taxes: Educate yourself about taxes and how to manage them.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 85,
+        "fields": {
+            "text": "Retirement planning: Start planning for your retirement.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 86,
+        "fields": {
+            "text": "Insurance review: Review your insurance policies and needs.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 87,
+        "fields": {
+            "text": "Learning about credit: Understand how credit works and how to improve it.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 88,
+        "fields": {
+            "text": "Setting financial goals: Set short-term and long-term financial goals.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 89,
+        "fields": {
+            "text": "Learning about financial independence: Explore concepts of financial independence.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 90,
+        "fields": {
+            "text": "Frugality tips: Find tips on living frugally and saving money.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 91,
+        "fields": {
+            "text": "Estate planning: Begin planning your estate and wills.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 92,
+        "fields": {
+            "text": "Creating a financial plan: Develop a comprehensive financial plan.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 93,
+        "fields": {
+            "text": "Learning about mutual funds: Understand how mutual funds work.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 94,
+        "fields": {
+            "text": "Reading personal finance blogs: Stay informed with personal finance blogs.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 95,
+        "fields": {
+            "text": "Reading financial news: Keep up with the latest financial news.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 96,
+        "fields": {
+            "text": "Listening to financial audiobooks: Listen to financial audiobooks for learning on the go.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 97,
+        "fields": {
+            "text": "Watching financial documentaries: Learn from financial documentaries and videos.",
+            "tag": 3,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 98,
+        "fields": {
+            "text": "Calculating net worth: Calculate your net worth to see your financial health.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 99,
+        "fields": {
+            "text": "Reading simple budgeting guides: Find simple guides to help you budget better.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 100,
+        "fields": {
+            "text": "Simple savings plans: Start with simple plans to save money regularly.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 101,
+        "fields": {
+            "text": "Managing small investments: Begin with small investments to learn the basics.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 102,
+        "fields": {
+            "text": "Learning about budgeting tools: Discover tools that can help you budget.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 103,
+        "fields": {
+            "text": "Understanding credit scores: Learn what affects your credit score.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 104,
+        "fields": {
+            "text": "Setting up emergency funds: Start setting up emergency funds for unexpected expenses.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 105,
+        "fields": {
+            "text": "Learning about loans: Understand how different types of loans work.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 106,
+        "fields": {
+            "text": "Paying off small debts: Focus on paying off small debts first.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 107,
+        "fields": {
+            "text": "Using cashback offers: Take advantage of cashback offers and rewards.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 108,
+        "fields": {
+            "text": "Planning for education expenses: Start planning for future education expenses.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 109,
+        "fields": {
+            "text": "Learning about insurance options: Explore different insurance options available.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 110,
+        "fields": {
+            "text": "Learning about mortgage options: Understand different mortgage options.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 111,
+        "fields": {
+            "text": "Simple investing guides: Read simple guides to understand investing basics.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 112,
+        "fields": {
+            "text": "Learning about bonds: Understand how bonds work and their benefits.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 113,
+        "fields": {
+            "text": "Learning about stocks: Learn the basics of stock market investing.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 114,
+        "fields": {
+            "text": "Learning about index funds: Understand what index funds are and how they work.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 115,
+        "fields": {
+            "text": "Setting up a savings account: Start by setting up a basic savings account.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 116,
+        "fields": {
+            "text": "Understanding 401(k) plans: Learn about 401(k) plans and how they work.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 117,
+        "fields": {
+            "text": "Understanding IRAs: Learn the basics of Individual Retirement Accounts (IRAs).",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 118,
+        "fields": {
+            "text": "Learning about annuities: Understand how annuities work and their benefits.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 119,
+        "fields": {
+            "text": "Learning about ETFs: Understand what Exchange Traded Funds (ETFs) are.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 120,
+        "fields": {
+            "text": "Understanding the basics of real estate investing: Learn the basics of real estate investment.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 121,
+        "fields": {
+            "text": "Using financial calculators: Use online calculators to plan your finances.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 122,
+        "fields": {
+            "text": "Learning about dividends: Understand how dividends work and their benefits.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 123,
+        "fields": {
+            "text": "Learning about asset allocation: Understand how to allocate assets in a portfolio.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 124,
+        "fields": {
+            "text": "Learning about tax-advantaged accounts: Explore different tax-advantaged savings accounts.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 125,
+        "fields": {
+            "text": "Understanding compound interest: Learn how compound interest works and its impact.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 126,
+        "fields": {
+            "text": "Creating a simple financial goal: Set a simple, achievable financial goal.",
+            "tag": 3,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 127,
+        "fields": {
+            "text": "Decluttering: Start with decluttering a small area of your home.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 128,
+        "fields": {
+            "text": "Organizing a closet: Organize your closet to make it more functional.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 129,
+        "fields": {
+            "text": "Cleaning a room: Focus on cleaning one room thoroughly.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 130,
+        "fields": {
+            "text": "Rearranging furniture: Change the layout of your furniture for a fresh look.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 131,
+        "fields": {
+            "text": "Gardening: Spend time working in your garden or caring for indoor plants.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 132,
+        "fields": {
+            "text": "DIY home projects: Start a small DIY home improvement project.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 133,
+        "fields": {
+            "text": "Decorating: Add some new decorations to your home.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 134,
+        "fields": {
+            "text": "Setting up a home workspace: Create a dedicated workspace for productivity.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 135,
+        "fields": {
+            "text": "Creating a cleaning schedule: Make a schedule to keep your home clean.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 136,
+        "fields": {
+            "text": "Home maintenance: Perform regular maintenance tasks around the house.",
+            "tag": 4,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 137,
+        "fields": {
+            "text": "Painting a room: Give a room a fresh coat of paint.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 138,
+        "fields": {
+            "text": "Cleaning windows: Clean the windows to let in more natural light.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 139,
+        "fields": {
+            "text": "Cleaning floors: Deep clean the floors in your home.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 140,
+        "fields": {
+            "text": "Cleaning the kitchen: Focus on cleaning and organizing the kitchen.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 141,
+        "fields": {
+            "text": "Organizing the garage: Tackle the garage and get it organized.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 142,
+        "fields": {
+            "text": "Cleaning out the attic: Clean and organize the attic space.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 143,
+        "fields": {
+            "text": "Setting up home security: Install or check on home security systems.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 144,
+        "fields": {
+            "text": "Fixing minor repairs: Take care of minor repairs around the house.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 145,
+        "fields": {
+            "text": "Cleaning out the fridge: Clean and organize the refrigerator.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 146,
+        "fields": {
+            "text": "Cleaning the bathroom: Deep clean the bathroom.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 147,
+        "fields": {
+            "text": "Cleaning the basement: Clean and organize the basement.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 148,
+        "fields": {
+            "text": "Cleaning the laundry room: Organize and clean the laundry room.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 149,
+        "fields": {
+            "text": "Organizing storage areas: Tackle storage areas and get them organized.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 150,
+        "fields": {
+            "text": "Deep cleaning carpets: Rent a carpet cleaner and deep clean the carpets.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 151,
+        "fields": {
+            "text": "Setting up a guest room: Prepare a guest room for visitors.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 152,
+        "fields": {
+            "text": "Organizing paperwork: Sort and organize important documents and paperwork.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 153,
+        "fields": {
+            "text": "Cleaning out the car: Clean and organize your car.",
+            "tag": 4,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 154,
+        "fields": {
+            "text": "Simple socializing: Meet a friend for a casual coffee or tea.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 155,
+        "fields": {
+            "text": "Calling a family member: Have a phone call with a family member.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 156,
+        "fields": {
+            "text": "Social media interaction: Spend time on social media to connect with friends.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 157,
+        "fields": {
+            "text": "Joining an online community: Join an online community with similar interests.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 158,
+        "fields": {
+            "text": "Writing letters or emails: Write letters or emails to friends or family.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 159,
+        "fields": {
+            "text": "Attending a social event: Attend a local social event or gathering.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 160,
+        "fields": {
+            "text": "Playing online games: Play online games with friends or family.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 161,
+        "fields": {
+            "text": "Volunteering: Volunteer for a local organization or cause.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 162,
+        "fields": {
+            "text": "Joining a club: Join a local club or group with similar interests.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 163,
+        "fields": {
+            "text": "Planning a social outing: Plan an outing with friends or family.",
+            "tag": 5,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 164,
+        "fields": {
+            "text": "Organizing a gathering: Host a small gathering at your home.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 165,
+        "fields": {
+            "text": "Attending a large social event: Attend a large event like a concert or festival.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 166,
+        "fields": {
+            "text": "Taking a class or workshop: Take a class or workshop to meet new people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 167,
+        "fields": {
+            "text": "Joining a sports team: Join a local sports team or league.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 168,
+        "fields": {
+            "text": "Networking: Attend a networking event for professional connections.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 169,
+        "fields": {
+            "text": "Traveling with friends: Plan a trip with friends or family.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 170,
+        "fields": {
+            "text": "Hosting a party: Host a party at your home.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 171,
+        "fields": {
+            "text": "Joining a hobby group: Join a group focused on a shared hobby or interest.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 172,
+        "fields": {
+            "text": "Attending a conference: Go to a conference related to your interests.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 173,
+        "fields": {
+            "text": "Participating in a community project: Get involved in a local community project.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 174,
+        "fields": {
+            "text": "Joining a support group: Join a support group for a shared experience.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 175,
+        "fields": {
+            "text": "Attending a meetup: Go to a meetup for a specific interest or activity.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 176,
+        "fields": {
+            "text": "Going to a movie or show: See a movie or live show with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 177,
+        "fields": {
+            "text": "Participating in a book club: Join a book club and attend discussions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 178,
+        "fields": {
+            "text": "Organizing a group activity: Plan and organize a group activity or outing.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 179,
+        "fields": {
+            "text": "Setting up a study group: Join or start a study group for a common subject.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 180,
+        "fields": {
+            "text": "Attending a cultural event: Go to a cultural event like a museum or exhibit.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 181,
+        "fields": {
+            "text": "Playing team sports: Join a team sport activity such as soccer or basketball.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 182,
+        "fields": {
+            "text": "Networking events: Attend professional networking events to meet new people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 183,
+        "fields": {
+            "text": "Public speaking: Join a group like Toastmasters to improve public speaking skills.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 184,
+        "fields": {
+            "text": "Community volunteering: Participate in community service projects.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 185,
+        "fields": {
+            "text": "Joining a social club: Become a member of a social club with regular events.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 186,
+        "fields": {
+            "text": "Potluck dinners: Host or attend potluck dinners to socialize and share food.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 187,
+        "fields": {
+            "text": "Board game nights: Organize or attend board game nights with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 188,
+        "fields": {
+            "text": "Fundraising events: Attend events to support local causes and meet new people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 189,
+        "fields": {
+            "text": "Movie marathons: Host or join movie marathons with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 190,
+        "fields": {
+            "text": "Food festivals: Attend local food festivals to try new foods and meet people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 191,
+        "fields": {
+            "text": "Attending religious services: Participate in religious services or events.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 192,
+        "fields": {
+            "text": "Playing music with others: Join a band or music group to play instruments together.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 193,
+        "fields": {
+            "text": "Dance classes: Take dance classes with others to learn and socialize.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 194,
+        "fields": {
+            "text": "Cookouts: Organize or attend cookouts to enjoy food and company outdoors.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 195,
+        "fields": {
+            "text": "Farmers' markets: Visit farmers' markets to shop and engage with local vendors.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 196,
+        "fields": {
+            "text": "Art classes: Attend art classes to learn new skills and meet creative people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 197,
+        "fields": {
+            "text": "Hiking groups: Join hiking groups to explore nature and socialize.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 198,
+        "fields": {
+            "text": "Book signings: Attend book signings to meet authors and fellow readers.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 199,
+        "fields": {
+            "text": "Trivia nights: Participate in trivia nights at local venues.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 200,
+        "fields": {
+            "text": "Karaoke nights: Sing and enjoy karaoke nights with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 201,
+        "fields": {
+            "text": "Attending live theater: Go to live theater performances.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 202,
+        "fields": {
+            "text": "Visiting art galleries: Explore art galleries and exhibitions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 203,
+        "fields": {
+            "text": "Outdoor adventures: Participate in outdoor adventure activities.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 204,
+        "fields": {
+            "text": "Craft fairs: Visit craft fairs to see handmade goods and crafts.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 205,
+        "fields": {
+            "text": "Holiday celebrations: Participate in holiday events and parties.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 206,
+        "fields": {
+            "text": "Sports games: Attend local sports games and cheer for your team.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 207,
+        "fields": {
+            "text": "Trivia competitions: Compete in trivia competitions with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 208,
+        "fields": {
+            "text": "Nature walks: Go on nature walks to enjoy the outdoors and socialize.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 209,
+        "fields": {
+            "text": "Writing workshops: Attend writing workshops to improve skills and meet others.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 210,
+        "fields": {
+            "text": "Storytelling events: Participate in storytelling events or open mic nights.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 211,
+        "fields": {
+            "text": "Language classes: Take language classes to learn and meet new people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 212,
+        "fields": {
+            "text": "Photography clubs: Join photography clubs to share and improve your photography.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 213,
+        "fields": {
+            "text": "Cultural festivals: Attend cultural festivals to experience different cultures.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 214,
+        "fields": {
+            "text": "Science fairs: Visit science fairs to learn and engage with others.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 215,
+        "fields": {
+            "text": "Wine tastings: Attend wine tastings to explore and enjoy wines.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 216,
+        "fields": {
+            "text": "Community cleanups: Participate in community cleanup events.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 217,
+        "fields": {
+            "text": "Pet meetups: Join pet meetups to socialize with other pet owners.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 218,
+        "fields": {
+            "text": "Book exchanges: Participate in book exchange events to swap books.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 219,
+        "fields": {
+            "text": "Yoga in the park: Join group yoga sessions in the park.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 220,
+        "fields": {
+            "text": "Open mic nights: Attend open mic nights to perform or watch performances.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 221,
+        "fields": {
+            "text": "Crafting groups: Join crafting groups to create and socialize.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 222,
+        "fields": {
+            "text": "Pub quizzes: Participate in pub quizzes with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 223,
+        "fields": {
+            "text": "Visiting local attractions: Explore local attractions and landmarks.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 224,
+        "fields": {
+            "text": "Running clubs: Join running clubs to exercise and meet new people.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 225,
+        "fields": {
+            "text": "Game development groups: Join groups focused on game development.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 226,
+        "fields": {
+            "text": "Film clubs: Participate in film clubs to watch and discuss movies.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 227,
+        "fields": {
+            "text": "Gardening groups: Join gardening groups to share tips and socialize.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 228,
+        "fields": {
+            "text": "Supporting local theater: Attend local theater productions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 229,
+        "fields": {
+            "text": "Charity runs: Participate in charity runs or walks.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 230,
+        "fields": {
+            "text": "Camping trips: Organize or join camping trips with friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 231,
+        "fields": {
+            "text": "Joining a sports league: Participate in local sports leagues.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 232,
+        "fields": {
+            "text": "Attending fairs: Visit local fairs and enjoy the activities.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 233,
+        "fields": {
+            "text": "Visiting historical sites: Explore local historical sites and museums.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 234,
+        "fields": {
+            "text": "Joining a running group: Run with others to stay motivated.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 235,
+        "fields": {
+            "text": "Joining an art club: Share and discuss art with others.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 236,
+        "fields": {
+            "text": "Participating in hackathons: Join hackathons to collaborate on projects.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 237,
+        "fields": {
+            "text": "Community gardening: Participate in community gardening projects.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 238,
+        "fields": {
+            "text": "Social media groups: Engage in social media groups related to your interests.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 239,
+        "fields": {
+            "text": "Joining a theater group: Act in or support local theater productions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 240,
+        "fields": {
+            "text": "Community cooking classes: Learn to cook new dishes with others.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 241,
+        "fields": {
+            "text": "Bird watching groups: Join groups focused on bird watching.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 242,
+        "fields": {
+            "text": "Museum tours: Take guided tours of museums and exhibitions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 243,
+        "fields": {
+            "text": "Cooking for friends: Host dinner parties and cook for friends.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 244,
+        "fields": {
+            "text": "Crafting sessions: Organize crafting sessions to create and socialize.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 245,
+        "fields": {
+            "text": "Community theater: Participate in or attend community theater productions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 246,
+        "fields": {
+            "text": "Book readings: Attend book readings and author signings.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 247,
+        "fields": {
+            "text": "Nature photography: Join groups focused on nature photography.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 248,
+        "fields": {
+            "text": "Dance clubs: Join dance clubs to practice and perform dance.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 249,
+        "fields": {
+            "text": "Supporting local artists: Attend exhibitions and support local artists.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 250,
+        "fields": {
+            "text": "Joining a choir: Sing in a choir to practice and perform music.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 251,
+        "fields": {
+            "text": "Community picnics: Participate in community picnics and gatherings.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 252,
+        "fields": {
+            "text": "Visiting botanical gardens: Explore and enjoy botanical gardens.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 253,
+        "fields": {
+            "text": "Supporting local musicians: Attend concerts and support local musicians.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 254,
+        "fields": {
+            "text": "Fitness challenges: Participate in group fitness challenges.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 255,
+        "fields": {
+            "text": "Wine and paint nights: Attend events combining wine tasting and painting.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 256,
+        "fields": {
+            "text": "Local history tours: Take guided tours of local historical sites.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 257,
+        "fields": {
+            "text": "Attending parades: Enjoy local parades and community celebrations.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 258,
+        "fields": {
+            "text": "Running for charity: Participate in charity runs or walks.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 259,
+        "fields": {
+            "text": "Participating in book swaps: Exchange books with others in the community.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 260,
+        "fields": {
+            "text": "Community bonfires: Join community bonfire events.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 261,
+        "fields": {
+            "text": "Joining a drama club: Act in or support local drama productions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 262,
+        "fields": {
+            "text": "Walking tours: Participate in guided walking tours of your city.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 263,
+        "fields": {
+            "text": "Ice skating groups: Join groups for ice skating activities.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 264,
+        "fields": {
+            "text": "Participating in scavenger hunts: Join community scavenger hunts.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 265,
+        "fields": {
+            "text": "Community game nights: Join game nights to play board games with others.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 266,
+        "fields": {
+            "text": "Writing clubs: Join writing clubs to share and critique work.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 267,
+        "fields": {
+            "text": "Visiting science museums: Explore science museums and exhibitions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 268,
+        "fields": {
+            "text": "Attending live music: Enjoy live music performances at local venues.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 269,
+        "fields": {
+            "text": "Nature conservation groups: Join groups focused on nature conservation.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 270,
+        "fields": {
+            "text": "Trivia nights: Compete in trivia nights at local bars or cafes.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 271,
+        "fields": {
+            "text": "Attending car shows: Visit local car shows and exhibitions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 272,
+        "fields": {
+            "text": "Organizing street parties: Plan or participate in street parties.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 273,
+        "fields": {
+            "text": "Board game cafes: Visit cafes that offer a variety of board games.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 274,
+        "fields": {
+            "text": "Supporting local charities: Volunteer for or donate to local charities.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 275,
+        "fields": {
+            "text": "Cycling groups: Join cycling groups to explore new routes together.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 276,
+        "fields": {
+            "text": "Nature hikes: Organize or join nature hikes with others.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 277,
+        "fields": {
+            "text": "Potluck dinners: Host or attend potluck dinners to share and enjoy food.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 278,
+        "fields": {
+            "text": "Attending poetry readings: Enjoy poetry readings at local venues.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 279,
+        "fields": {
+            "text": "Organizing sports tournaments: Plan sports tournaments for fun and competition.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 280,
+        "fields": {
+            "text": "Knitting groups: Join groups focused on knitting and crocheting.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 281,
+        "fields": {
+            "text": "Photography walks: Participate in photography walks to capture the beauty of your surroundings.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 282,
+        "fields": {
+            "text": "Scenic train rides: Enjoy scenic train rides with friends or family.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 283,
+        "fields": {
+            "text": "Attending local festivals: Participate in local festivals and cultural events.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 284,
+        "fields": {
+            "text": "Art gallery visits: Explore local art galleries and exhibitions.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 285,
+        "fields": {
+            "text": "Volunteering at events: Help organize and run local events.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 286,
+        "fields": {
+            "text": "Visiting heritage sites: Learn about local history by visiting heritage sites.",
+            "tag": 5,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 287,
+        "fields": {
+            "text": "Journaling: Write about your thoughts and experiences.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 288,
+        "fields": {
+            "text": "Listening to music: Enjoy your favorite songs and albums.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 289,
+        "fields": {
+            "text": "Meditating: Practice mindfulness and meditation to relax.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 290,
+        "fields": {
+            "text": "Drawing or coloring: Engage in creative drawing or coloring activities.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 291,
+        "fields": {
+            "text": "Watching favorite TV shows: Relax and watch your favorite TV shows.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 292,
+        "fields": {
+            "text": "Taking a warm bath: Unwind with a soothing warm bath.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 293,
+        "fields": {
+            "text": "Practicing gratitude: Reflect on things you are grateful for.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 294,
+        "fields": {
+            "text": "Trying new recipes: Experiment with cooking new recipes.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 295,
+        "fields": {
+            "text": "Practicing mindfulness: Engage in mindfulness exercises.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 296,
+        "fields": {
+            "text": "Walking in nature: Take relaxing walks in nature.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 297,
+        "fields": {
+            "text": "Trying a new hobby: Explore a new hobby or interest.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 298,
+        "fields": {
+            "text": "Playing a musical instrument: Practice playing a musical instrument.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 299,
+        "fields": {
+            "text": "Learning a new skill: Take time to learn a new skill.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 300,
+        "fields": {
+            "text": "Watching documentaries: Enjoy informative documentaries.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 301,
+        "fields": {
+            "text": "Creating a vision board: Make a vision board to visualize your goals.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 302,
+        "fields": {
+            "text": "Working on a puzzle: Solve puzzles to relax and stimulate your mind.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 303,
+        "fields": {
+            "text": "Knitting or crocheting: Engage in knitting or crocheting projects.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 304,
+        "fields": {
+            "text": "Doing a digital detox: Take a break from digital devices.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 305,
+        "fields": {
+            "text": "Trying aromatherapy: Use essential oils for relaxation.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 306,
+        "fields": {
+            "text": "Doing breathing exercises: Practice deep breathing exercises.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 307,
+        "fields": {
+            "text": "Engaging in creative writing: Write stories, poems, or journal entries.",
+            "tag": 6,
+            "level": 4
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 308,
+        "fields": {
+            "text": "Listening to calming music: Enjoy soothing and calming music.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 309,
+        "fields": {
+            "text": "Gentle stretching: Perform gentle stretching exercises.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 310,
+        "fields": {
+            "text": "Practicing deep breathing: Engage in deep breathing exercises.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 311,
+        "fields": {
+            "text": "Watching feel-good movies: Watch movies that uplift your mood.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 312,
+        "fields": {
+            "text": "Short nature walks: Take short, relaxing walks in nature.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 313,
+        "fields": {
+            "text": "Simple coloring books: Color in simple coloring books.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 314,
+        "fields": {
+            "text": "Writing down positive thoughts: Write down positive and uplifting thoughts.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 315,
+        "fields": {
+            "text": "Taking short naps: Rest and rejuvenate with short naps.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 316,
+        "fields": {
+            "text": "Light journaling: Write brief entries in your journal.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 317,
+        "fields": {
+            "text": "Petting a cat or dog: Spend time with a pet for comfort.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 318,
+        "fields": {
+            "text": "Watching favorite shows: Relax by watching your favorite TV shows.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 319,
+        "fields": {
+            "text": "Using essential oils: Use essential oils for a calming effect.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 320,
+        "fields": {
+            "text": "Drinking herbal tea: Sip on herbal tea to relax.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 321,
+        "fields": {
+            "text": "Listening to nature sounds: Enjoy the soothing sounds of nature.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 322,
+        "fields": {
+            "text": "Trying guided meditation: Follow guided meditation sessions.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 323,
+        "fields": {
+            "text": "Engaging in simple crafts: Enjoy simple and creative craft activities.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 324,
+        "fields": {
+            "text": "Watching funny videos: Watch humorous videos to lighten your mood.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 325,
+        "fields": {
+            "text": "Practicing gentle yoga: Practice gentle yoga poses for relaxation.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 326,
+        "fields": {
+            "text": "Sitting in the sun: Spend time outdoors and soak up some sunlight.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 327,
+        "fields": {
+            "text": "Sipping a favorite drink: Enjoy your favorite beverage as a calming ritual.",
+            "tag": 6,
+            "level": 5
+        }
+    },
+    {
+        "model": "plan.DepActivity",
+        "pk": 328,
+        "fields": {
+            "text": "Reading uplifting quotes: Find inspiration in uplifting and positive quotes.",
+            "tag": 6,
+            "level": 5
+        }
+    }
+    ]
+    
+
+

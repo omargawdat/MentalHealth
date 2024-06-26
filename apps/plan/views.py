@@ -2,9 +2,13 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .models import Topic, Activity, UserActivity
-from apps.journal.models import Tag, UserTags
-from .serializers import TopicSerializer, ActivitySerializer, UserActivitySerializer
+from datetime import datetime, timedelta
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from apps.depression_test.models import DepressionTestAttempt
+from .models import DepActivity, Topic, Activity, UserActivity, UserDepActivity
+from apps.journal.models import Tag, UserTags,JournalEntry
+from .serializers import ActivityNumberSerializer, DepActivitySerializer, TopicSerializer, ActivitySerializer, UserActivitySerializer
 import random
 
 
@@ -182,3 +186,124 @@ class FlagActivityView(APIView):
             }
         }
         return Response(response_data, status=status.HTTP_200_OK,)
+    
+
+class CheckDepressionStreakView(APIView):
+    def get(self, request):
+        user = request.user  
+        # Calculate the date range for the past 15 days
+        end_date = datetime.now().date()
+        start_date = end_date - timedelta(days=14)  # 15 days including today
+        # Query JournalEntry entries for the user within the date range
+        entries = JournalEntry.objects.filter(user=user, date__range=[start_date, end_date])
+        # Ensure there are exactly 15 entries
+        if entries.count() != 15:
+            return Response({'depression_streak': False}, status=status.HTTP_200_OK)
+        # Ensure all entries indicate depression
+        all_depression = all(entry.has_depression for entry in entries)
+        return Response({'depression_streak': all_depression}, status=status.HTTP_200_OK)
+    
+
+
+# Helper function to randomize activities and save to UserDepActivity model
+def get_user_depression_activities(user):
+    # Retrieve the most recent depression level
+    depression_test_attempt = DepressionTestAttempt.objects.filter(user=user).order_by('-timestamp').first()
+    if not depression_test_attempt:
+        return None, 'No depression test attempt found for the user.'
+    level_of_depression = depression_test_attempt.level_of_depression
+    # Retrieve user's tags
+    user_tags = UserTags.objects.filter(user=user).values_list('tag', flat=True)
+    if not user_tags.exists():
+        return None, 'No tags found for the user.'
+    # Retrieve activities related to the user's tags and level of depression
+    activities = DepActivity.objects.filter(tag__in=user_tags, level__name=level_of_depression)
+    if not activities.exists():
+        return None, level_of_depression
+    # Randomize and select up to 21 activities
+    random_activities = random.sample(list(activities), min(len(activities), 21))
+    # Clear previous user activities for this level
+    UserDepActivity.objects.filter(user=user, level__name=level_of_depression).delete()
+    # Save the randomized activities to UserDepActivity model
+    user_activities = []
+    for index, activity in enumerate(random_activities, start=1):
+        user_activity = UserDepActivity(
+            user=user, 
+            level=activity.level,
+            tag=activity.tag,
+            number=index,
+            text=activity.text,
+            flag=False
+        )
+        user_activities.append(user_activity)
+    UserDepActivity.objects.bulk_create(user_activities)
+    # Serialize the activities
+    activities_serializer = DepActivitySerializer(random_activities, many=True)
+    return activities_serializer.data, None
+
+
+# API view to generate and get user depression activities
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_depression_activities(request):
+    user = request.user
+    # Call function to generate and save new activities
+    activities, error = get_user_depression_activities(user)
+    if error:
+        return Response({'detail': error}, status=status.HTTP_404_NOT_FOUND)
+    return Response({'activities': activities}, status=status.HTTP_200_OK)
+
+# API view to change the flag of an activity to true
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def flag_depression_activity(request):
+    serializer = ActivityNumberSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    number = serializer.validated_data['number']
+    user = request.user
+    # Retrieve the most recent depression level
+    depression_test_attempt = DepressionTestAttempt.objects.filter(user=user).order_by('-timestamp').first()
+    if not depression_test_attempt:
+        return Response({'detail': 'No depression test attempt found for the user.'}, status=status.HTTP_404_NOT_FOUND)
+    level_of_depression = depression_test_attempt.level_of_depression
+    # Retrieve the activity from UserDepActivity model
+    try:
+        activity = UserDepActivity.objects.get(user=user, level__name=level_of_depression, number=number)
+    except UserDepActivity.DoesNotExist:
+        return Response({'detail': 'No activity found for the given number and depression level.'}, status=status.HTTP_404_NOT_FOUND)
+    # Set the flag to true
+    activity.flag = True
+    activity.save()
+    return Response({'detail': 'Activity flagged successfully.'}, status=status.HTTP_200_OK)
+
+# API view to get the first activity with flag=False
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_first_unflagged_activity(request):
+    user = request.user
+    # Retrieve the most recent depression level
+    depression_test_attempt = DepressionTestAttempt.objects.filter(user=user).order_by('-timestamp').first()
+    if not depression_test_attempt:
+        return Response({'detail': 'No depression test attempt found for the user.'}, status=status.HTTP_404_NOT_FOUND)
+    level_of_depression = depression_test_attempt.level_of_depression
+    # Check if there are any activities in UserDepActivity
+    if not UserDepActivity.objects.filter(user=user, level__name=level_of_depression).exists():
+        # Call function to generate and save new activities
+        activities, error = get_user_depression_activities(user)
+        if error:
+            return Response({'detail': error}, status=status.HTTP_404_NOT_FOUND)
+    # Retrieve the first activity from UserDepActivity model with flag=False
+    activity = UserDepActivity.objects.filter(user=user, level__name=level_of_depression, flag=False).order_by('number').first()
+    if not activity:
+        return Response({'detail': 'No unflagged activity found for the user and depression level.', 'level_depression': level_of_depression}, status=status.HTTP_404_NOT_FOUND)
+    # Check if this is the last unflagged activity
+    remaining_unflagged_count = UserDepActivity.objects.filter(user=user, level__name=level_of_depression, flag=False).count()
+    if remaining_unflagged_count == 1:
+        return Response({
+            'number': activity.number,
+            'text': activity.text,
+            'flag': activity.flag,
+            'message': 'This is the last unflagged activity. Please take the depression test again.'
+        }, status=status.HTTP_200_OK)
+    return Response({'number': activity.number, 'text': activity.text, 'flag': activity.flag}, status=status.HTTP_200_OK)
