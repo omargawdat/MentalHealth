@@ -50,6 +50,3 @@ class UserDepActivity(models.Model):
     number = models.IntegerField()
     text = models.TextField()
     flag = models.BooleanField(default=False)  
-
-    def str(self):
-        return f"{self.user.username} - {self.topic.name} - {self.number}"

@@ -18,8 +18,9 @@ class ActivitySerializer(serializers.ModelSerializer):
 class UserActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserActivity
-        fields = ('number', 'flag')
-        
+        fields = ('number', 'flag', 'text')
+
+
 class TopicWithActivitiesSerializer(serializers.ModelSerializer):
     activities = UserActivitySerializer(many=True, source='useractivity_set')
 
