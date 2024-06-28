@@ -37,9 +37,6 @@ class LessonListView(APIView):
         serializer = LessonWithProgressSerializer(lessons, many=True, context={'request': request})
         return Response(serializer.data)
 
-class LessonIdSerializer(serializers.Serializer):
-    lesson_id = serializers.IntegerField()
-
 class LessonContentView(APIView):
     def post(self, request):
         serializer = LessonIdSerializer(data=request.data)
@@ -48,33 +45,36 @@ class LessonContentView(APIView):
             try:
                 lesson = Lesson.objects.get(id=lesson_id)
                 user = request.user  # Assuming the user is authenticated
-
                 # Update user progress for the current lesson
                 UserProgress.objects.update_or_create(
                     user=user,
                     lesson_id=lesson_id,
                     defaults={'read': True}
                 )
-
                 # Check if this is the last lesson in the subtopic
                 last_lesson_in_subtopic = Lesson.objects.filter(subtopic=lesson.subtopic).order_by('-id').first()
                 if last_lesson_in_subtopic and lesson.id == last_lesson_in_subtopic.id:
-                    # No next lesson available
-                    return Response({'content': lesson.content})
-
-                # Proceed to find and update the next lesson
-                next_lesson = Lesson.objects.filter(subtopic=lesson.subtopic, id__gt=lesson.id).order_by('id').first()
-                if next_lesson:
-                    UserProgress.objects.update_or_create(
-                        user=user,
-                        lesson_id=next_lesson.id,
-                        defaults={'read': True}
-                    )
-                    return Response({'content': lesson.content})
-
-                return Response({'message': 'No next lesson found'}, status=status.HTTP_404_NOT_FOUND)
-
+                    # Find the next subtopic
+                    next_subtopic = SubTopic.objects.filter(topic=lesson.subtopic.topic, id__gt=lesson.subtopic.id).order_by('id').first()
+                    if next_subtopic:
+                        # Find the first lesson in the next subtopic
+                        first_lesson_in_next_subtopic = Lesson.objects.filter(subtopic=next_subtopic).order_by('id').first()
+                        if first_lesson_in_next_subtopic:
+                            UserProgress.objects.update_or_create(
+                                user=user,
+                                lesson_id=first_lesson_in_next_subtopic.id,
+                                defaults={'read': True}
+                            )
+                # Find the next lesson in the same subtopic
+                else:
+                    next_lesson = Lesson.objects.filter(subtopic=lesson.subtopic, id__gt=lesson.id).order_by('id').first()
+                    if next_lesson:
+                        UserProgress.objects.update_or_create(
+                            user=user,
+                            lesson_id=next_lesson.id,
+                            defaults={'read': True}
+                        )
+                return Response({'content': lesson.content})
             except Lesson.DoesNotExist:
                 return Response({'message': 'Lesson not found'}, status=status.HTTP_404_NOT_FOUND)
-
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
