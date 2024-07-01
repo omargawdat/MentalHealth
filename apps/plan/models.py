@@ -7,6 +7,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='planTopic_images/')
     color = models.CharField(max_length=20)
+    description = models.TextField(default='No description provided')
     def __str__(self):
         return self.name
 
@@ -24,7 +25,8 @@ class UserActivity(models.Model):
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     number = models.IntegerField()
     text = models.TextField()
-    flag = models.BooleanField(default=False)  
+    flag = models.BooleanField(default=False) 
+    updated_at = models.DateTimeField(auto_now=True) 
     def __str__(self):
         return f"{self.user.username} - {self.topic.name} - {self.number}"
 
@@ -50,3 +52,4 @@ class UserDepActivity(models.Model):
     number = models.IntegerField()
     text = models.TextField()
     flag = models.BooleanField(default=False)  
+    updated_at = models.DateTimeField(auto_now=True)

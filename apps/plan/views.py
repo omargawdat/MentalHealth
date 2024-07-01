@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from datetime import datetime, timedelta
+from django.utils import timezone
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from apps.depression_test.models import DepressionTestAttempt
@@ -140,24 +141,34 @@ class RestartTopicView(APIView):
 
 class FirstFalseUserActivityView(APIView):
     def get(self, request):
-        user = request.user  
-        topics = Topic.objects.all()
+        user = request.user
+        today = timezone.now().date()
         first_false_activities = []
+
+        topics = Topic.objects.all()
         for topic in topics:
-            first_false_activity = UserActivity.objects.filter(user=user, topic=topic, flag=False).order_by('number').first()
-            if first_false_activity:
+            # Check if the user has flagged an activity today for the current topic
+            flagged_today = UserActivity.objects.filter(user=user, topic=topic, flag=True, updated_at__date=today).exists()
+            if flagged_today:
                 first_false_activities.append({
-                    'topic': TopicSerializer(topic).data,
-                    'activity': {
-                        'number': first_false_activity.number,
-                        'text': first_false_activity.text,
-                        'flag': first_false_activity.flag
-                    }
+                    
+                    'message': 'You have already flagged an activity for this topic today. Please come back tomorrow.'
                 })
+            else:
+                first_false_activity = UserActivity.objects.filter(user=user, topic=topic, flag=False).order_by('number').first()
+                if first_false_activity:
+                    first_false_activities.append({
+                        
+                        'activity': {
+                            'number': first_false_activity.number,
+                            'text': first_false_activity.text,
+                            'flag': first_false_activity.flag
+                        }
+                    })
+
         return Response({
             'first_false_activities': first_false_activities
         }, status=status.HTTP_200_OK)
-    
 
 class FlagActivityView(APIView):
     def post(self, request):
@@ -165,18 +176,24 @@ class FlagActivityView(APIView):
         activity_number = request.data.get('activity_number')
         if not topic_name or not activity_number:
             return Response({'detail': 'Topic name and activity number are required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
         # Retrieve the topic
         topic = get_object_or_404(Topic, name=topic_name)
+        
         # Retrieve the user
         user = request.user
+        
         # Retrieve the user activity to flag
         try:
             user_activity = UserActivity.objects.get(user=user, topic=topic, number=activity_number)
         except UserActivity.DoesNotExist:
             return Response({'detail': 'No activity found for the given topic and number.'}, status=status.HTTP_404_NOT_FOUND)
+        
         # Mark the activity as flagged
         user_activity.flag = True
+        user_activity.updated_at = timezone.now()  # Ensure the updated_at field is set to the current time
         user_activity.save()
+        
         # Prepare response
         response_data = {
             'topic': TopicSerializer(topic).data,
@@ -186,7 +203,9 @@ class FlagActivityView(APIView):
                 'flag': user_activity.flag
             }
         }
-        return Response(response_data, status=status.HTTP_200_OK,)
+        return Response(response_data, status=status.HTTP_200_OK)
+
+
     
 
 class CheckDepressionStreakView(APIView):
@@ -254,6 +273,8 @@ def get_depression_activities(request):
         return Response({'detail': error}, status=status.HTTP_404_NOT_FOUND)
     return Response({'activities': activities}, status=status.HTTP_200_OK)
 
+from django.utils import timezone
+
 # API view to change the flag of an activity to true
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -263,31 +284,45 @@ def flag_depression_activity(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     number = serializer.validated_data['number']
     user = request.user
+
     # Retrieve the most recent depression level
     depression_test_attempt = DepressionTestAttempt.objects.filter(user=user).order_by('-timestamp').first()
     if not depression_test_attempt:
         return Response({'detail': 'No depression test attempt found for the user.'}, status=status.HTTP_404_NOT_FOUND)
     level_of_depression = depression_test_attempt.level_of_depression
+
     # Retrieve the activity from UserDepActivity model
     try:
         activity = UserDepActivity.objects.get(user=user, level__name=level_of_depression, number=number)
     except UserDepActivity.DoesNotExist:
         return Response({'detail': 'No activity found for the given number and depression level.'}, status=status.HTTP_404_NOT_FOUND)
-    # Set the flag to true
+
+    # Set the flag to true and update the timestamp
     activity.flag = True
+    activity.updated_at = timezone.now()  # Ensure the updated_at field is set to the current time
     activity.save()
+
     return Response({'detail': 'Activity flagged successfully.'}, status=status.HTTP_200_OK)
+
+
 
 # API view to get the first activity with flag=False
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_first_unflagged_activity(request):
     user = request.user
+    today = timezone.now().date()
     # Retrieve the most recent depression level
     depression_test_attempt = DepressionTestAttempt.objects.filter(user=user).order_by('-timestamp').first()
     if not depression_test_attempt:
         return Response({'detail': 'No depression test attempt found for the user.'}, status=status.HTTP_404_NOT_FOUND)
     level_of_depression = depression_test_attempt.level_of_depression
+    # Check if the user has flagged an activity for this level today
+    flagged_today = UserDepActivity.objects.filter(
+        user=user, level__name=level_of_depression, flag=True, updated_at__date=today
+    ).exists()
+    if flagged_today:
+        return Response({'detail': 'You have already flagged an activity for this level today. Please come back tomorrow.'}, status=status.HTTP_200_OK)
     # Check if there are any activities in UserDepActivity
     if not UserDepActivity.objects.filter(user=user, level__name=level_of_depression).exists():
         # Call function to generate and save new activities
@@ -307,4 +342,5 @@ def get_first_unflagged_activity(request):
             'flag': activity.flag,
             'message': 'This is the last unflagged activity. Please take the depression test again.'
         }, status=status.HTTP_200_OK)
+
     return Response({'number': activity.number, 'text': activity.text, 'flag': activity.flag}, status=status.HTTP_200_OK)

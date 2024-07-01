@@ -6,7 +6,7 @@ from apps.journal.serializers import TagSerializer
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
-        fields = ('id', 'name', 'color', 'image')
+        fields = ('id', 'name', 'color', 'image','description')
 
 class ActivitySerializer(serializers.ModelSerializer):
     tag = TagSerializer()
