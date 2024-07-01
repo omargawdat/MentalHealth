@@ -8,22 +8,23 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.tokens import RefreshToken
-from apps.learning.models import *
-from .serializers import RegisterSerializer
 
+from apps.learning.models import *
 from .models import Profile
 from .serializers import EmailVerificationSerializer, LoginSerializer, PasswordChangeSerializer, RegisterSerializer, \
-    ResetPasswordSerializer, VerifyRestPasswordSerializer
+    ResetPasswordSerializer, VerifyResetPasswordSerializer
 from .serializers import ProfileSerializer
 from .utilities.send_otp_email import send_otp_via_email
 
 User = get_user_model()
 
+
 def initialize_user_progress(user):
     lessons = Lesson.objects.all()
     for lesson in lessons:
         UserProgress.objects.create(user=user, lesson=lesson, read=False)
+
+
 class UserRegistrationView(APIView):
     permission_classes = []
 
@@ -155,30 +156,41 @@ class PasswordChangeView(APIView):
 
 
 class SendResetOtpView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
     def post(self, request):
-        user = request.user
-        otp = send_otp_via_email(user.email, "resetting your password")
-        cache_key = f"reset_otp_{user.id}"
+        email = request.data.get('email')
+        if not email:
+            return Response({'error': 'Email is required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = CustomUser.objects.get(email=email)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User with this email does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        otp = send_otp_via_email(email, "resetting your password")
+        cache_key = f"reset_otp_{email}"
         cache.set(cache_key, str(otp), timeout=300)
         return Response({'message': 'OTP sent to your email.'}, status=status.HTTP_200_OK)
 
 
 class VerifyResetOtpView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
     def post(self, request):
-        serializer = VerifyRestPasswordSerializer(data=request.data, context={'user': request.user})
+        serializer = VerifyResetPasswordSerializer(data=request.data)
         if serializer.is_valid():
-            user = request.user
-            user.is_able_to_reset_password = True
-            user.save()
-            cache_key = f"reset_otp_{user.id}"
+            email = serializer.validated_data['email']
+            otp = serializer.validated_data['otp']
+
+            cache_key = f"reset_otp_{email}"
             cached_otp = cache.get(cache_key)
 
-            if cached_otp == serializer.validated_data['otp']:
+            if cached_otp == otp:
                 cache.delete(cache_key)
+                user = CustomUser.objects.get(email=email)
+                user.is_able_to_reset_password = True
+                user.save()
                 return Response({'message': 'OTP verified. You can now reset your password.'},
                                 status=status.HTTP_200_OK)
 
@@ -187,10 +199,12 @@ class VerifyResetOtpView(APIView):
 
 
 class ResetPasswordView(APIView):
+    permission_classes = []
+
     def post(self, request):
-        serializer = ResetPasswordSerializer(data=request.data, context={'request': request})
+        serializer = ResetPasswordSerializer(data=request.data)
         if serializer.is_valid():
-            user = request.user
+            user = serializer.validated_data['user']
             user.set_password(serializer.validated_data['new_password'])
             user.is_able_to_reset_password = False
             user.save()

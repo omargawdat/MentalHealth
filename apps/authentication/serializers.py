@@ -86,13 +86,14 @@ class PasswordChangeSerializer(serializers.Serializer):
         return user
 
 
-class VerifyRestPasswordSerializer(serializers.Serializer):
+class VerifyResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField()
     otp = serializers.CharField()
 
     def validate(self, attrs):
-        user = self.context['user']
+        email = attrs.get('email')
         otp = attrs.get('otp')
-        cache_key = f"reset_otp_{user.id}"
+        cache_key = f"reset_otp_{email}"
         cached_otp = cache.get(cache_key)
 
         if not cached_otp or cached_otp != otp:
@@ -102,10 +103,18 @@ class VerifyRestPasswordSerializer(serializers.Serializer):
 
 
 class ResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField()
     new_password = serializers.CharField()
 
     def validate(self, attrs):
-        user = self.context['request'].user
+        email = attrs.get('email')
+        try:
+            user = CustomUser.objects.get(email=email)
+        except CustomUser.DoesNotExist:
+            raise serializers.ValidationError('User with this email does not exist.')
+
         if not user.is_able_to_reset_password:
             raise serializers.ValidationError('Password reset not allowed.')
+
+        attrs['user'] = user
         return attrs
