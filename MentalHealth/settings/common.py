@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "apps.cbt",
     "apps.learning",
     "apps.plan",
+    'apps.community',
 ]
 
 MIDDLEWARE = [
