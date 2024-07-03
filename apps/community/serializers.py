@@ -2,18 +2,33 @@ from rest_framework import serializers
 from .models import Like, Post, Comment
 
 class PostSerializer(serializers.ModelSerializer):
+    user_name = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
     class Meta:
         model = Post
-        fields = ['id', 'content', 'img', 'created_at']
+        fields = ['id', 'content', 'img', 'created_at', 'user_name', 'email']
         read_only_fields = ['id', 'created_at', 'user']
 
 class PostDetailSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(source='user.username', read_only=True)
+    email = serializers.EmailField(source='user.email', read_only=True)
     comment_count = serializers.IntegerField(source='comments.count', read_only=True)
     like_count = serializers.IntegerField(source='likes.count', read_only=True)
+    is_liked = serializers.SerializerMethodField()
+    created_by_current_user = serializers.SerializerMethodField()
+
     class Meta:
         model = Post
-        fields = ['id', 'content', 'img', 'created_at', 'user_name', 'comment_count', 'like_count']
+        fields = ['id', 'content', 'img', 'created_at', 'user_name', 'email', 'comment_count', 'like_count', 'is_liked', 'created_by_current_user']
+
+    def get_is_liked(self, obj):
+        user = self.context.get('request').user
+        return Like.objects.filter(user=user, post=obj).exists()
+
+    def get_created_by_current_user(self, obj):
+        user = self.context.get('request').user
+        return obj.user == user
+    
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:

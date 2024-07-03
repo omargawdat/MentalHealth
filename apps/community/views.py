@@ -8,14 +8,15 @@ from .serializers import LikeSerializer, PostDetailSerializer, PostSerializer, C
 class PostListView(APIView):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
-        serializer = PostDetailSerializer(posts, many=True)
+        serializer = PostDetailSerializer(posts, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
-
+    
+    
 class CreatePostView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)  # Set the user from the request
+            serializer.save(user=request.user)  
             return Response({'message': 'Post Created successfully', 'post': serializer.data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -98,3 +99,4 @@ class LikeView(APIView):
         else:
             like.delete()
             return Response({'message': 'Like deleted successfully'}, status=status.HTTP_200_OK)
+        

@@ -4,10 +4,14 @@ from .models import DepActivity, Topic, Activity,UserActivity
 from apps.journal.serializers import TagSerializer
 
 class TopicSerializer(serializers.ModelSerializer):
+    enrolled = serializers.SerializerMethodField()
     class Meta:
         model = Topic
-        fields = ('id', 'name', 'color', 'image','description')
-
+        fields = ('id', 'name', 'color', 'image', 'description', 'enrolled')
+    def get_enrolled(self, obj):
+        user = self.context['request'].user
+        return UserActivity.objects.filter(user=user, topic=obj).exists()
+    
 class ActivitySerializer(serializers.ModelSerializer):
     tag = TagSerializer()
     class Meta:
