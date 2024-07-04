@@ -1,17 +1,17 @@
-from rest_framework import generics, status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
+import random
 from datetime import datetime, timedelta
-from django.utils import timezone
+
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-from apps.depression_test.models import DepressionTestAttempt
-from .models import DepActivity, Topic, Activity, UserActivity, UserDepActivity
-from apps.journal.models import Tag, UserTags,JournalEntry
-from .serializers import ActivityNumberSerializer, DepActivitySerializer, TopicSerializer
-import random
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from apps.depression_test.models import DepressionTestAttempt
+from apps.journal.models import UserTags, JournalEntry
+from .models import DepActivity, Topic, Activity, UserActivity, UserDepActivity
+from .serializers import ActivityNumberSerializer, DepActivitySerializer, TopicSerializer
 
 
 class TopicListView(generics.ListAPIView):
@@ -19,37 +19,39 @@ class TopicListView(generics.ListAPIView):
     serializer_class = TopicSerializer
 
 
-
 class TopicActivityView(APIView):
     def post(self, request):
         topic_name = request.data.get('topic_name')
         if not topic_name:
             return Response({'detail': 'Topic name is required.'}, status=status.HTTP_400_BAD_REQUEST)
-        
+
         topic = get_object_or_404(Topic, name=topic_name)
-        
+
         # Serialize the topic with the context of the request
         topic_serializer = TopicSerializer(topic, context={'request': request})
-        
+
         user = request.user  # Assuming user is authenticated
         user_tags = UserTags.objects.filter(user=user).values_list('tag', flat=True)
-        
+
         if not user_tags.exists():
             return Response({'detail': 'No tags found for the user.'}, status=status.HTTP_404_NOT_FOUND)
-        
+
         user_activities = UserActivity.objects.filter(user=user, topic=topic)
         if user_activities.exists():
-            activities = [{'number': activity.number, 'flag': activity.flag} for activity in user_activities.order_by('number')]
+            activities = [{'number': activity.number, 'flag': activity.flag} for activity in
+                          user_activities.order_by('number')]
         else:
             activities, success = randomize_activities(topic, user)
             if not success:
-                return Response({'detail': 'No activities found related to this topic and user tags.'}, status=status.HTTP_404_NOT_FOUND)
+                return Response({'detail': 'No activities found related to this topic and user tags.'},
+                                status=status.HTTP_404_NOT_FOUND)
             activities = [{'number': i + 1, 'flag': False} for i, _ in enumerate(activities)]
-        
+
         return Response({
             'topic': topic_serializer.data,
             'activities': activities
         }, status=status.HTTP_200_OK)
+
 
 def randomize_activities(topic, user):
     user_tags = UserTags.objects.filter(user=user).values_list('tag', flat=True)
@@ -81,8 +83,6 @@ def randomize_activities(topic, user):
     return random_activities, True
 
 
-
-
 class ActivityTextView(APIView):
     def post(self, request):
         number = request.data.get('number')
@@ -99,7 +99,7 @@ class ActivityTextView(APIView):
             return Response({'detail': 'No activity found for the given number.'}, status=status.HTTP_404_NOT_FOUND)
         user_activity.save()
         return Response({'number': number, 'text': user_activity.text}, status=status.HTTP_200_OK)
-    
+
 
 class RestartTopicView(APIView):
     def post(self, request):
@@ -117,7 +117,8 @@ class RestartTopicView(APIView):
         # Randomize activities and set flags again
         activities, success = randomize_activities(topic, user)
         if not success:
-            return Response({'detail': 'No activities found related to this topic and user tags.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'detail': 'No activities found related to this topic and user tags.'},
+                            status=status.HTTP_404_NOT_FOUND)
         # Construct response with randomized activities
         numbered_activities = [{'number': i, 'flag': False} for i in range(1, 22)]
         return Response({
@@ -125,11 +126,10 @@ class RestartTopicView(APIView):
                 'id': topic.id,
                 'name': topic.name,
                 'color': topic.color,
-                'image': topic.image.url  
+                'image': topic.image.url
             },
             'activities': numbered_activities
         }, status=status.HTTP_200_OK)
-
 
 
 class FirstFalseUserActivityView(APIView):
@@ -141,21 +141,24 @@ class FirstFalseUserActivityView(APIView):
         topics = Topic.objects.all()
         for topic in topics:
             # Check if the user has flagged an activity today for the current topic
-            flagged_today = UserActivity.objects.filter(user=user, topic=topic, flag=True, updated_at__date=today).exists()
+            flagged_today = UserActivity.objects.filter(user=user, topic=topic, flag=True,
+                                                        updated_at__date=today).exists()
             if flagged_today:
                 first_false_activities.append({
-                    
+
                     'message': 'You have already flagged an activity for this topic today. Please come back tomorrow.'
                 })
             else:
-                first_false_activity = UserActivity.objects.filter(user=user, topic=topic, flag=False).order_by('number').first()
+                first_false_activity = UserActivity.objects.filter(user=user, topic=topic, flag=False).order_by(
+                    'number').first()
                 if first_false_activity:
                     first_false_activities.append({
-                        
+
                         'activity': {
                             'number': first_false_activity.number,
                             'text': first_false_activity.text,
-                            'flag': first_false_activity.flag
+                            'flag': first_false_activity.flag,
+                            "topic_name": first_false_activity.topic.name
                         }
                     })
 
@@ -169,7 +172,8 @@ class FlagActivityView(APIView):
         topic_name = request.data.get('topic_name')
         activity_number = request.data.get('activity_number')
         if not topic_name or not activity_number:
-            return Response({'detail': 'Topic name and activity number are required.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'detail': 'Topic name and activity number are required.'},
+                            status=status.HTTP_400_BAD_REQUEST)
         # Retrieve the topic
         topic = get_object_or_404(Topic, name=topic_name)
         # Retrieve the user
@@ -178,8 +182,9 @@ class FlagActivityView(APIView):
         try:
             user_activity = UserActivity.objects.get(user=user, topic=topic, number=activity_number)
         except UserActivity.DoesNotExist:
-            return Response({'detail': 'No activity found for the given topic and number.'}, status=status.HTTP_404_NOT_FOUND)
-        
+            return Response({'detail': 'No activity found for the given topic and number.'},
+                            status=status.HTTP_404_NOT_FOUND)
+
         # Mark the activity as flagged
         user_activity.flag = True
         user_activity.updated_at = timezone.now()  # Ensure the updated_at field is set to the current time
@@ -195,11 +200,10 @@ class FlagActivityView(APIView):
         }
         return Response(response_data, status=status.HTTP_200_OK)
 
-    
 
 class CheckDepressionStreakView(APIView):
     def get(self, request):
-        user = request.user  
+        user = request.user
         # Calculate the date range for the past 15 days
         end_date = datetime.now().date()
         start_date = end_date - timedelta(days=14)  # 15 days including today
@@ -211,7 +215,6 @@ class CheckDepressionStreakView(APIView):
         # Ensure all entries indicate depression
         all_depression = all(entry.has_depression for entry in entries)
         return Response({'depression_streak': all_depression}, status=status.HTTP_200_OK)
-    
 
 
 # Helper function to randomize activities and save to UserDepActivity model
@@ -237,7 +240,7 @@ def get_user_depression_activities(user):
     user_activities = []
     for index, activity in enumerate(random_activities, start=1):
         user_activity = UserDepActivity(
-            user=user, 
+            user=user,
             level=activity.level,
             tag=activity.tag,
             number=index,
@@ -262,7 +265,9 @@ def get_depression_activities(request):
         return Response({'detail': error}, status=status.HTTP_404_NOT_FOUND)
     return Response({'activities': activities}, status=status.HTTP_200_OK)
 
+
 from django.utils import timezone
+
 
 # API view to change the flag of an activity to true
 @api_view(['POST'])
@@ -284,7 +289,8 @@ def flag_depression_activity(request):
     try:
         activity = UserDepActivity.objects.get(user=user, level__name=level_of_depression, number=number)
     except UserDepActivity.DoesNotExist:
-        return Response({'detail': 'No activity found for the given number and depression level.'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'No activity found for the given number and depression level.'},
+                        status=status.HTTP_404_NOT_FOUND)
 
     # Set the flag to true and update the timestamp
     activity.flag = True
@@ -292,7 +298,6 @@ def flag_depression_activity(request):
     activity.save()
 
     return Response({'detail': 'Activity flagged successfully.'}, status=status.HTTP_200_OK)
-
 
 
 # API view to get the first activity with flag=False
@@ -311,7 +316,9 @@ def get_first_unflagged_activity(request):
         user=user, level__name=level_of_depression, flag=True, updated_at__date=today
     ).exists()
     if flagged_today:
-        return Response({'detail': 'You have already flagged an activity for this level today. Please come back tomorrow.'}, status=status.HTTP_200_OK)
+        return Response(
+            {'detail': 'You have already flagged an activity for this level today. Please come back tomorrow.'},
+            status=status.HTTP_200_OK)
     # Check if there are any activities in UserDepActivity
     if not UserDepActivity.objects.filter(user=user, level__name=level_of_depression).exists():
         # Call function to generate and save new activities
@@ -319,11 +326,14 @@ def get_first_unflagged_activity(request):
         if error:
             return Response({'detail': error}, status=status.HTTP_404_NOT_FOUND)
     # Retrieve the first activity from UserDepActivity model with flag=False
-    activity = UserDepActivity.objects.filter(user=user, level__name=level_of_depression, flag=False).order_by('number').first()
+    activity = UserDepActivity.objects.filter(user=user, level__name=level_of_depression, flag=False).order_by(
+        'number').first()
     if not activity:
-        return Response({'detail': 'No unflagged activity found for the user and depression level.', 'level_depression': level_of_depression}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'No unflagged activity found for the user and depression level.',
+                         'level_depression': level_of_depression}, status=status.HTTP_404_NOT_FOUND)
     # Check if this is the last unflagged activity
-    remaining_unflagged_count = UserDepActivity.objects.filter(user=user, level__name=level_of_depression, flag=False).count()
+    remaining_unflagged_count = UserDepActivity.objects.filter(user=user, level__name=level_of_depression,
+                                                               flag=False).count()
     if remaining_unflagged_count == 1:
         return Response({
             'number': activity.number,
@@ -332,4 +342,5 @@ def get_first_unflagged_activity(request):
             'message': 'This is the last unflagged activity. Please take the depression test again.'
         }, status=status.HTTP_200_OK)
 
-    return Response({'number': activity.number, 'text': activity.text, 'flag': activity.flag}, status=status.HTTP_200_OK)
+    return Response({'number': activity.number, 'text': activity.text, 'flag': activity.flag},
+                    status=status.HTTP_200_OK)

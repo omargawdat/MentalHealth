@@ -33,7 +33,7 @@ class UserActivity(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.topic.name} - {self.number}"
+        return f"{self.user} - {self.topic.name} - {self.number}"
 
 
 class Level(models.Model):
