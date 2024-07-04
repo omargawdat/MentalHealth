@@ -2,13 +2,19 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = "django-insecure-b7*vx#_y*@s6n^t+g@1jvs%eixta52q+q=ge1l8$oh@u19*qv&"
 
 INSTALLED_APPS = [
-    'jazzmin',
-    'rest_framework',
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.import_export",
+    "unfold.contrib.guardian",
+    "unfold.contrib.simple_history",
     'social_django',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -205,3 +211,41 @@ EMAIL_USE_TLS = True
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
+
+UNFOLD = {
+    "SITE_TITLE": "SoulSync",
+    "SITE_HEADER": "SoulSync",
+    "SITE_SYMBOL": "self_improvement",
+    "SHOW_HISTORY": True,
+    "COLORS": {
+        "primary": {
+            "50": "235 245 255",
+            "100": "207 232 252",
+            "200": "174 216 248",
+            "300": "140 199 244",
+            "400": "100 181 240",
+            "500": "60 162 236",
+            "600": "30 144 232",
+            "700": "20 126 204",
+            "800": "15 108 176",
+            "900": "10 90 148",
+            "950": "5 72 120",
+        },
+    },
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": False,
+        "navigation": [
+            {
+                "title": "Customization Options",
+                "items": [
+                    {
+                        "title": "Users",
+                        "icon": "people",
+                        "link": reverse_lazy("admin:authentication_customuser_changelist"),
+                    },
+                ],
+            },
+        ],
+    },
+}
