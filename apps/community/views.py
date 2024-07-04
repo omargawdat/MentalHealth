@@ -2,23 +2,27 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 from .models import Like, Post, Comment
 from .serializers import LikeSerializer, PostDetailSerializer, PostSerializer, CommentSerializer
+
 
 class PostListView(APIView):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
         serializer = PostDetailSerializer(posts, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
-    
+
+
 class CreatePostView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)  
-            return Response({'message': 'Post Created successfully', 'post': serializer.data}, status=status.HTTP_201_CREATED)
+            serializer.save(user=request.user)
+            return Response({'message': 'Post Created successfully', 'post': serializer.data},
+                            status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class PostUpdateView(APIView):
     def post(self, request, *args, **kwargs):
@@ -31,7 +35,8 @@ class PostUpdateView(APIView):
             serializer.save()
             return Response({'message': 'Post updated successfully'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
+
 class PostDeleteView(APIView):
     def delete(self, request, *args, **kwargs):
         post_id = request.data.get('id')
@@ -40,6 +45,7 @@ class PostDeleteView(APIView):
         post = get_object_or_404(Post, id=post_id, user=request.user)
         post.delete()
         return Response({'message': 'Post deleted successfully'}, status=status.HTTP_200_OK)
+
 
 class CommentCreateView(APIView):
     def post(self, request, *args, **kwargs):
@@ -50,8 +56,10 @@ class CommentCreateView(APIView):
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user, post=post)  # Set the user and post from the request
-            return Response({'message': 'Comment Created successfully', 'comment': serializer.data}, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Comment Created successfully', 'comment': serializer.data},
+                            status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class CommentUpdateView(APIView):
     def post(self, request, *args, **kwargs):
@@ -64,6 +72,7 @@ class CommentUpdateView(APIView):
             serializer.save()
             return Response({'message': 'Comment updated successfully'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class CommentDeleteView(APIView):
     def delete(self, request, *args, **kwargs):
@@ -84,7 +93,6 @@ class PostCommentsView(APIView):
         comments = Comment.objects.filter(post=post)
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
 
 
 class LikeView(APIView):
@@ -95,8 +103,8 @@ class LikeView(APIView):
         post = get_object_or_404(Post, id=post_id)
         like, created = Like.objects.get_or_create(user=request.user, post=post)
         if created:
-            return Response({'message': 'Like created successfully', 'like': LikeSerializer(like).data}, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Like created successfully', 'like': LikeSerializer(like).data},
+                            status=status.HTTP_201_CREATED)
         else:
             like.delete()
             return Response({'message': 'Like deleted successfully'}, status=status.HTTP_200_OK)
-        

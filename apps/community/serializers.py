@@ -35,6 +35,8 @@ class PostDetailSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    user = ProfileSerializer(source='user.profile', read_only=True)
+
     class Meta:
         model = Comment
         fields = ['id', 'post', 'user', 'content', 'created_at']
@@ -42,6 +44,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class LikeSerializer(serializers.ModelSerializer):
+    user = ProfileSerializer(source='user.profile', read_only=True)
+
     class Meta:
         model = Like
         fields = ['id', 'user', 'post', 'created_at']
