@@ -26,4 +26,4 @@ class DepressionTestAttempt(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user.username} - {self.timestamp} - {self.level_of_depression}'
+        return f'{self.user} - {self.timestamp} - {self.level_of_depression}'

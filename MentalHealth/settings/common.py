@@ -237,15 +237,105 @@ UNFOLD = {
         "show_all_applications": False,
         "navigation": [
             {
-                "title": "Customization Options",
+                "title": "Journal Management",
                 "items": [
                     {
-                        "title": "Users",
-                        "icon": "people",
-                        "link": reverse_lazy("admin:authentication_customuser_changelist"),
+                        "title": "Emotions",
+                        "icon": "sentiment_satisfied_alt",
+                        "link": reverse_lazy("admin:journal_emotion_changelist"),
+                    },
+                    {
+                        "title": "Journal Entries",
+                        "icon": "book",
+                        "link": reverse_lazy("admin:journal_journalentry_changelist"),
+                    },
+                    {
+                        "title": "Activities",
+                        "icon": "directions_run",
+                        "link": reverse_lazy("admin:journal_activity_changelist"),
+                    },
+                    {
+                        "title": "Reasons",
+                        "icon": "lightbulb",
+                        "link": reverse_lazy("admin:journal_reason_changelist"),
+                    },
+                    {
+                        "title": "Tags",
+                        "icon": "local_offer",
+                        "link": reverse_lazy("admin:journal_tag_changelist"),
+                    },
+                    {
+                        "title": "Tips",
+                        "icon": "tips_and_updates",
+                        "link": reverse_lazy("admin:journal_tips_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "Depression Test Management",
+                "items": [
+                    {
+                        "title": "Test Questions",
+                        "icon": "quiz",
+                        "link": reverse_lazy("admin:depression_test_testquestion_changelist"),
+                    },
+                    {
+                        "title": "Answer Options",
+                        "icon": "check_box",
+                        "link": reverse_lazy("admin:depression_test_answeroption_changelist"),
+                    },
+                    {
+                        "title": "Test Attempts",
+                        "icon": "analytics",
+                        "link": reverse_lazy("admin:depression_test_depressiontestattempt_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "Community Management",
+                "items": [
+                    {
+                        "title": "Posts",
+                        "icon": "post_add",
+                        "link": reverse_lazy("admin:community_post_changelist"),
+                    },
+                    {
+                        "title": "Comments",
+                        "icon": "comment",
+                        "link": reverse_lazy("admin:community_comment_changelist"),
+                    },
+                    {
+                        "title": "Likes",
+                        "icon": "thumb_up",
+                        "link": reverse_lazy("admin:community_like_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "User Management",
+                "items": [
+                    {
+                        "title": "Profiles",
+                        "icon": "person",
+                        "link": reverse_lazy("admin:authentication_profile_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "CBT Management",
+                "items": [
+                    {
+                        "title": "Negative Thinking Types",
+                        "icon": "psychology",
+                        "link": reverse_lazy("admin:cbt_negativethinkingtype_changelist"),
+                    },
+                    {
+                        "title": "CBT Questions",
+                        "icon": "help",
+                        "link": reverse_lazy("admin:cbt_cbtquestion_changelist"),
                     },
                 ],
             },
         ],
-    },
+    }
 }
