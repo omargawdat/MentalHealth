@@ -212,6 +212,46 @@ UNFOLD = {
         "show_all_applications": False,
         "navigation": [
             {
+                "title": "Content Management",
+                "items": [
+                    {
+                        "title": "Topics",
+                        "icon": "subject",
+                        "link": reverse_lazy("admin:plan_topic_changelist"),
+                    },
+                    {
+                        "title": "Activities",
+                        "icon": "directions_run",
+                        "link": reverse_lazy("admin:plan_activity_changelist"),
+                    },
+                    {
+                        "title": "Levels",
+                        "icon": "bar_chart",
+                        "link": reverse_lazy("admin:plan_level_changelist"),
+                    },
+                    {
+                        "title": "Depression Activities",
+                        "icon": "psychology",
+                        "link": reverse_lazy("admin:plan_depactivity_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "User Activities",
+                "items": [
+                    {
+                        "title": "User Activities",
+                        "icon": "assignment_ind",
+                        "link": reverse_lazy("admin:plan_useractivity_changelist"),
+                    },
+                    {
+                        "title": "User Depression Activities",
+                        "icon": "mood",
+                        "link": reverse_lazy("admin:plan_userdepactivity_changelist"),
+                    },
+                ],
+            },
+            {
                 "title": "Education Management",
                 "items": [
                     {
@@ -336,6 +376,41 @@ UNFOLD = {
                     },
                 ],
             },
+            {
+                "title": "Meditation Management",
+                "items": [
+                    {
+                        "title": "Meditations",
+                        "icon": "spa",
+                        "link": reverse_lazy("admin:meditation_meditation_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": "Weekly Management",
+                "items": [
+                    {
+                        "title": "Life Aspect Types",
+                        "icon": "self_improvement",
+                        "link": reverse_lazy("admin:weekly_lifeaspecttype_changelist"),
+                    },
+                    {
+                        "title": "Life Aspects",
+                        "icon": "nightlife",
+                        "link": reverse_lazy("admin:weekly_lifeaspect_changelist"),
+                    },
+                    {
+                        "title": "Life Activities",
+                        "icon": "directions_run",
+                        "link": reverse_lazy("admin:weekly_lifeactivity_changelist"),
+                    },
+                    {
+                        "title": "Life Activity Tracks",
+                        "icon": "insights",
+                        "link": reverse_lazy("admin:weekly_lifeactivitytrack_changelist"),
+                    },
+                ],
+            }
         ],
     }
 }
