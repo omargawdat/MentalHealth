@@ -130,31 +130,6 @@ REST_FRAMEWORK = {
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-# Jazzmin Settings for the admin panel design
-JAZZMIN_SETTINGS = {
-    "site_title": "Mental Health",
-    "site_header": "Mental Admin",
-    "site_brand": "Admin",
-    "welcome_sign": "Welcome to best mental health app",
-    "copyright": "Cairo University",
-
-    "search_model": [],
-
-    "show_sidebar": True,
-    "navigation_expanded": True,
-    "hide_apps": ["sites"],
-    "hide_models": [],
-    "order_with_respect_to": [],
-    "icons": {
-    },
-    "default_icon_parents": "fas fa-chevron-circle-right",
-    "default_icon_children": "fas fa-circle",
-    "use_google_fonts_cdn": True,
-    "show_ui_builder": True,
-
-    "changeform_format": "horizontal_tabs",
-    "changeform_format_overrides": {"users.CustomUser": "collapsible", "auth.group": "vertical_tabs"},
-}
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "flatly",
@@ -236,6 +211,31 @@ UNFOLD = {
         "show_search": True,
         "show_all_applications": False,
         "navigation": [
+            {
+                "title": "Education Management",
+                "items": [
+                    {
+                        "title": "Topics",
+                        "icon": "subject",
+                        "link": reverse_lazy("admin:learning_topic_changelist"),
+                    },
+                    {
+                        "title": "Subtopics",
+                        "icon": "topic",
+                        "link": reverse_lazy("admin:learning_subtopic_changelist"),
+                    },
+                    {
+                        "title": "Lessons",
+                        "icon": "menu_book",
+                        "link": reverse_lazy("admin:learning_lesson_changelist"),
+                    },
+                    {
+                        "title": "User Progress",
+                        "icon": "trending_up",
+                        "link": reverse_lazy("admin:learning_userprogress_changelist"),
+                    },
+                ],
+            },
             {
                 "title": "Journal Management",
                 "items": [

@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from unfold.admin import ModelAdmin
 from unfold.decorators import display
 
+from .models import CustomUser
 from .models import Profile
 
 
@@ -42,3 +43,6 @@ class ProfileAdmin(ModelAdmin):
     @display(description=_("Status"), label={True: "success", False: "warning"})
     def user_status(self, obj):
         return obj.user.is_verified, _("Verified") if obj.user.is_verified else _("Unverified")
+
+
+admin.site.register(CustomUser)
