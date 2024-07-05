@@ -77,7 +77,7 @@ class DepressionTestAttemptAdmin(ModelAdmin):
 
     @display(description=_("User"), ordering="user__email")
     def user_display(self, obj):
-        return f"{obj.user.email} ({obj.user.username})"
+        return f"{obj.user.email} ({obj.user})"
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related('user')
