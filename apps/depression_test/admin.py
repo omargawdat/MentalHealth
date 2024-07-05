@@ -63,7 +63,7 @@ class DepressionTestAttemptAdmin(ModelAdmin):
     list_filter = ['level_of_depression', 'timestamp']
     search_fields = ['user__email', 'user__username']
     date_hierarchy = 'timestamp'
-    readonly_fields = ['timestamp']
+    # readonly_fields = ['timestamp']
 
     fieldsets = (
         (None, {
