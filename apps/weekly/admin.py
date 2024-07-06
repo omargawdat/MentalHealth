@@ -41,7 +41,7 @@ class LifeAspectAdmin(ModelAdmin):
     list_filter = ['aspect_type', 'date']
     search_fields = ['user__username', 'aspect_type__name']
     autocomplete_fields = ['aspect_type']
-    list_editable = ['date']
+    readonly_fields = ['date']
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related('user', 'aspect_type')
