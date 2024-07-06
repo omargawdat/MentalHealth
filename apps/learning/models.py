@@ -26,7 +26,8 @@ class Lesson(models.Model):
     name = models.CharField(max_length=255)
     content = models.TextField()
     subtopic = models.ForeignKey(SubTopic, related_name='lessons', on_delete=models.CASCADE)
-
+    audio = models.FileField(upload_to='lesson_audio/', null=True, blank=True)
+    
     def __str__(self):
         return self.name
 

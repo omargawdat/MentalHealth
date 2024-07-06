@@ -63,7 +63,7 @@ class LessonAdmin(ModelAdmin):
     list_filter = ['subtopic__topic', 'subtopic']
     search_fields = ['name', 'content', 'subtopic__name', 'subtopic__topic__name']
     autocomplete_fields = ['subtopic']
-
+    
     @display(description=_("Content Preview"))
     def content_preview(self, obj):
         return obj.content[:100] + '...' if len(obj.content) > 100 else obj.content
