@@ -61,7 +61,7 @@ class TestQuestionAdmin(ModelAdmin):
 class DepressionTestAttemptAdmin(ModelAdmin):
     list_display = ['user_display', 'total_score', 'level_of_depression', 'timestamp']
     list_filter = ['level_of_depression', 'timestamp']
-    search_fields = ['user__email', 'user__username']
+    search_fields = ['user__email', ]
     date_hierarchy = 'timestamp'
     # readonly_fields = ['timestamp']
 

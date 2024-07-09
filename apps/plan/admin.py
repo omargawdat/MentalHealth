@@ -62,7 +62,7 @@ class UserActivityInline(TabularInline):
 class UserActivityAdmin(ModelAdmin):
     list_display = ['user', 'topic', 'tag', 'number', 'flag', 'updated_at']
     list_filter = ['flag', 'topic', 'tag']
-    search_fields = ['user__username', 'topic__name', 'tag__name', 'text']
+    search_fields = ['user__email', 'topic__name', 'tag__name', 'text']
     autocomplete_fields = ['topic', 'tag']
     readonly_fields = ['updated_at']
 
@@ -109,6 +109,6 @@ class UserDepActivityInline(TabularInline):
 class UserDepActivityAdmin(ModelAdmin):
     list_display = ['user', 'level', 'tag', 'number', 'flag', 'updated_at']
     list_filter = ['flag', 'level', 'tag']
-    search_fields = ['user__username', 'level__name', 'tag__name', 'text']
+    search_fields = ['user__email', 'level__name', 'tag__name', 'text']
     autocomplete_fields = ['level', 'tag']
     readonly_fields = ['updated_at']

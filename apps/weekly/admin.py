@@ -39,7 +39,7 @@ class LifeAspectTypeAdmin(ModelAdmin):
 class LifeAspectAdmin(ModelAdmin):
     list_display = ['user', 'aspect_type', 'value', 'date']
     list_filter = ['aspect_type', 'date']
-    search_fields = ['user__username', 'aspect_type__name']
+    search_fields = ['user__email', 'aspect_type__name']
     autocomplete_fields = ['aspect_type']
     readonly_fields = ['date']
 
@@ -80,7 +80,7 @@ class LifeActivityTrackInline(TabularInline):
 class LifeActivityTrackAdmin(ModelAdmin):
     list_display = ['user', 'life_activity', 'created_at', 'is_checked']
     list_filter = ['is_checked', 'created_at', 'life_activity__aspect_type']
-    search_fields = ['user__username', 'life_activity__name']
+    search_fields = ['user__email', 'life_activity__name']
     autocomplete_fields = ['life_activity', ]
     readonly_fields = ['created_at']
 

@@ -215,7 +215,7 @@ UNFOLD = {
                 "title": "Content Management",
                 "items": [
                     {
-                        "title": "Topics",
+                        "title": "plan topics",
                         "icon": "subject",
                         "link": reverse_lazy("admin:plan_topic_changelist"),
                     },
@@ -225,7 +225,7 @@ UNFOLD = {
                         "link": reverse_lazy("admin:plan_activity_changelist"),
                     },
                     {
-                        "title": "Levels",
+                        "title": "Depression Plan Levels",
                         "icon": "bar_chart",
                         "link": reverse_lazy("admin:plan_level_changelist"),
                     },
@@ -237,10 +237,10 @@ UNFOLD = {
                 ],
             },
             {
-                "title": "User Activities",
+                "title": "User  Activities",
                 "items": [
                     {
-                        "title": "User Activities",
+                        "title": "User Plan Activities",
                         "icon": "assignment_ind",
                         "link": reverse_lazy("admin:plan_useractivity_changelist"),
                     },
@@ -290,7 +290,7 @@ UNFOLD = {
                         "link": reverse_lazy("admin:journal_journalentry_changelist"),
                     },
                     {
-                        "title": "Activities",
+                        "title": "Daily Activities",
                         "icon": "directions_run",
                         "link": reverse_lazy("admin:journal_activity_changelist"),
                     },
@@ -320,11 +320,6 @@ UNFOLD = {
                         "link": reverse_lazy("admin:depression_test_testquestion_changelist"),
                     },
                     {
-                        "title": "Answer Options",
-                        "icon": "check_box",
-                        "link": reverse_lazy("admin:depression_test_answeroption_changelist"),
-                    },
-                    {
                         "title": "Test Attempts",
                         "icon": "analytics",
                         "link": reverse_lazy("admin:depression_test_depressiontestattempt_changelist"),
@@ -343,12 +338,7 @@ UNFOLD = {
                         "title": "Comments",
                         "icon": "comment",
                         "link": reverse_lazy("admin:community_comment_changelist"),
-                    },
-                    {
-                        "title": "Likes",
-                        "icon": "thumb_up",
-                        "link": reverse_lazy("admin:community_like_changelist"),
-                    },
+                    }
                 ],
             },
             {
